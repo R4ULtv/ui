@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-picker",
+  "type": "registry:block",
+  "title": "Icon Picker",
+  "description": "A simple icon picker component.",
+  "files": [
+    {
+      "path": "components/icon-picker.tsx",
+      "content": "\"use client\";\n\nimport { icons } from \"lucide-react\";\nimport { useState, useMemo, useCallback, memo } from \"react\";\n\nimport { Input } from \"@/components/ui/input\";\nimport { ScrollArea } from \"@/components/ui/scroll-area\";\n\nconst IconItem = memo(\n  ({\n    iconName,\n    onSelectIcon,\n  }: {\n    iconName: string;\n    onSelectIcon?: (iconName: string) => void;\n  }) => {\n    const Icon = icons[iconName as keyof typeof icons];\n\n    const handleClick = useCallback(() => {\n      onSelectIcon?.(iconName);\n    }, [iconName, onSelectIcon]);\n\n    return (\n      <button\n        className=\"flex items-center justify-center size-7 rounded-md cursor-pointer text-popover-foreground/75 hover:bg-muted hover:text-primary\"\n        onClick={handleClick}\n        title={iconName}\n      >\n        <Icon size={16} />\n      </button>\n    );\n  },\n);\n\nIconItem.displayName = \"IconItem\";\n\nconst IconPicker = memo(\n  ({ onSelectIcon }: { onSelectIcon?: (iconName: string) => void }) => {\n    const [searchQuery, setSearchQuery] = useState(\"\");\n\n    const iconsMap = useMemo(() => Object.keys(icons), []);\n\n    const filteredIcons = useMemo(() => {\n      if (!searchQuery.trim()) return iconsMap;\n      return iconsMap.filter((iconName) =>\n        iconName.toLowerCase().includes(searchQuery.toLowerCase()),\n      );\n    }, [iconsMap, searchQuery]);\n\n    const handleSearchChange = useCallback(\n      (e: React.ChangeEvent<HTMLInputElement>) => {\n        setSearchQuery(e.target.value);\n      },\n      [],\n    );\n\n    return (\n      <div className=\"w-72 bg-popover rounded-lg border shadow-md\">\n        <div className=\"relative px-2 pt-2\">\n          <Input\n            autoComplete=\"off\"\n            autoCorrect=\"off\"\n            autoCapitalize=\"off\"\n            spellCheck={false}\n            className=\"border-none focus-visible:ring-2 font-semibold px-2.5 py-2\"\n            placeholder=\"Search...\"\n            type=\"text\"\n            value={searchQuery}\n            onChange={handleSearchChange}\n          />\n        </div>\n        <ScrollArea className=\"h-80 p-1.5\">\n          <div className=\"grid grid-cols-9\">\n            {filteredIcons.map((iconName) => (\n              <IconItem\n                key={iconName}\n                iconName={iconName}\n                onSelectIcon={onSelectIcon}\n              />\n            ))}\n          </div>\n        </ScrollArea>\n      </div>\n    );\n  },\n);\n\nIconPicker.displayName = \"IconPicker\";\n\nexport default IconPicker;\n",
+      "type": "registry:component"
+    }
+  ]
+}
