@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "raulcarini.dev",
+  "homepage": "https://ui.raulcarini.dev",
+  "items": [
+    {
+      "name": "icon-picker",
+      "type": "registry:block",
+      "title": "Icon Picker",
+      "description": "A simple icon picker component.",
+      "files": [
+        {
+          "path": "components/icon-picker.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
