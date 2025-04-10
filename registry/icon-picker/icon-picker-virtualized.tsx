@@ -16,7 +16,7 @@ const IconItem = React.memo(
   }: {
     iconName: string;
     onSelectIcon?: (iconName: string) => void;
-    selectedIcon?: string;
+    selectedIcon?: string | null;
   }) => {
     const Icon = icons[iconName as keyof typeof icons];
 
@@ -50,7 +50,7 @@ const IconPicker = React.memo(
     ...props
   }: {
     onSelectIcon?: (iconName: string) => void;
-    selectedIcon?: string;
+    selectedIcon?: string | null;
   } & React.ComponentProps<"div">) => {
     const [searchQuery, setSearchQuery] = React.useState("");
     const gridRef = React.useRef<Grid | null>(null);
