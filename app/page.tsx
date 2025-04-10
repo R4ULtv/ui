@@ -17,7 +17,7 @@ const IconPickerVirtualized = dynamic(
 
 export default function Page() {
   return (
-    <main className="flex items-center justify-center flex-col gap-20 min-h-svh my-12">
+    <main className="flex items-center justify-center flex-col gap-20 min-h-svh my-12 p-4">
       <div className="max-w-3xl mx-auto w-full">
         <div className="space-y-1 mb-2 ml-2">
           <h1 className="font-semibold">Icon Picker</h1>
@@ -47,6 +47,16 @@ export default function Page() {
             <IconPickerVirtualized />
           </div>
         </div>
+        <span className="text-xs text-muted-foreground ml-2">
+          Built with{" "}
+          <a
+            target="_blank"
+            href="https://github.com/bvaughn/react-virtualized"
+            className="underline hover:text-foreground"
+          >
+            React Virtualized
+          </a>
+        </span>
       </div>
     </main>
   );
