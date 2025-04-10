@@ -13,7 +13,8 @@
           "path": "components/icon-picker.tsx",
           "type": "registry:component"
         }
-      ]
+      ],
+      "registryDependencies": ["input", "scroll-area"]
     }
   ]
 }

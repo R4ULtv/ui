@@ -4,6 +4,10 @@
   "type": "registry:block",
   "title": "Icon Picker",
   "description": "A simple icon picker component.",
+  "registryDependencies": [
+    "input",
+    "scroll-area"
+  ],
   "files": [
     {
       "path": "components/icon-picker.tsx",
