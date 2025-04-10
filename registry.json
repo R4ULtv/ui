@@ -43,7 +43,11 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": ["input", "popover", "icon-picker-virtualized"],
+      "registryDependencies": [
+        "input",
+        "popover",
+        "https://ui.raulcarini.dev/r/icon-picker-virtualized.json"
+      ],
       "dependencies": ["lucide-react"]
     }
   ]

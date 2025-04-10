@@ -10,7 +10,7 @@
   "registryDependencies": [
     "input",
     "popover",
-    "icon-picker-virtualized"
+    "https://ui.raulcarini.dev/r/icon-picker-virtualized.json"
   ],
   "files": [
     {
