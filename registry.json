@@ -14,7 +14,8 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": ["input", "scroll-area"]
+      "registryDependencies": ["input", "scroll-area"],
+      "dependencies": ["lucide-react"]
     }
   ]
 }
