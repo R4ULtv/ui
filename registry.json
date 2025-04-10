@@ -10,7 +10,7 @@
       "description": "A simple icon picker component.",
       "files": [
         {
-          "path": "components/icon-picker.tsx",
+          "path": "registry/icon-picker/icon-picker.tsx",
           "type": "registry:component"
         }
       ],
