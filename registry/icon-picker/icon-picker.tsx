@@ -1,28 +1,36 @@
 "use client";
 
+import * as React from "react";
 import { icons } from "lucide-react";
-import { useState, useMemo, useCallback, memo } from "react";
+
+import { cn } from "@/lib/utils";
 
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-const IconItem = memo(
+const IconItem = React.memo(
   ({
     iconName,
     onSelectIcon,
+    selectedIcon,
   }: {
     iconName: string;
     onSelectIcon?: (iconName: string) => void;
+    selectedIcon?: string;
   }) => {
     const Icon = icons[iconName as keyof typeof icons];
 
-    const handleClick = useCallback(() => {
+    const handleClick = React.useCallback(() => {
       onSelectIcon?.(iconName);
     }, [iconName, onSelectIcon]);
 
     return (
       <button
-        className="flex items-center justify-center size-7 rounded-md cursor-pointer text-popover-foreground/75 hover:bg-muted hover:text-primary"
+        className={cn(
+          "flex items-center justify-center size-7 rounded-md cursor-pointer text-popover-foreground/75 hover:bg-muted hover:text-primary",
+          selectedIcon === iconName &&
+            "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
+        )}
         onClick={handleClick}
         title={iconName}
       >
@@ -34,20 +42,28 @@ const IconItem = memo(
 
 IconItem.displayName = "IconItem";
 
-const IconPicker = memo(
-  ({ onSelectIcon }: { onSelectIcon?: (iconName: string) => void }) => {
-    const [searchQuery, setSearchQuery] = useState("");
+const IconPicker = React.memo(
+  ({
+    onSelectIcon,
+    selectedIcon,
+    className,
+    ...props
+  }: {
+    onSelectIcon?: (iconName: string) => void;
+    selectedIcon?: string;
+  } & React.ComponentProps<"div">) => {
+    const [searchQuery, setSearchQuery] = React.useState("");
 
-    const iconsMap = useMemo(() => Object.keys(icons), []);
+    const iconsMap = React.useMemo(() => Object.keys(icons), []);
 
-    const filteredIcons = useMemo(() => {
+    const filteredIcons = React.useMemo(() => {
       if (!searchQuery.trim()) return iconsMap;
       return iconsMap.filter((iconName) =>
         iconName.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     }, [iconsMap, searchQuery]);
 
-    const handleSearchChange = useCallback(
+    const handleSearchChange = React.useCallback(
       (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(e.target.value);
       },
@@ -55,7 +71,10 @@ const IconPicker = memo(
     );
 
     return (
-      <div className="w-72 bg-popover rounded-lg border shadow-md">
+      <div
+        className={cn("w-72 bg-popover rounded-lg border shadow-md", className)}
+        {...props}
+      >
         <div className="relative px-2 pt-2">
           <Input
             autoComplete="off"
@@ -76,6 +95,7 @@ const IconPicker = memo(
                 key={iconName}
                 iconName={iconName}
                 onSelectIcon={onSelectIcon}
+                selectedIcon={selectedIcon}
               />
             ))}
           </div>

@@ -1,28 +1,36 @@
 "use client";
 
+import * as React from "react";
 import { icons } from "lucide-react";
-import { useState, useMemo, useCallback, memo, useRef, useEffect } from "react";
 import { Grid, AutoSizer } from "react-virtualized";
+
+import { cn } from "@/lib/utils";
 
 import { Input } from "@/components/ui/input";
 
-const IconItem = memo(
+const IconItem = React.memo(
   ({
     iconName,
     onSelectIcon,
+    selectedIcon,
   }: {
     iconName: string;
     onSelectIcon?: (iconName: string) => void;
+    selectedIcon?: string;
   }) => {
     const Icon = icons[iconName as keyof typeof icons];
 
-    const handleClick = useCallback(() => {
+    const handleClick = React.useCallback(() => {
       onSelectIcon?.(iconName);
     }, [iconName, onSelectIcon]);
 
     return (
       <button
-        className="flex items-center justify-center size-7 rounded-md cursor-pointer text-popover-foreground/75 hover:bg-muted hover:text-primary"
+        className={cn(
+          "flex items-center justify-center size-7 rounded-md cursor-pointer text-popover-foreground/75 hover:bg-muted hover:text-primary",
+          selectedIcon === iconName &&
+            "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
+        )}
         onClick={handleClick}
         title={iconName}
       >
@@ -34,27 +42,35 @@ const IconItem = memo(
 
 IconItem.displayName = "IconItem";
 
-const IconPicker = memo(
-  ({ onSelectIcon }: { onSelectIcon?: (iconName: string) => void }) => {
-    const [searchQuery, setSearchQuery] = useState("");
-    const gridRef = useRef<Grid | null>(null);
+const IconPicker = React.memo(
+  ({
+    onSelectIcon,
+    selectedIcon,
+    className,
+    ...props
+  }: {
+    onSelectIcon?: (iconName: string) => void;
+    selectedIcon?: string;
+  } & React.ComponentProps<"div">) => {
+    const [searchQuery, setSearchQuery] = React.useState("");
+    const gridRef = React.useRef<Grid | null>(null);
 
-    const iconsMap = useMemo(() => Object.keys(icons), []);
+    const iconsMap = React.useMemo(() => Object.keys(icons), []);
 
-    const filteredIcons = useMemo(() => {
+    const filteredIcons = React.useMemo(() => {
       if (!searchQuery.trim()) return iconsMap;
       return iconsMap.filter((iconName) =>
         iconName.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     }, [iconsMap, searchQuery]);
 
-    useEffect(() => {
+    React.useEffect(() => {
       if (gridRef.current) {
         gridRef.current.recomputeGridSize();
       }
     }, [filteredIcons]);
 
-    const handleSearchChange = useCallback(
+    const handleSearchChange = React.useCallback(
       (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(e.target.value);
       },
@@ -64,7 +80,7 @@ const IconPicker = memo(
     const ICON_CELL_SIZE = 28;
     const COLUMNS = 9;
 
-    const cellRenderer = useCallback(
+    const cellRenderer = React.useCallback(
       ({
         columnIndex,
         rowIndex,
@@ -81,15 +97,22 @@ const IconPicker = memo(
 
         return (
           <div style={style} key={iconName}>
-            <IconItem iconName={iconName} onSelectIcon={onSelectIcon} />
+            <IconItem
+              iconName={iconName}
+              onSelectIcon={onSelectIcon}
+              selectedIcon={selectedIcon}
+            />
           </div>
         );
       },
-      [filteredIcons, onSelectIcon],
+      [filteredIcons, onSelectIcon, selectedIcon],
     );
 
     return (
-      <div className="w-72 bg-popover rounded-lg border shadow-md">
+      <div
+        className={cn("w-72 bg-popover rounded-lg border shadow-md", className)}
+        {...props}
+      >
         <div className="relative px-2 pt-2">
           <Input
             autoComplete="off"
