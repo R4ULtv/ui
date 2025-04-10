@@ -31,6 +31,20 @@
       "registryDependencies": ["input"],
       "dependencies": ["lucide-react", "react-virtualized"],
       "devDependencies": ["@types/react-virtualized"]
+    },
+    {
+      "name": "icon-picker-popover",
+      "type": "registry:block",
+      "title": "Icon Picker Popover",
+      "description": "A simple icon picker component with a popover.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker-popover.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["input", "popover", "icon-picker-virtualized"],
+      "dependencies": ["lucide-react"]
     }
   ]
 }
