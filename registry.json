@@ -16,6 +16,21 @@
       ],
       "registryDependencies": ["input", "scroll-area"],
       "dependencies": ["lucide-react"]
+    },
+    {
+      "name": "icon-picker-virtualized",
+      "type": "registry:block",
+      "title": "Icon Picker Virtualized",
+      "description": "A simple icon picker component with virtualization.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker-virtualized.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["input", "scroll-area"],
+      "dependencies": ["lucide-react", "react-virtualized"],
+      "devDependencies": ["@types/react-virtualized"]
     }
   ]
 }
