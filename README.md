@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UI Components Library
+
+This is a collection of UI components built with Shadcn UI. The project currently focuses on providing a customizable Icon Picker component with different implementation options.
+
+## Features
+
+### Icon Picker Components
+
+- **Basic Icon Picker**: A simple icon picker component with search functionality
+- **Virtualized Icon Picker**: Performance-optimized version using virtualization for handling large icon sets
+- **Icon Picker Popover**: Implementation with a popover interface for easy integration
+
+## Technologies
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Shadcn UI
+- Lucide React (for icons)
+- React Virtualized (for virtualized list rendering)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+
+# Navigate to the project directory
+cd ui
+
+# Install dependencies
+npm install
+# or
+yarn install
+```
+
+### Running the Development Server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Component Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Basic Icon Picker
 
-## Learn More
+```tsx
+import IconPicker from "@/registry/icon-picker/icon-picker";
 
-To learn more about Next.js, take a look at the following resources:
+function MyComponent() {
+  const [selectedIcon, setSelectedIcon] = React.useState<string | null>(null);
+  
+  return (
+    <IconPicker
+      selectedIcon={selectedIcon}
+      onSelectIcon={setSelectedIcon}
+    />
+  );
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Icon Picker with Popover
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```tsx
+import { Button } from "@/components/ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import IconPicker from "@/registry/icon-picker/icon-picker-virtualized";
 
-## Deploy on Vercel
+function MyComponent() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [selectedIcon, setSelectedIcon] = React.useState<string | null>(null);
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  return (
+    <Popover onOpenChange={setIsOpen} open={isOpen}>
+      <PopoverTrigger asChild>
+        <Button>
+          {selectedIcon ? `Selected Icon: ${selectedIcon}` : "Icon Picker"}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-fit p-0">
+        <IconPicker
+          selectedIcon={selectedIcon}
+          onSelectIcon={setSelectedIcon}
+          className="bg-transparent border-none"
+        />
+      </PopoverContent>
+    </Popover>
+  );
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- [Shadcn UI](https://ui.shadcn.com/)
+- [Lucide React](https://lucide.dev/)
