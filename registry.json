@@ -28,7 +28,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": ["input", "scroll-area"],
+      "registryDependencies": ["input"],
       "dependencies": ["lucide-react", "react-virtualized"],
       "devDependencies": ["@types/react-virtualized"]
     }
