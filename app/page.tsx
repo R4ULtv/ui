@@ -8,6 +8,13 @@ const IconPicker = dynamic(() => import("@/registry/icon-picker/icon-picker"), {
   ssr: false,
 });
 
+const IconPickerTanstack = dynamic(
+  () => import("@/registry/icon-picker/icon-picker-tanstack"),
+  {
+    ssr: false,
+  },
+);
+
 const IconPickerVirtualized = dynamic(
   () => import("@/registry/icon-picker/icon-picker-virtualized"),
   {
@@ -42,7 +49,33 @@ export default function Page() {
 
       <div className="max-w-3xl mx-auto w-full">
         <div className="space-y-1 mb-2 ml-2">
-          <h1 className="font-semibold">Icon Picker with Virtualized Grid</h1>
+          <h1 className="font-semibold">Icon Picker with Virtualized Grid 1</h1>
+          <CopyUrl url="https://ui.raulcarini.dev/r/icon-picker-tanstack.json" />
+        </div>
+
+        <div className="relative border border-dotted w-full p-4 rounded-xl shadow-md">
+          <div className="absolute top-3 right-3">
+            <ThemeSwitch />
+          </div>
+          <div className="flex items-center justify-center h-[480px]">
+            <IconPickerTanstack />
+          </div>
+        </div>
+        <span className="text-xs text-muted-foreground ml-2">
+          Built with{" "}
+          <a
+            target="_blank"
+            href="https://github.com/tanstack/virtual"
+            className="underline hover:text-foreground"
+          >
+            Tanstack Virtual
+          </a>
+        </span>
+      </div>
+
+      <div className="max-w-3xl mx-auto w-full">
+        <div className="space-y-1 mb-2 ml-2">
+          <h1 className="font-semibold">Icon Picker with Virtualized Grid 2</h1>
           <CopyUrl url="https://ui.raulcarini.dev/r/icon-picker-virtualized.json" />
         </div>
 
