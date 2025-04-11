@@ -61,7 +61,7 @@ import IconPicker from "@/registry/icon-picker/icon-picker";
 
 function MyComponent() {
   const [selectedIcon, setSelectedIcon] = React.useState<string | null>(null);
-  
+
   return (
     <IconPicker
       selectedIcon={selectedIcon}
@@ -80,17 +80,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import IconPicker from "@/registry/icon-picker/icon-picker-virtualized";
+import IconPicker from "@/registry/icon-picker/icon-picker";
 
 function MyComponent() {
-  const [isOpen, setIsOpen] = React.useState(false);
   const [selectedIcon, setSelectedIcon] = React.useState<string | null>(null);
 
   return (
-    <Popover onOpenChange={setIsOpen} open={isOpen}>
+    <Popover>
       <PopoverTrigger asChild>
         <Button>
-          {selectedIcon ? `Selected Icon: ${selectedIcon}` : "Icon Picker"}
+          Icon Picker
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-fit p-0">
