@@ -17,7 +17,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ui.raulcarini.dev"),
   title: "UI - raulcarini.dev",
   description: "A collection of UI components built with Shadcn UI.",
+  authors: [{ name: "Raul Carini", url: "https://raulcarini.dev" }],
   openGraph: {
+    url: new URL("https://ui.raulcarini.dev"),
     siteName: "UI - raulcarini.dev",
     images: [
       {
