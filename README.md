@@ -1,3 +1,5 @@
+![UI Components Library](./public/og-image.png)
+
 # UI Components Library
 
 This is a collection of UI components built with Shadcn UI. The project currently focuses on providing a customizable Icon Picker component with different implementation options.

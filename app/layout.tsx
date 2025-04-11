@@ -16,6 +16,20 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "UI - raulcarini.dev",
   description: "A collection of UI components built with Shadcn UI.",
+  openGraph: {
+    url: "https://ui.raulcarini.dev",
+    siteName: "UI - raulcarini.dev",
+    images: [
+      {
+        url: "/public/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "UI Components Library",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
