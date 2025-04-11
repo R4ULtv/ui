@@ -12,13 +12,12 @@ This is a collection of UI components built with Shadcn UI. The project currentl
 
 ## Technologies
 
-- Next.js (App Router)
-- React
+- Next.js (App Router) v15
+- React v19
 - TypeScript
-- Tailwind CSS
+- Tailwind CSS v4
 - Shadcn UI
 - Lucide React (for icons)
-- React Virtualized (for virtualized list rendering)
 
 ## Getting Started
 
