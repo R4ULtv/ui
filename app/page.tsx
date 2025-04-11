@@ -37,7 +37,7 @@ export default function Page() {
           <h1 className="font-semibold">Icon Picker</h1>
           <CopyUrl url="https://ui.raulcarini.dev/r/icon-picker.json" />
         </div>
-        <div className="relative border border-dotted w-full p-4 rounded-xl shadow-md">
+        <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
           <div className="absolute top-3 right-3">
             <ThemeSwitch />
           </div>
@@ -53,7 +53,7 @@ export default function Page() {
           <CopyUrl url="https://ui.raulcarini.dev/r/icon-picker-tanstack.json" />
         </div>
 
-        <div className="relative border border-dotted w-full p-4 rounded-xl shadow-md">
+        <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
           <div className="absolute top-3 right-3">
             <ThemeSwitch />
           </div>
@@ -79,7 +79,7 @@ export default function Page() {
           <CopyUrl url="https://ui.raulcarini.dev/r/icon-picker-virtualized.json" />
         </div>
 
-        <div className="relative border border-dotted w-full p-4 rounded-xl shadow-md">
+        <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
           <div className="absolute top-3 right-3">
             <ThemeSwitch />
           </div>
@@ -106,7 +106,7 @@ export default function Page() {
           </h1>
           <CopyUrl url="https://ui.raulcarini.dev/r/icon-picker-popover.json" />
         </div>
-        <div className="relative border border-dotted w-full p-4 rounded-xl shadow-md">
+        <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
           <div className="absolute top-3 right-3">
             <ThemeSwitch />
           </div>
@@ -118,10 +118,10 @@ export default function Page() {
           Built with{" "}
           <a
             target="_blank"
-            href="https://github.com/bvaughn/react-virtualized"
+            href="https://github.com/tanstack/virtual"
             className="underline hover:text-foreground"
           >
-            React Virtualized
+            Tanstack Virtual
           </a>
         </span>
       </div>

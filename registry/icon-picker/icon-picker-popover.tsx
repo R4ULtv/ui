@@ -8,7 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import IconPicker from "@/registry/icon-picker/icon-picker-virtualized";
+import IconPicker from "@/registry/icon-picker/icon-picker-tanstack";
 
 export default function Page() {
   const [isOpen, setIsOpen] = React.useState(false);
