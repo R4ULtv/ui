@@ -16,6 +16,7 @@ export default function CopyUrl({ url }: { url: string }) {
   return (
     <button
       onClick={handleCopy}
+      aria-label="Copy url"
       className="flex items-center gap-2 text-sm text-muted-foreground hover:underline"
     >
       {url}

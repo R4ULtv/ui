@@ -26,6 +26,7 @@ export default function ThemeSwitch() {
       size="icon"
       variant="ghost"
       className="size-7"
+      aria-label="Change Theme"
       onClick={toggleTheme}
     >
       {theme === "light" ? <MoonIcon /> : <SunIcon />}
