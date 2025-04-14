@@ -4,6 +4,7 @@ import * as React from "react";
 import { icons } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { useDebounce } from "@/hooks/use-debounce";
 
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -27,12 +28,14 @@ const IconItem = React.memo(
     return (
       <button
         className={cn(
-          "flex items-center justify-center size-7 rounded-md cursor-pointer text-popover-foreground/75 hover:bg-muted hover:text-primary",
+          "flex items-center justify-center size-7 rounded-md cursor-pointer text-popover-foreground/75 hover:bg-muted hover:text-primary transition-colors",
           selectedIcon === iconName &&
             "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
         )}
         onClick={handleClick}
         title={iconName}
+        aria-label={`Select ${iconName} icon`}
+        aria-pressed={selectedIcon === iconName}
       >
         <Icon size={16} />
       </button>
@@ -53,15 +56,16 @@ const IconPicker = React.memo(
     selectedIcon?: string | null;
   } & React.ComponentProps<"div">) => {
     const [searchQuery, setSearchQuery] = React.useState("");
+    const debouncedSearchQuery = useDebounce(searchQuery, 200);
 
     const iconsMap = React.useMemo(() => Object.keys(icons), []);
 
     const filteredIcons = React.useMemo(() => {
-      if (!searchQuery.trim()) return iconsMap;
+      if (!debouncedSearchQuery.trim()) return iconsMap;
       return iconsMap.filter((iconName) =>
-        iconName.toLowerCase().includes(searchQuery.toLowerCase()),
+        iconName.toLowerCase().includes(debouncedSearchQuery.toLowerCase()),
       );
-    }, [iconsMap, searchQuery]);
+    }, [iconsMap, debouncedSearchQuery]);
 
     const handleSearchChange = React.useCallback(
       (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,6 +77,7 @@ const IconPicker = React.memo(
     return (
       <div
         className={cn("w-72 bg-popover rounded-lg border shadow-md", className)}
+        aria-label="Icon picker"
         {...props}
       >
         <div className="relative px-2 pt-2">
@@ -86,10 +91,15 @@ const IconPicker = React.memo(
             type="text"
             value={searchQuery}
             onChange={handleSearchChange}
+            aria-label="Search icons"
           />
         </div>
         <ScrollArea className="h-80 p-1.5">
-          <div className="grid grid-cols-9">
+          <div
+            className="grid grid-cols-9"
+            role="listbox"
+            aria-label="Available icons"
+          >
             {filteredIcons.map((iconName) => (
               <IconItem
                 key={iconName}
