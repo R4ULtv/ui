@@ -15,18 +15,19 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ui.raulcarini.dev"),
-  title: "UI - raulcarini.dev",
-  description: "A collection of UI components built with Shadcn UI.",
-  authors: [{ name: "Raul Carini", url: "https://raulcarini.dev" }],
+  title: "Icon Picker Components",
+  description:
+    "A collection of different icon picker components. Using React, TypeScript, and Tailwind CSS. Icons are sourced from lucide.dev. Install the components using the shadcn/cli.",
+  authors: [{ name: "Raul Carini", url: "https://www.raulcarini.dev" }],
   openGraph: {
     url: new URL("https://ui.raulcarini.dev"),
-    siteName: "UI - raulcarini.dev",
+    siteName: "Icon Picker Components",
     images: [
       {
-        url: "/og-image.png",
+        url: "/icon-picker.png",
         width: 1200,
         height: 630,
-        alt: "UI Components Library",
+        alt: "Icon Picker Components",
       },
     ],
     locale: "en_US",
