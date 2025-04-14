@@ -12,6 +12,10 @@
         {
           "path": "registry/icon-picker/icon-picker.tsx",
           "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
         }
       ],
       "registryDependencies": ["input", "scroll-area"],
@@ -26,6 +30,10 @@
         {
           "path": "registry/icon-picker/icon-picker-tanstack.tsx",
           "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
         }
       ],
       "registryDependencies": ["input"],
@@ -40,6 +48,10 @@
         {
           "path": "registry/icon-picker/icon-picker-virtualized.tsx",
           "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
         }
       ],
       "registryDependencies": ["input"],
