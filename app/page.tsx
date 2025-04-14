@@ -1,6 +1,6 @@
 "use client";
 
-import CopyUrl from "@/components/copy-url";
+import CopyText from "@/components/copy-text";
 import ThemeSwitch from "@/components/theme-switch";
 import dynamic from "next/dynamic";
 
@@ -43,7 +43,7 @@ export default function Page() {
         <div className="max-w-3xl mx-auto w-full">
           <div className="space-y-1 mb-2 ml-2">
             <h1 className="font-semibold">Icon Picker</h1>
-            <CopyUrl url="https://ui.raulcarini.dev/r/icon-picker.json" />
+            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json" />
           </div>
           <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
             <div className="absolute top-3 right-3">
@@ -78,7 +78,7 @@ export default function Page() {
             <h1 className="font-semibold">
               Icon Picker with Virtualized Grid 1
             </h1>
-            <CopyUrl url="https://ui.raulcarini.dev/r/icon-picker-tanstack.json" />
+            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-tanstack.json" />
           </div>
 
           <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
@@ -122,7 +122,7 @@ export default function Page() {
             <h1 className="font-semibold">
               Icon Picker with Virtualized Grid 2
             </h1>
-            <CopyUrl url="https://ui.raulcarini.dev/r/icon-picker-virtualized.json" />
+            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-virtualized.json" />
           </div>
 
           <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
@@ -166,7 +166,7 @@ export default function Page() {
             <h1 className="font-semibold">
               Icon Picker with Popover & Virtualized Grid
             </h1>
-            <CopyUrl url="https://ui.raulcarini.dev/r/icon-picker-popover.json" />
+            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-popover.json" />
           </div>
           <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
             <div className="absolute top-3 right-3">
