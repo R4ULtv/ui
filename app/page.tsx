@@ -58,7 +58,7 @@ export default function Page() {
             <a
               target="_blank"
               href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker.tsx"
-              className="underline hover:text-foreground"
+              className="underline hover:text-primary transition-colors"
             >
               Github
             </a>{" "}
@@ -66,7 +66,7 @@ export default function Page() {
             <a
               target="_blank"
               href="https://github.com/shadcn-ui/ui"
-              className="underline hover:text-foreground"
+              className="underline hover:text-primary transition-colors"
             >
               shadcn/ui
             </a>
@@ -94,7 +94,7 @@ export default function Page() {
             <a
               target="_blank"
               href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-tanstack.tsx"
-              className="underline hover:text-foreground"
+              className="underline hover:text-primary transition-colors"
             >
               Github
             </a>{" "}
@@ -102,7 +102,7 @@ export default function Page() {
             <a
               target="_blank"
               href="https://github.com/shadcn-ui/ui"
-              className="underline hover:text-foreground"
+              className="underline hover:text-primary transition-colors"
             >
               shadcn/ui
             </a>{" "}
@@ -110,7 +110,7 @@ export default function Page() {
             <a
               target="_blank"
               href="https://github.com/tanstack/virtual"
-              className="underline hover:text-foreground"
+              className="underline hover:text-primary transition-colors"
             >
               Tanstack Virtual
             </a>
@@ -138,7 +138,7 @@ export default function Page() {
             <a
               target="_blank"
               href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-virtualized.tsx"
-              className="underline hover:text-foreground"
+              className="underline hover:text-primary transition-colors"
             >
               Github
             </a>{" "}
@@ -146,7 +146,7 @@ export default function Page() {
             <a
               target="_blank"
               href="https://github.com/shadcn-ui/ui"
-              className="underline hover:text-foreground"
+              className="underline hover:text-primary transition-colors"
             >
               shadcn/ui
             </a>{" "}
@@ -154,7 +154,7 @@ export default function Page() {
             <a
               target="_blank"
               href="https://github.com/bvaughn/react-virtualized"
-              className="underline hover:text-foreground"
+              className="underline hover:text-primary transition-colors"
             >
               React Virtualized
             </a>
@@ -181,7 +181,7 @@ export default function Page() {
             <a
               target="_blank"
               href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-popover.tsx"
-              className="underline hover:text-foreground"
+              className="underline hover:text-primary transition-colors"
             >
               Github
             </a>{" "}
@@ -189,7 +189,7 @@ export default function Page() {
             <a
               target="_blank"
               href="https://github.com/shadcn-ui/ui"
-              className="underline hover:text-foreground"
+              className="underline hover:text-primary transition-colors"
             >
               shadcn/ui
             </a>{" "}
@@ -197,7 +197,7 @@ export default function Page() {
             <a
               target="_blank"
               href="https://github.com/tanstack/virtual"
-              className="underline hover:text-foreground"
+              className="underline hover:text-primary transition-colors"
             >
               Tanstack Virtual
             </a>
