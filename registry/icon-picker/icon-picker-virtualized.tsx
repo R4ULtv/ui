@@ -28,7 +28,7 @@ const IconItem = React.memo(
     return (
       <button
         className={cn(
-          "flex items-center justify-center size-7 rounded-md cursor-pointer text-popover-foreground/75 hover:bg-muted hover:text-primary transition-colors",
+          "flex items-center justify-center size-7 rounded-md cursor-pointer text-popover-foreground/70 hover:bg-muted hover:text-popover-foreground transition-colors",
           selectedIcon === iconName &&
             "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
         )}
