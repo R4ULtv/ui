@@ -1,0 +1,48 @@
+"use client";
+
+import dynamic from "next/dynamic";
+import { useState } from "react";
+
+const IconPicker = dynamic(() => import("@/registry/icon-picker/icon-picker"));
+export const IconPickerExample = () => {
+  const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+
+  return (
+    <IconPicker selectedIcon={selectedIcon} setSelectedIcon={setSelectedIcon} />
+  );
+};
+
+const IconPickerTanstack = dynamic(
+  () => import("@/registry/icon-picker/icon-picker-tanstack"),
+);
+export const IconPickerExampleTanstack = () => {
+  const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+
+  return (
+    <IconPickerTanstack
+      selectedIcon={selectedIcon}
+      setSelectedIcon={setSelectedIcon}
+    />
+  );
+};
+
+const IconPickerVirtualized = dynamic(
+  () => import("@/registry/icon-picker/icon-picker-virtualized"),
+);
+export const IconPickerExampleVirtualized = () => {
+  const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+
+  return (
+    <IconPickerVirtualized
+      selectedIcon={selectedIcon}
+      setSelectedIcon={setSelectedIcon}
+    />
+  );
+};
+
+const IconPickerPopover = dynamic(
+  () => import("@/registry/icon-picker/icon-picker-popover"),
+);
+export const IconPickerExamplePopover = () => {
+  return <IconPickerPopover />;
+};

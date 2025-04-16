@@ -1,33 +1,11 @@
-"use client";
-
 import CopyText from "@/components/copy-text";
+import {
+  IconPickerExample,
+  IconPickerExampleTanstack,
+  IconPickerExampleVirtualized,
+  IconPickerExamplePopover,
+} from "@/components/examples/icon-picker";
 import ThemeSwitch from "@/components/theme-switch";
-import dynamic from "next/dynamic";
-
-const IconPicker = dynamic(() => import("@/registry/icon-picker/icon-picker"), {
-  ssr: false,
-});
-
-const IconPickerTanstack = dynamic(
-  () => import("@/registry/icon-picker/icon-picker-tanstack"),
-  {
-    ssr: false,
-  },
-);
-
-const IconPickerVirtualized = dynamic(
-  () => import("@/registry/icon-picker/icon-picker-virtualized"),
-  {
-    ssr: false,
-  },
-);
-
-const IconPickerPopover = dynamic(
-  () => import("@/registry/icon-picker/icon-picker-popover"),
-  {
-    ssr: false,
-  },
-);
 
 export default function Page() {
   return (
@@ -50,7 +28,7 @@ export default function Page() {
               <ThemeSwitch />
             </div>
             <div className="flex items-center justify-center h-[480px]">
-              <IconPicker />
+              <IconPickerExample />
             </div>
           </div>
           <div className="text-xs text-muted-foreground m-2">
@@ -86,7 +64,7 @@ export default function Page() {
               <ThemeSwitch />
             </div>
             <div className="flex items-center justify-center h-[480px]">
-              <IconPickerTanstack />
+              <IconPickerExampleTanstack />
             </div>
           </div>
           <div className="text-xs text-muted-foreground m-2">
@@ -130,7 +108,7 @@ export default function Page() {
               <ThemeSwitch />
             </div>
             <div className="flex items-center justify-center h-[480px]">
-              <IconPickerVirtualized />
+              <IconPickerExampleVirtualized />
             </div>
           </div>
           <div className="text-xs text-muted-foreground m-2">
@@ -173,7 +151,7 @@ export default function Page() {
               <ThemeSwitch />
             </div>
             <div className="flex items-center justify-center h-[480px]">
-              <IconPickerPopover />
+              <IconPickerExamplePopover />
             </div>
           </div>
           <div className="text-xs text-muted-foreground m-2">
