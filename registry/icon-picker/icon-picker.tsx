@@ -12,18 +12,18 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 const IconItem = React.memo(
   ({
     iconName,
-    onSelectIcon,
+    setSelectedIcon,
     selectedIcon,
   }: {
     iconName: string;
-    onSelectIcon?: (iconName: string) => void;
+    setSelectedIcon?: (iconName: string) => void;
     selectedIcon?: string | null;
   }) => {
     const Icon = icons[iconName as keyof typeof icons];
 
     const handleClick = React.useCallback(() => {
-      onSelectIcon?.(iconName);
-    }, [iconName, onSelectIcon]);
+      setSelectedIcon?.(iconName);
+    }, [iconName, setSelectedIcon]);
 
     return (
       <button
@@ -47,12 +47,12 @@ IconItem.displayName = "IconItem";
 
 const IconPicker = React.memo(
   ({
-    onSelectIcon,
+    setSelectedIcon,
     selectedIcon,
     className,
     ...props
   }: {
-    onSelectIcon?: (iconName: string) => void;
+    setSelectedIcon?: (iconName: string) => void;
     selectedIcon?: string | null;
   } & React.ComponentProps<"div">) => {
     const [searchQuery, setSearchQuery] = React.useState("");
@@ -107,7 +107,7 @@ const IconPicker = React.memo(
               <IconItem
                 key={iconName}
                 iconName={iconName}
-                onSelectIcon={onSelectIcon}
+                setSelectedIcon={setSelectedIcon}
                 selectedIcon={selectedIcon}
               />
             ))}

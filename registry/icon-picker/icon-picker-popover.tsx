@@ -24,7 +24,7 @@ export default function Page() {
       <PopoverContent className="w-fit p-0">
         <IconPicker
           selectedIcon={selectedIcon}
-          onSelectIcon={setSelectedIcon}
+          setSelectedIcon={setSelectedIcon}
           className="bg-transparent border-none"
         />
       </PopoverContent>
