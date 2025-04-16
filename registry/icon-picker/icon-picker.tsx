@@ -28,7 +28,7 @@ const IconItem = React.memo(
     return (
       <button
         className={cn(
-          "flex items-center justify-center size-7 rounded-md cursor-pointer text-popover-foreground/75 hover:bg-muted hover:text-primary transition-colors",
+          "flex items-center justify-center size-7 rounded-md cursor-pointer text-popover-foreground/70 hover:bg-muted hover:text-popover-foreground transition-colors",
           selectedIcon === iconName &&
             "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
         )}
@@ -76,17 +76,20 @@ const IconPicker = React.memo(
 
     return (
       <div
-        className={cn("w-72 bg-popover rounded-lg border shadow-md", className)}
+        className={cn(
+          "max-w-72 bg-popover rounded-lg border shadow-md",
+          className,
+        )}
         aria-label="Icon picker"
         {...props}
       >
-        <div className="relative px-2 pt-2">
+        <div className="relative mt-1.5 mx-1.5">
           <Input
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck={false}
-            className="border-none focus-visible:ring-2 font-semibold px-2.5 py-2"
+            className="border-none focus-visible:ring-2 font-semibold px-2.5 py-2 min-w-0 md:min-w-[252px]"
             placeholder="Search..."
             type="text"
             value={searchQuery}
@@ -94,9 +97,9 @@ const IconPicker = React.memo(
             aria-label="Search icons"
           />
         </div>
-        <ScrollArea className="h-80 p-1.5">
+        <ScrollArea className="h-60 md:h-80 p-1.5">
           <div
-            className="grid grid-cols-9"
+            className="grid grid-cols-7 md:grid-cols-9"
             role="listbox"
             aria-label="Available icons"
           >
