@@ -32,7 +32,7 @@ export default function Page() {
             </div>
           </div>
           <div className="text-xs text-muted-foreground m-2">
-            Code at{" "}
+            View Code on{" "}
             <a
               target="_blank"
               href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker.tsx"
@@ -68,7 +68,7 @@ export default function Page() {
             </div>
           </div>
           <div className="text-xs text-muted-foreground m-2">
-            Code at{" "}
+            View Code on{" "}
             <a
               target="_blank"
               href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-tanstack.tsx"
@@ -90,7 +90,7 @@ export default function Page() {
               href="https://github.com/tanstack/virtual"
               className="underline hover:text-primary transition-colors"
             >
-              Tanstack Virtual
+              @tanstack/react-virtual
             </a>
           </div>
         </div>
@@ -112,7 +112,7 @@ export default function Page() {
             </div>
           </div>
           <div className="text-xs text-muted-foreground m-2">
-            Code at{" "}
+            View Code on{" "}
             <a
               target="_blank"
               href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-virtualized.tsx"
@@ -134,7 +134,7 @@ export default function Page() {
               href="https://github.com/bvaughn/react-virtualized"
               className="underline hover:text-primary transition-colors"
             >
-              React Virtualized
+              react-virtualized
             </a>
           </div>
         </div>
@@ -155,7 +155,7 @@ export default function Page() {
             </div>
           </div>
           <div className="text-xs text-muted-foreground m-2">
-            Code at{" "}
+            View Code on{" "}
             <a
               target="_blank"
               href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-popover.tsx"
@@ -177,7 +177,7 @@ export default function Page() {
               href="https://github.com/tanstack/virtual"
               className="underline hover:text-primary transition-colors"
             >
-              Tanstack Virtual
+              @tanstack/react-virtual
             </a>
           </div>
         </div>
