@@ -7,6 +7,7 @@ This is a collection of UI components built with Shadcn UI. The project currentl
 ### Icon Picker Components
 
 - **Basic Icon Picker**: A simple icon picker component with search functionality
+- **Icon Picker with Multiple Selection**: Allow users to select multiple icons at once, useful for building icon collections or when multiple icons are needed.
 - **Virtualized Icon Picker**: Performance-optimized version using virtualization for handling large icon sets
 - **Icon Picker Popover**: Implementation with a popover interface for easy integration
 

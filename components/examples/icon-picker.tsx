@@ -12,6 +12,20 @@ export const IconPickerExample = () => {
   );
 };
 
+const IconPickerMultiple = dynamic(
+  () => import("@/registry/icon-picker/icon-picker-multiple"),
+);
+export const IconPickerExampleMultiple = () => {
+  const [selectedIcons, setSelectedIcons] = useState<string[]>([]);
+
+  return (
+    <IconPickerMultiple
+      selectedIcons={selectedIcons}
+      setSelectedIcons={setSelectedIcons}
+    />
+  );
+};
+
 const IconPickerTanstack = dynamic(
   () => import("@/registry/icon-picker/icon-picker-tanstack"),
 );

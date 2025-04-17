@@ -22,6 +22,24 @@
       "dependencies": ["lucide-react"]
     },
     {
+      "name": "icon-picker",
+      "type": "registry:block",
+      "title": "Icon Picker Multiple",
+      "description": "A simple icon picker component with multiple selectable icons.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker-multiple.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["input", "scroll-area", "button"],
+      "dependencies": ["lucide-react"]
+    },
+    {
       "name": "icon-picker-tanstack",
       "type": "registry:block",
       "title": "Icon Picker Virtualized",
