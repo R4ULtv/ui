@@ -22,7 +22,7 @@
       "dependencies": ["lucide-react"]
     },
     {
-      "name": "icon-picker",
+      "name": "icon-picker-multiple",
       "type": "registry:block",
       "title": "Icon Picker Multiple",
       "description": "A simple icon picker component with multiple selectable icons.",
