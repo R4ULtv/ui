@@ -101,24 +101,22 @@ const IconPicker = React.memo(
         {...props}
       >
         <div className="mt-1.5 mx-1.5 flex items-center gap-1.5 min-w-0 md:min-w-[252px]">
-          <div className="relative w-full">
-            <Input
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="off"
-              spellCheck={false}
-              className="border-none focus-visible:ring-2 font-semibold px-2.5 py-2"
-              placeholder={
-                selectedIcons.length > 0
-                  ? `Selected ${selectedIcons.length} icon${selectedIcons.length > 1 ? "s" : ""}...`
-                  : "Select an icon..."
-              }
-              type="text"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              aria-label="Search icons"
-            />
-          </div>
+          <Input
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck={false}
+            className="border-none focus-visible:ring-2 font-semibold px-2.5 py-2 w-full"
+            placeholder={
+              selectedIcons.length > 0
+                ? `Selected ${selectedIcons.length} icon${selectedIcons.length > 1 ? "s" : ""}...`
+                : "Select an icon..."
+            }
+            type="text"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            aria-label="Search icons"
+          />
           {selectedIcons.length > 0 && (
             <Button
               onClick={() => handleClearSelection()}

@@ -60,3 +60,22 @@ const IconPickerPopover = dynamic(
 export const IconPickerExamplePopover = () => {
   return <IconPickerPopover />;
 };
+
+const IconPickerCustomColor = dynamic(
+  () => import("@/registry/icon-picker/icon-picker-custom-color"),
+);
+export const IconPickerExampleCustomColor = () => {
+  const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+  const [selectedColor, setSelectedColor] = useState<string>(
+    "oklch(62.3% 0.214 259.815)",
+  );
+
+  return (
+    <IconPickerCustomColor
+      selectedIcon={selectedIcon}
+      setSelectedIcon={setSelectedIcon}
+      selectedColor={selectedColor}
+      setSelectedColor={setSelectedColor}
+    />
+  );
+};
