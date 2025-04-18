@@ -85,6 +85,10 @@ const IconPicker = React.memo(
       [],
     );
 
+    const SelectedIconComponent = selectedIcon
+      ? icons[selectedIcon as keyof typeof icons]
+      : PaletteIcon;
+
     return (
       <div
         className={cn(
@@ -115,13 +119,15 @@ const IconPicker = React.memo(
                   size="icon"
                   className="border-none focus-visible:ring-2"
                 >
-                  <PaletteIcon stroke={selectedColor} />
+                  <SelectedIconComponent
+                    stroke={selectedColor ?? undefined}
+                    size={16}
+                  />
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-min">
                 <RadioGroup
                   className="flex gap-1.5"
-                  defaultValue="oklch(62.3% 0.214 259.815)"
                   value={selectedColor}
                   onValueChange={setSelectedColor}
                 >
