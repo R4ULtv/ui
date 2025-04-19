@@ -40,6 +40,30 @@
       "dependencies": ["lucide-react"]
     },
     {
+      "name": "icon-picker-custom-color",
+      "type": "registry:block",
+      "title": "Icon Picker Custom Color",
+      "description": "A simple icon picker component with custom color.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker-custom-color.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": [
+        "input",
+        "scroll-area",
+        "button",
+        "radio-group",
+        "popover"
+      ],
+      "dependencies": ["lucide-react"]
+    },
+    {
       "name": "icon-picker-tanstack",
       "type": "registry:block",
       "title": "Icon Picker Virtualized",
