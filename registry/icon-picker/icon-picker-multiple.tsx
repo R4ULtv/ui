@@ -132,7 +132,6 @@ const IconPicker = React.memo(
         <ScrollArea className="h-60 md:h-80 p-1.5">
           <div
             className="grid grid-cols-7 md:grid-cols-9"
-            role="listbox"
             aria-label="Available icons"
             aria-multiselectable="true"
           >

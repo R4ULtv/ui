@@ -148,7 +148,6 @@ const IconPicker = React.memo(
                   width={width}
                   overscanRowCount={10}
                   className="focus:outline-none"
-                  role="listbox"
                   aria-label="Available icons"
                 />
               );
