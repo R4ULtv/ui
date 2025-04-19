@@ -45,7 +45,7 @@ yarn install
 ### Adding Components via Registry
 
 You can add any variant using shadcn/cli. For example:
-  
+
 ```bash
 npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json
 npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-multiple.json
@@ -129,14 +129,11 @@ function MyComponent() {
 ### Virtualized Implementations
 
 Replace imports with the desired version:
-  
-- **Virtua Version:**  
+- **Virtua Version:**
   `import IconPicker from "@/components/icon-picker-virtua";`
-  
-- **Tanstack Version:**  
+- **Tanstack Version:**
   `import IconPicker from "@/components/icon-picker-tanstack";`
-  
-- **React-Virtualized Version:**  
+- **React-Virtualized Version:**
   `import IconPicker from "@/componentsicon-picker-virtualized";`
 
 ### Icon Picker Popover
@@ -157,3 +154,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - [Shadcn UI](https://ui.shadcn.com/)
 - [Lucide React](https://lucide.dev/)
+- [Virtua](https://github.com/inokawa/virtua)
+- [Tanstack Virtual](https://tanstack.com/virtual/latest)
+- [React Virtualized](https://github.com/bvaughn/react-virtualized)
