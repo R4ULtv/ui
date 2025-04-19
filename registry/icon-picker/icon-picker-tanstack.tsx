@@ -109,7 +109,6 @@ const IconPicker = React.memo(
           <div
             ref={parentRef}
             className="overflow-auto h-full w-full"
-            role="listbox"
             aria-label="Available icons"
           >
             <div
