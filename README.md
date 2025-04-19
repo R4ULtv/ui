@@ -1,16 +1,18 @@
 ![UI Components Library](./public/og-image.png)
 
-This is a collection of UI components built with Shadcn UI. The project currently focuses on providing a customizable Icon Picker component with different implementation options.
+This is a collection of UI components built with Shadcn UI. The project currently focuses on providing customizable Icon Picker components implemented in several different ways.
 
 ## Features
 
-### Icon Picker Components
+### Icon Picker Variants
 
-- **Basic Icon Picker**: A simple icon picker component with search functionality
-- **Icon Picker with Multiple Selection**: Allow users to select multiple icons at once, useful for building icon collections or when multiple icons are needed.
-- **Virtualized Icon Picker**: Performance-optimized version using virtualization for handling large icon sets
-- **Icon Picker Popover**: Implementation with a popover interface for easy integration
-- **Icon Picker with Color Customization**: Allow users to change the icon color when selecting.
+- **Basic Icon Picker**: A simple icon picker component with search functionality.
+- **Icon Picker Multiple**: Allows selection of multiple icons for building icon collections.
+- **Icon Picker Custom Color**: Enables icon selection with color customization.
+- **Icon Picker Virtua**: A virtualization implementation using the "virtua" library.
+- **Icon Picker Tanstack**: A virtualization implementation using "@tanstack/react-virtual".
+- **Icon Picker Virtualized**: A virtualization implementation using "react-virtualized".
+- **Icon Picker Popover**: An implementation integrated within a popover for compact UI.
 
 ## Technologies
 
@@ -30,17 +32,28 @@ This is a collection of UI components built with Shadcn UI. The project currentl
 
 ### Installation
 
+Clone the repository then install dependencies:
+
 ```bash
-# Clone the repository
-git clone <repository-url>
-
-# Navigate to the project directory
+git clone https://github.com/r4ultv/ui
 cd ui
-
-# Install dependencies
 npm install
 # or
 yarn install
+```
+
+### Adding Components via Registry
+
+You can add any variant using shadcn/cli. For example:
+  
+```bash
+npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json
+npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-multiple.json
+npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-custom-color.json
+npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-virtua.json
+npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-tanstack.json
+npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-virtualized.json
+npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-popover.json
 ```
 
 ### Running the Development Server
@@ -55,6 +68,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Component Usage
 
+Check the examples below for an overview of how to integrate each variant:
+> NOTE: For optimal performance and to reduce initial bundle size, it is recommended to use dynamic import.
+  ```jsx title="IconPicker Example"
+  const IconPicker = dynamic(() => import("@/registry/icon-picker/icon-picker"));
+  ```
+
+
 ### Basic Icon Picker
 
 ```tsx
@@ -62,46 +82,70 @@ import IconPicker from "@/registry/icon-picker/icon-picker";
 
 function MyComponent() {
   const [selectedIcon, setSelectedIcon] = React.useState<string | null>(null);
-
   return (
     <IconPicker
       selectedIcon={selectedIcon}
-      onSelectIcon={setSelectedIcon}
+      setSelectedIcon={setSelectedIcon}
     />
   );
 }
 ```
 
-### Icon Picker with Popover
+### Icon Picker Multiple
 
 ```tsx
-import { Button } from "@/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import IconPicker from "@/registry/icon-picker/icon-picker";
+import IconPicker from "@/registry/icon-picker/icon-picker-multiple";
+
+function MyComponent() {
+  const [selectedIcons, setSelectedIcons] = React.useState<string[]>([]);
+  return (
+    <IconPicker
+      selectedIcons={selectedIcons}
+      setSelectedIcons={setSelectedIcons}
+    />
+  );
+}
+```
+
+### Icon Picker Custom Color
+
+```tsx
+import IconPicker from "@/registry/icon-picker/icon-picker-custom-color";
 
 function MyComponent() {
   const [selectedIcon, setSelectedIcon] = React.useState<string | null>(null);
-
+  const [selectedColor, setSelectedColor] = React.useState<string>("oklch(62.3% 0.214 259.815)");
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button>
-          Icon Picker
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-fit p-0">
-        <IconPicker
-          selectedIcon={selectedIcon}
-          onSelectIcon={setSelectedIcon}
-          className="bg-transparent border-none"
-        />
-      </PopoverContent>
-    </Popover>
+    <IconPicker
+      selectedIcon={selectedIcon}
+      setSelectedIcon={setSelectedIcon}
+      selectedColor={selectedColor}
+      setSelectedColor={setSelectedColor}
+    />
   );
+}
+```
+
+### Virtualized Implementations
+
+Replace imports with the desired version:
+  
+- **Virtua Version:**  
+  `import IconPicker from "@/registry/icon-picker/icon-picker-virtua";`
+  
+- **Tanstack Version:**  
+  `import IconPicker from "@/registry/icon-picker/icon-picker-tanstack";`
+  
+- **React-Virtualized Version:**  
+  `import IconPicker from "@/registry/icon-picker/icon-picker-virtualized";`
+
+### Icon Picker Popover
+
+```tsx
+import IconPicker from "@/registry/icon-picker/icon-picker-popover";
+
+function MyComponent() {
+  return <IconPicker />;
 }
 ```
 
