@@ -127,7 +127,7 @@ export default function Page() {
             <h1 className="font-semibold">
               Icon Picker - Virtualized Grid (Virtua)
             </h1>
-            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-tanstack.json" />
+            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-virtua.json" />
           </div>
 
           <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
@@ -142,7 +142,7 @@ export default function Page() {
             View Code on{" "}
             <a
               target="_blank"
-              href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-tanstack.tsx"
+              href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-virtua.tsx"
               className="underline hover:text-primary transition-colors"
             >
               Github
@@ -158,7 +158,7 @@ export default function Page() {
             &{" "}
             <a
               target="_blank"
-              href="https://github.com/tanstack/virtual"
+              href="https://github.com/inokawa/virtua"
               className="underline hover:text-primary transition-colors"
             >
               virtua
