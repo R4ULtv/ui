@@ -71,14 +71,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Check the examples below for an overview of how to integrate each variant:
 > NOTE: For optimal performance and to reduce initial bundle size, it is recommended to use dynamic import.
   ```jsx title="IconPicker Example"
-  const IconPicker = dynamic(() => import("@/registry/icon-picker/icon-picker"));
+  const IconPicker = dynamic(() => import("@/components/icon-picker"));
   ```
 
 
 ### Basic Icon Picker
 
 ```tsx
-import IconPicker from "@/registry/icon-picker/icon-picker";
+import IconPicker from "@/components/icon-picker";
 
 function MyComponent() {
   const [selectedIcon, setSelectedIcon] = React.useState<string | null>(null);
@@ -94,7 +94,7 @@ function MyComponent() {
 ### Icon Picker Multiple
 
 ```tsx
-import IconPicker from "@/registry/icon-picker/icon-picker-multiple";
+import IconPicker from "@/components/icon-picker-multiple";
 
 function MyComponent() {
   const [selectedIcons, setSelectedIcons] = React.useState<string[]>([]);
@@ -131,18 +131,18 @@ function MyComponent() {
 Replace imports with the desired version:
   
 - **Virtua Version:**  
-  `import IconPicker from "@/registry/icon-picker/icon-picker-virtua";`
+  `import IconPicker from "@/components/icon-picker-virtua";`
   
 - **Tanstack Version:**  
-  `import IconPicker from "@/registry/icon-picker/icon-picker-tanstack";`
+  `import IconPicker from "@/components/icon-picker-tanstack";`
   
 - **React-Virtualized Version:**  
-  `import IconPicker from "@/registry/icon-picker/icon-picker-virtualized";`
+  `import IconPicker from "@/componentsicon-picker-virtualized";`
 
 ### Icon Picker Popover
 
 ```tsx
-import IconPicker from "@/registry/icon-picker/icon-picker-popover";
+import IconPicker from "@/components/icon-picker-popover";
 
 function MyComponent() {
   return <IconPicker />;
