@@ -1,4 +1,6 @@
 import CopyText from "@/components/copy-text";
+import ThemeSwitch from "@/components/theme-switch";
+
 import {
   IconPickerExample,
   IconPickerExampleTanstack,
@@ -8,7 +10,6 @@ import {
   IconPickerExampleCustomColor,
   IconPickerExampleVirtua,
 } from "@/components/examples/icon-picker";
-import ThemeSwitch from "@/components/theme-switch";
 
 export default function Page() {
   return (
@@ -16,8 +17,9 @@ export default function Page() {
       <div className="flex items-center justify-center flex-col gap-20 my-12">
         <div className="text-center text-pretty space-y-2">
           <h1 className="text-3xl font-bold font-mono">Icon Picker</h1>
-          <p className="font-mono text-muted-foreground">
-            A simple icon picker component with search functionality.
+          <p className="font-mono text-muted-foreground max-w-lg text-pretty">
+            An icon picker component with search functionality and multiple
+            examples.
           </p>
         </div>
 
