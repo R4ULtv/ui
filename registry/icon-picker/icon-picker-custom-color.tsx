@@ -85,10 +85,6 @@ const IconPicker = React.memo(
       [],
     );
 
-    const SelectedIconComponent = selectedIcon
-      ? icons[selectedIcon as keyof typeof icons]
-      : PaletteIcon;
-
     return (
       <div
         className={cn(
@@ -117,12 +113,10 @@ const IconPicker = React.memo(
                 <Button
                   variant="outline"
                   size="icon"
-                  className="border-none focus-visible:ring-2"
+                  className="border-none focus-visible:ring-2 relative"
+                  style={{ backgroundColor: selectedColor }}
                 >
-                  <SelectedIconComponent
-                    stroke={selectedColor ?? undefined}
-                    size={16}
-                  />
+                  <PaletteIcon size={16} />
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-min">
@@ -133,17 +127,17 @@ const IconPicker = React.memo(
                 >
                   <RadioGroupItem
                     value="oklch(62.3% 0.214 259.815)"
-                    aria-label="Blue"
+                    aria-label="blue"
                     className="size-6 !border-blue-500 !bg-blue-500 shadow-none data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-500"
                   />
                   <RadioGroupItem
                     value="oklch(58.5% 0.233 277.117)"
-                    aria-label="Indigo"
+                    aria-label="indigo"
                     className="size-6 !border-indigo-500 !bg-indigo-500 shadow-none data-[state=checked]:border-indigo-500 data-[state=checked]:bg-indigo-500"
                   />
                   <RadioGroupItem
                     value="oklch(65.6% 0.241 354.308)"
-                    aria-label="Pink"
+                    aria-label="pink"
                     className="size-6 !border-pink-500 !bg-pink-500 shadow-none data-[state=checked]:border-pink-500 data-[state=checked]:bg-pink-500"
                   />
                   <RadioGroupItem
@@ -165,6 +159,11 @@ const IconPicker = React.memo(
                     value="oklch(69.6% 0.17 162.48)"
                     aria-label="emerald"
                     className="size-6 !border-emerald-500 !bg-emerald-500 shadow-none data-[state=checked]:border-emerald-500 data-[state=checked]:bg-emerald-500"
+                  />
+                  <RadioGroupItem
+                    value="oklch(71.48% 0.1257 215.22)"
+                    aria-label="teal"
+                    className="size-6 !border-teal-500 !bg-teal-500 shadow-none data-[state=checked]:border-teal-500 data-[state=checked]:bg-teal-500"
                   />
                 </RadioGroup>
               </PopoverContent>
