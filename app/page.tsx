@@ -6,6 +6,7 @@ import {
   IconPickerExamplePopover,
   IconPickerExampleMultiple,
   IconPickerExampleCustomColor,
+  IconPickerExampleVirtua,
 } from "@/components/examples/icon-picker";
 import ThemeSwitch from "@/components/theme-switch";
 
@@ -115,6 +116,48 @@ export default function Page() {
               className="underline hover:text-primary transition-colors"
             >
               shadcn/ui
+            </a>
+          </div>
+        </div>
+
+        <div className="max-w-3xl mx-auto w-full">
+          <div className="space-y-1 mb-2 ml-2">
+            <h1 className="font-semibold">Icon Picker - Virtualized Grid</h1>
+            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-tanstack.json" />
+          </div>
+
+          <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
+            <div className="absolute top-3 right-3">
+              <ThemeSwitch />
+            </div>
+            <div className="flex items-center justify-center h-[480px]">
+              <IconPickerExampleVirtua />
+            </div>
+          </div>
+          <div className="text-xs text-muted-foreground m-2">
+            View Code on{" "}
+            <a
+              target="_blank"
+              href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-tanstack.tsx"
+              className="underline hover:text-primary transition-colors"
+            >
+              Github
+            </a>{" "}
+            · Built with{" "}
+            <a
+              target="_blank"
+              href="https://github.com/shadcn-ui/ui"
+              className="underline hover:text-primary transition-colors"
+            >
+              shadcn/ui
+            </a>{" "}
+            &{" "}
+            <a
+              target="_blank"
+              href="https://github.com/tanstack/virtual"
+              className="underline hover:text-primary transition-colors"
+            >
+              virtua
             </a>
           </div>
         </div>

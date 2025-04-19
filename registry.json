@@ -64,6 +64,24 @@
       "dependencies": ["lucide-react"]
     },
     {
+      "name": "icon-picker-virtua",
+      "type": "registry:block",
+      "title": "Icon Picker Virtualized",
+      "description": "A simple icon picker component with virtualization.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker-virtua.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["input"],
+      "dependencies": ["lucide-react", "virtua"]
+    },
+    {
       "name": "icon-picker-tanstack",
       "type": "registry:block",
       "title": "Icon Picker Virtualized",

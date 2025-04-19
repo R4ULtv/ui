@@ -54,6 +54,20 @@ export const IconPickerExampleVirtualized = () => {
   );
 };
 
+const IconPickerVirtua = dynamic(
+  () => import("@/registry/icon-picker/icon-picker-virtua"),
+);
+export const IconPickerExampleVirtua = () => {
+  const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+
+  return (
+    <IconPickerVirtua
+      selectedIcon={selectedIcon}
+      setSelectedIcon={setSelectedIcon}
+    />
+  );
+};
+
 const IconPickerPopover = dynamic(
   () => import("@/registry/icon-picker/icon-picker-popover"),
 );
