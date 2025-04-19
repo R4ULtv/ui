@@ -122,7 +122,9 @@ export default function Page() {
 
         <div className="max-w-3xl mx-auto w-full">
           <div className="space-y-1 mb-2 ml-2">
-            <h1 className="font-semibold">Icon Picker - Virtualized Grid</h1>
+            <h1 className="font-semibold">
+              Icon Picker - Virtualized Grid (Virtua)
+            </h1>
             <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-tanstack.json" />
           </div>
 
@@ -164,7 +166,9 @@ export default function Page() {
 
         <div className="max-w-3xl mx-auto w-full">
           <div className="space-y-1 mb-2 ml-2">
-            <h1 className="font-semibold">Icon Picker - Virtualized Grid</h1>
+            <h1 className="font-semibold">
+              Icon Picker - Virtualized Grid (Tanstack Virtual)
+            </h1>
             <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-tanstack.json" />
           </div>
 
@@ -206,7 +210,9 @@ export default function Page() {
 
         <div className="max-w-3xl mx-auto w-full">
           <div className="space-y-1 mb-2 ml-2">
-            <h1 className="font-semibold">Icon Picker - Virtualized Grid</h1>
+            <h1 className="font-semibold">
+              Icon Picker - Virtualized Grid (React Virtualized)
+            </h1>
             <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-virtualized.json" />
           </div>
 
@@ -249,7 +255,7 @@ export default function Page() {
         <div className="max-w-3xl mx-auto w-full">
           <div className="space-y-1 mb-2 ml-2">
             <h1 className="font-semibold">
-              Icon Picker - Popover & Virtualized Grid
+              Icon Picker - Popover & Virtualized Grid (Tanstack Virtual)
             </h1>
             <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-popover.json" />
           </div>
