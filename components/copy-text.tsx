@@ -17,7 +17,7 @@ export default function CopyText({ text }: { text: string }) {
     <button
       onClick={handleCopy}
       aria-label="Copy text"
-      className="flex items-center gap-2 text-sm text-muted-foreground hover:underline"
+      className="flex items-center gap-2 text-sm text-muted-foreground hover:underline text-left"
     >
       {text}
       {copied && <CheckIcon size={16} />}
