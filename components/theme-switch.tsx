@@ -1,7 +1,7 @@
 "use client";
 
 import { MoonIcon, SunIcon } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 
@@ -14,7 +14,7 @@ export default function ThemeSwitch() {
   }, []);
 
   if (!mounted) {
-    return null;
+    return <div className="size-8 rounded-md"></div>;
   }
 
   const toggleTheme = () => {
@@ -25,7 +25,7 @@ export default function ThemeSwitch() {
     <Button
       size="icon"
       variant="ghost"
-      className="size-7"
+      className="size-8"
       aria-label="Change Theme"
       onClick={toggleTheme}
     >
