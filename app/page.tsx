@@ -1,302 +1,110 @@
-import CopyText from "@/components/copy-text";
-import ThemeSwitch from "@/components/theme-switch";
+// import CopyText from "@/components/copy-text";
+// import ThemeSwitch from "@/components/theme-switch";
 
 import {
   IconPickerExample,
-  IconPickerExampleTanstack,
-  IconPickerExampleVirtualized,
-  IconPickerExamplePopover,
   IconPickerExampleMultiple,
   IconPickerExampleCustomColor,
   IconPickerExampleVirtua,
+  IconPickerExampleTanstack,
+  IconPickerExampleVirtualized,
+  IconPickerExamplePopover,
 } from "@/components/examples/icon-picker";
+import V0Icon from "@/components/icons/v0";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+
+import CopyShadcn from "@/components/copy-shadcn";
+import CopyURL from "@/components/copy-url";
+
+const components = [
+  {
+    name: "Icon Picker",
+    description: "A simple icon picker component with search functionality.",
+    registry: "https://ui.raulcarini.dev/r/icon-picker.json",
+    component: IconPickerExample,
+  },
+  {
+    name: "Icon Picker Multiple",
+    description:
+      "Allows selection of multiple icons for building icon collections.",
+    registry: "https://ui.raulcarini.dev/r/icon-picker-multiple.json",
+    component: IconPickerExampleMultiple,
+  },
+  {
+    name: "Icon Picker Custom Color",
+    description: "Enables icon selection with color customization.",
+    registry: "https://ui.raulcarini.dev/r/icon-picker-custom-color.json",
+    component: IconPickerExampleCustomColor,
+  },
+  {
+    name: "Icon Picker Virtua",
+    description: "A virtualization implementation using the `virtua` library.",
+    registry: "https://ui.raulcarini.dev/r/icon-picker-virtua.json",
+    component: IconPickerExampleVirtua,
+  },
+  {
+    name: "Icon Picker Tanstack",
+    description:
+      "A virtualization implementation using '@tanstack/react-virtual'.",
+    registry: "https://ui.raulcarini.dev/r/icon-picker-tanstack.json",
+    component: IconPickerExampleTanstack,
+  },
+  {
+    name: "Icon Picker Virtualized",
+    description: "A virtualization implementation using 'react-virtualized'.",
+    registry: "https://ui.raulcarini.dev/r/icon-picker-virtualized.json",
+    component: IconPickerExampleVirtualized,
+  },
+  {
+    name: "Icon Picker Popover",
+    description:
+      "An implementation integrated within a popover for compact UI.",
+    registry: "https://ui.raulcarini.dev/r/icon-picker-popover.json",
+    component: IconPickerExamplePopover,
+  },
+];
 
 export default function Page() {
   return (
-    <main className="min-h-svh p-4 max-w-5xl mx-auto lg:border-x border-dashed">
-      <div className="flex items-center justify-center flex-col gap-20 my-12">
-        <div className="text-center text-pretty space-y-2">
-          <h1 className="text-3xl font-bold font-mono">Icon Picker</h1>
-          <p className="font-mono text-muted-foreground max-w-lg text-pretty">
-            An icon picker component with search functionality and multiple
-            examples.
-          </p>
-        </div>
-
-        <div className="max-w-3xl mx-auto w-full">
-          <div className="space-y-1 mb-2 ml-2">
-            <h1 className="font-semibold">Icon Picker</h1>
-            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json" />
-          </div>
-          <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
-            <div className="absolute top-3 right-3">
-              <ThemeSwitch />
+    <main className="max-w-6xl mx-auto flex flex-col px-4 py-8 flex-1 gap-8 md:gap-12">
+      {components.map((component) => (
+        <div key={component.name} className="flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="text-sm line-clamp-1 font-medium">
+                {component.name}
+              </div>
+              <Separator
+                orientation="vertical"
+                className="!h-4 hidden md:flex"
+              />
+              <div className="text-sm text-muted-foreground line-clamp-1 hidden lg:flex">
+                {component.description}
+              </div>
             </div>
-            <div className="flex items-center justify-center h-[480px]">
-              <IconPickerExample />
+            <div className="flex gap-2">
+              <CopyShadcn
+                text={`npx shadcn@latest add ${component.registry}`}
+              />
+              <CopyURL url={component.registry} />
+              <Button variant="default" size="sm" asChild>
+                <a
+                  href={`https://v0.dev/chat/api/open?url=${component.registry}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open in
+                  <V0Icon />
+                </a>
+              </Button>
             </div>
           </div>
-          <div className="text-xs text-muted-foreground m-2">
-            View Code on{" "}
-            <a
-              target="_blank"
-              href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker.tsx"
-              className="underline hover:text-primary transition-colors"
-            >
-              Github
-            </a>{" "}
-            · Built with{" "}
-            <a
-              target="_blank"
-              href="https://github.com/shadcn-ui/ui"
-              className="underline hover:text-primary transition-colors"
-            >
-              shadcn/ui
-            </a>
+          <div className="flex items-center border rounded-lg justify-center min-h-[400px] p-4 md:p-10 relative bg-muted/30">
+            <component.component />
           </div>
         </div>
-
-        <div className="max-w-3xl mx-auto w-full">
-          <div className="space-y-1 mb-2 ml-2">
-            <h1 className="font-semibold">Icon Picker - Multiple Selection</h1>
-            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-multiple.json" />
-          </div>
-          <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
-            <div className="absolute top-3 right-3">
-              <ThemeSwitch />
-            </div>
-            <div className="flex items-center justify-center h-[480px]">
-              <IconPickerExampleMultiple />
-            </div>
-          </div>
-          <div className="text-xs text-muted-foreground m-2">
-            View Code on{" "}
-            <a
-              target="_blank"
-              href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-multiple.tsx"
-              className="underline hover:text-primary transition-colors"
-            >
-              Github
-            </a>{" "}
-            · Built with{" "}
-            <a
-              target="_blank"
-              href="https://github.com/shadcn-ui/ui"
-              className="underline hover:text-primary transition-colors"
-            >
-              shadcn/ui
-            </a>
-          </div>
-        </div>
-
-        <div className="max-w-3xl mx-auto w-full">
-          <div className="space-y-1 mb-2 ml-2">
-            <h1 className="font-semibold">Icon Picker - Custom Color</h1>
-            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-custom-color.json" />
-          </div>
-          <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
-            <div className="absolute top-3 right-3">
-              <ThemeSwitch />
-            </div>
-            <div className="flex items-center justify-center h-[480px]">
-              <IconPickerExampleCustomColor />
-            </div>
-          </div>
-          <div className="text-xs text-muted-foreground m-2">
-            View Code on{" "}
-            <a
-              target="_blank"
-              href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-custom-color.tsx"
-              className="underline hover:text-primary transition-colors"
-            >
-              Github
-            </a>{" "}
-            · Built with{" "}
-            <a
-              target="_blank"
-              href="https://github.com/shadcn-ui/ui"
-              className="underline hover:text-primary transition-colors"
-            >
-              shadcn/ui
-            </a>
-          </div>
-        </div>
-
-        <div className="max-w-3xl mx-auto w-full">
-          <div className="space-y-1 mb-2 ml-2">
-            <h1 className="font-semibold">
-              Icon Picker - Virtualized Grid (Virtua)
-            </h1>
-            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-virtua.json" />
-          </div>
-
-          <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
-            <div className="absolute top-3 right-3">
-              <ThemeSwitch />
-            </div>
-            <div className="flex items-center justify-center h-[480px]">
-              <IconPickerExampleVirtua />
-            </div>
-          </div>
-          <div className="text-xs text-muted-foreground m-2">
-            View Code on{" "}
-            <a
-              target="_blank"
-              href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-virtua.tsx"
-              className="underline hover:text-primary transition-colors"
-            >
-              Github
-            </a>{" "}
-            · Built with{" "}
-            <a
-              target="_blank"
-              href="https://github.com/shadcn-ui/ui"
-              className="underline hover:text-primary transition-colors"
-            >
-              shadcn/ui
-            </a>{" "}
-            &{" "}
-            <a
-              target="_blank"
-              href="https://github.com/inokawa/virtua"
-              className="underline hover:text-primary transition-colors"
-            >
-              virtua
-            </a>
-          </div>
-        </div>
-
-        <div className="max-w-3xl mx-auto w-full">
-          <div className="space-y-1 mb-2 ml-2">
-            <h1 className="font-semibold">
-              Icon Picker - Virtualized Grid (Tanstack Virtual)
-            </h1>
-            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-tanstack.json" />
-          </div>
-
-          <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
-            <div className="absolute top-3 right-3">
-              <ThemeSwitch />
-            </div>
-            <div className="flex items-center justify-center h-[480px]">
-              <IconPickerExampleTanstack />
-            </div>
-          </div>
-          <div className="text-xs text-muted-foreground m-2">
-            View Code on{" "}
-            <a
-              target="_blank"
-              href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-tanstack.tsx"
-              className="underline hover:text-primary transition-colors"
-            >
-              Github
-            </a>{" "}
-            · Built with{" "}
-            <a
-              target="_blank"
-              href="https://github.com/shadcn-ui/ui"
-              className="underline hover:text-primary transition-colors"
-            >
-              shadcn/ui
-            </a>{" "}
-            &{" "}
-            <a
-              target="_blank"
-              href="https://github.com/tanstack/virtual"
-              className="underline hover:text-primary transition-colors"
-            >
-              @tanstack/react-virtual
-            </a>
-          </div>
-        </div>
-
-        <div className="max-w-3xl mx-auto w-full">
-          <div className="space-y-1 mb-2 ml-2">
-            <h1 className="font-semibold">
-              Icon Picker - Virtualized Grid (React Virtualized)
-            </h1>
-            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-virtualized.json" />
-          </div>
-
-          <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
-            <div className="absolute top-3 right-3">
-              <ThemeSwitch />
-            </div>
-            <div className="flex items-center justify-center h-[480px]">
-              <IconPickerExampleVirtualized />
-            </div>
-          </div>
-          <div className="text-xs text-muted-foreground m-2">
-            View Code on{" "}
-            <a
-              target="_blank"
-              href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-virtualized.tsx"
-              className="underline hover:text-primary transition-colors"
-            >
-              Github
-            </a>{" "}
-            · Built with{" "}
-            <a
-              target="_blank"
-              href="https://github.com/shadcn-ui/ui"
-              className="underline hover:text-primary transition-colors"
-            >
-              shadcn/ui
-            </a>{" "}
-            &{" "}
-            <a
-              target="_blank"
-              href="https://github.com/bvaughn/react-virtualized"
-              className="underline hover:text-primary transition-colors"
-            >
-              react-virtualized
-            </a>
-          </div>
-        </div>
-
-        <div className="max-w-3xl mx-auto w-full">
-          <div className="space-y-1 mb-2 ml-2">
-            <h1 className="font-semibold">
-              Icon Picker - Popover & Virtualized Grid (Tanstack Virtual)
-            </h1>
-            <CopyText text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-popover.json" />
-          </div>
-          <div className="relative border border-dashed w-full p-4 rounded-xl shadow-md">
-            <div className="absolute top-3 right-3">
-              <ThemeSwitch />
-            </div>
-            <div className="flex items-center justify-center h-[480px]">
-              <IconPickerExamplePopover />
-            </div>
-          </div>
-          <div className="text-xs text-muted-foreground m-2">
-            View Code on{" "}
-            <a
-              target="_blank"
-              href="https://github.com/R4ULtv/ui/blob/master/registry/icon-picker/icon-picker-popover.tsx"
-              className="underline hover:text-primary transition-colors"
-            >
-              Github
-            </a>{" "}
-            · Built with{" "}
-            <a
-              target="_blank"
-              href="https://github.com/shadcn-ui/ui"
-              className="underline hover:text-primary transition-colors"
-            >
-              shadcn/ui
-            </a>{" "}
-            &{" "}
-            <a
-              target="_blank"
-              href="https://github.com/tanstack/virtual"
-              className="underline hover:text-primary transition-colors"
-            >
-              @tanstack/react-virtual
-            </a>
-          </div>
-        </div>
-      </div>
+      ))}
     </main>
   );
 }
