@@ -66,8 +66,8 @@ export default function RootLayout({
                   Icon picker components with diverse features.
                 </p>
               </div>
-              <div className="ml-auto flex gap-2">
-                <Button variant="ghost" size="sm" asChild>
+              <div className="ml-auto flex gap-1">
+                <Button variant="ghost" size="icon" className="size-8" asChild>
                   <a href="https://github.com/r4ultv/ui">
                     <span className="sr-only">Github</span>
                     <GithubIcon />
