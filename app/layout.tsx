@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import Link from "next/link";
+
+import { Toaster } from "@/components/ui/sonner";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import ThemeSwitch from "@/components/theme-switch";
+import GithubIcon from "@/components/icons/github";
+import { MousePointerClickIcon } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,7 +53,32 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class">{children}</ThemeProvider>
+        <ThemeProvider attribute="class">
+          <header>
+            <div className="max-w-6xl mx-auto flex items-center px-4 py-6">
+              <div className="flex items-center gap-4">
+                <Link href="/" className="flex items-center gap-2">
+                  <MousePointerClickIcon className="size-5" />
+                  <span className="font-medium">Icon Picker</span>
+                </Link>
+                <Separator orientation="vertical" className="!h-6" />
+                <p className="text-muted-foreground hidden md:block line-clamp-1 text-sm">
+                  Icon picker components with diverse features.
+                </p>
+              </div>
+              <div className="ml-auto flex gap-2">
+                <Button variant="ghost" size="sm" asChild>
+                  <a href="https://github.com/r4ultv/ui">
+                    <span className="sr-only">Github</span>
+                    <GithubIcon />
+                  </a>
+                </Button>
+                <ThemeSwitch />
+              </div>
+            </div>
+          </header>
+          {children} <Toaster position="top-center" />
+        </ThemeProvider>
       </body>
     </html>
   );
