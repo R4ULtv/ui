@@ -54,27 +54,28 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider attribute="class">
-          <header>
-            <div className="max-w-6xl mx-auto flex items-center px-4 py-6">
-              <div className="flex items-center gap-4">
-                <Link href="/" className="flex items-center gap-2">
-                  <MousePointerClickIcon className="size-5" />
-                  <span className="font-medium">Icon Picker</span>
-                </Link>
-                <Separator orientation="vertical" className="!h-6" />
-                <p className="text-muted-foreground hidden md:block line-clamp-1 text-sm">
-                  Icon picker components with diverse features.
-                </p>
-              </div>
-              <div className="ml-auto flex gap-1">
-                <Button variant="ghost" size="icon" className="size-8" asChild>
-                  <a href="https://github.com/r4ultv/ui">
-                    <span className="sr-only">Github</span>
-                    <GithubIcon />
-                  </a>
-                </Button>
-                <ThemeSwitch />
-              </div>
+          <header className="max-w-6xl mx-auto flex items-center px-4 py-6">
+            <div className="flex items-center gap-4">
+              <Link href="/" className="flex items-center gap-2">
+                <MousePointerClickIcon className="size-5" />
+                <span className="font-medium">Icon Picker</span>
+              </Link>
+              <Separator
+                orientation="vertical"
+                className="!h-6 hidden md:block"
+              />
+              <p className="text-muted-foreground hidden md:block line-clamp-1 text-sm">
+                A collection of UI components built with Shadcn UI.
+              </p>
+            </div>
+            <div className="ml-auto flex gap-1">
+              <Button variant="ghost" size="icon" className="size-8" asChild>
+                <a href="https://github.com/r4ultv/ui">
+                  <span className="sr-only">Github</span>
+                  <GithubIcon />
+                </a>
+              </Button>
+              <ThemeSwitch />
             </div>
           </header>
           {children} <Toaster position="top-center" />
