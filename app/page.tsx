@@ -1,6 +1,3 @@
-// import CopyText from "@/components/copy-text";
-// import ThemeSwitch from "@/components/theme-switch";
-
 import {
   IconPickerExample,
   IconPickerExampleMultiple,
