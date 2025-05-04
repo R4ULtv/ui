@@ -6,9 +6,7 @@ import Link from "next/link";
 
 import { Toaster } from "@/components/ui/sonner";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
 import ThemeSwitch from "@/components/theme-switch";
-import GithubIcon from "@/components/icons/github";
 import { MousePointerClickIcon } from "lucide-react";
 
 const geistSans = Geist({
@@ -68,17 +66,35 @@ export default function RootLayout({
                 A collection of UI components built with Shadcn UI.
               </p>
             </div>
-            <div className="ml-auto flex gap-1">
-              <Button variant="ghost" size="icon" className="size-8" asChild>
-                <a href="https://github.com/r4ultv/ui">
-                  <span className="sr-only">Github</span>
-                  <GithubIcon />
-                </a>
-              </Button>
+            <div className="ml-auto">
               <ThemeSwitch />
             </div>
           </header>
-          {children} <Toaster position="top-center" />
+          {children}
+          <footer className="max-w-6xl mx-auto flex items-center px-4 py-6">
+            <span className="text-sm text-muted-foreground text-pretty">
+              Built by{" "}
+              <a
+                href="https://x.com/lil_poop__"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-foreground transition-colors"
+              >
+                Raul Carini
+              </a>
+              . The source code is available on{" "}
+              <a
+                href="https://github.com/r4ultv/ui"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-foreground transition-colors"
+              >
+                Github
+              </a>
+              .
+            </span>
+          </footer>
+          <Toaster position="top-center" />
         </ThemeProvider>
       </body>
     </html>
