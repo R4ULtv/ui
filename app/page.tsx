@@ -7,7 +7,6 @@ import { Separator } from "@/components/ui/separator";
 
 import CopyShadcn from "@/components/copy-shadcn";
 import CopyURL from "@/components/copy-url";
-import { ArrowRightIcon } from "lucide-react";
 
 export default function Page() {
   return (
