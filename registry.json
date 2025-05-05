@@ -148,17 +148,18 @@
         }
       ],
       "cssVars": {
+        "theme": { "--color-github": "var(--muted)" },
         "light": {
-          "--github-1": "oklch(0.87 0.1182 148.74)",
-          "--github-2": "oklch(0.73 0.1781 148.54)",
-          "--github-3": "oklch(0.63 0.157 148.35)",
-          "--github-4": "oklch(0.48 0.1122 150.02)"
+          "github-1": "oklch(0.87 0.1182 148.74)",
+          "github-2": "oklch(0.73 0.1781 148.54)",
+          "github-3": "oklch(0.63 0.157 148.35)",
+          "github-4": "oklch(0.48 0.1122 150.02)"
         },
         "dark": {
-          "--github-1": "oklch(0.34 0.073 156.73)",
-          "--github-2": "oklch(0.47 0.126255 150.8624)",
-          "--github-3": "oklch(0.64 0.1777 146.24)",
-          "--github-4": "oklch(0.76 0.2121 145.62)"
+          "github-1": "oklch(0.34 0.073 156.73)",
+          "github-2": "oklch(0.47 0.126255 150.8624)",
+          "github-3": "oklch(0.64 0.1777 146.24)",
+          "github-4": "oklch(0.76 0.2121 145.62)"
         }
       },
       "dependencies": ["date-fns"]
