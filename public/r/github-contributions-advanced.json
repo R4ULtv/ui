@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-contributions-advanced",
+  "type": "registry:block",
+  "title": "GitHub Contributions Advanced",
+  "description": "A advanced GitHub contributions component.",
+  "registryDependencies": [
+    "https://ui.raulcarini.dev/r/github-contributions.json"
+  ],
+  "files": [
+    {
+      "path": "registry/github-contributions/github-contributions-advanced.tsx",
+      "content": "import * as React from \"react\";\nimport GithubContributions, {\n  Contribution,\n} from \"@/registry/github-contributions/github-contributions\";\n\nexport default function GithubContributionsAdvanced({\n  data,\n  newPublicRepositories,\n}: {\n  data: Contribution[];\n  newPublicRepositories: number;\n}) {\n  return (\n    <div className=\"flex flex-col gap-2 w-full md:w-min\">\n      <p className=\"text-sm text-foreground\">\n        <span className=\"font-semibold\">\n          {data.reduce((acc, item) => acc + item.count, 0)}\n        </span>{\" \"}\n        contributions in the last year and{\" \"}\n        <span className=\"font-semibold\">{newPublicRepositories}</span> new\n        public repositories.\n      </p>\n      <GithubContributions data={data} />\n      <div className=\"flex items-center justify-between gap-3 w-full text-xs text-muted-foreground\">\n        <a\n          href=\"https://docs.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile\"\n          className=\"hover:underline underline-offset-2\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          Learn how we count contributions\n        </a>\n        <div className=\"flex items-center gap-1\">\n          Less\n          <div className=\"size-2.5 p-0 rounded-xs bg-github-0\"></div>\n          <div className=\"size-2.5 p-0 rounded-xs bg-github-1\"></div>\n          <div className=\"size-2.5 p-0 rounded-xs bg-github-2\"></div>\n          <div className=\"size-2.5 p-0 rounded-xs bg-github-3\"></div>\n          <div className=\"size-2.5 p-0 rounded-xs bg-github-4\"></div>\n          More\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -1,8 +1,7 @@
-"use client";
-
 import * as React from "react";
-import { GitHubContributions } from "@/registry/github-contributions/github-contributions";
+import GitHubContributions from "@/registry/github-contributions/github-contributions";
 import { subMonths } from "date-fns";
+import GithubContributionsAdvanced from "@/registry/github-contributions/github-contributions-advanced";
 
 export interface Contribution {
   date: string;
@@ -59,3 +58,24 @@ export const GithubContributionsExample: React.FC<
 
 // Add display name for better debugging
 GithubContributionsExample.displayName = "GithubContributionsExample";
+
+export const GithubContributionsAdvancedExample: React.FC<
+  GithubContributionsExampleProps
+> = ({
+  initialEndDate = new Date(),
+  initialStartDate = subMonths(new Date(), 12),
+}) => {
+  const data = generateSampleData(initialStartDate, initialEndDate);
+  const newPublicRepositories = Math.floor(Math.random() * 9) + 1;
+
+  return (
+    <GithubContributionsAdvanced
+      data={data}
+      newPublicRepositories={newPublicRepositories}
+    />
+  );
+};
+
+// Add display name for better debugging
+GithubContributionsAdvancedExample.displayName =
+  "GithubContributionsAdvancedExample";

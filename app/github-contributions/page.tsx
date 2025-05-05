@@ -4,7 +4,10 @@ import { Separator } from "@/components/ui/separator";
 
 import CopyShadcn from "@/components/copy-shadcn";
 import CopyURL from "@/components/copy-url";
-import { GithubContributionsExample } from "@/components/examples/github-contributions";
+import {
+  GithubContributionsAdvancedExample,
+  GithubContributionsExample,
+} from "@/components/examples/github-contributions";
 
 const components = [
   {
@@ -12,6 +15,12 @@ const components = [
     description: "A basic github contributions table.",
     registry: "https://ui.raulcarini.dev/r/github-contributions.json",
     component: GithubContributionsExample,
+  },
+  {
+    name: "Github Contributions Advanced",
+    description: "An advanced github contributions table.",
+    registry: "https://ui.raulcarini.dev/r/github-contributions-advanced.json",
+    component: GithubContributionsAdvancedExample,
   },
 ];
 

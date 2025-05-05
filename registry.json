@@ -163,6 +163,21 @@
         }
       },
       "dependencies": ["date-fns"]
+    },
+    {
+      "name": "github-contributions-advanced",
+      "type": "registry:block",
+      "title": "GitHub Contributions Advanced",
+      "description": "A advanced GitHub contributions component.",
+      "files": [
+        {
+          "path": "registry/github-contributions/github-contributions-advanced.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "https://ui.raulcarini.dev/r/github-contributions.json"
+      ]
     }
   ]
 }
