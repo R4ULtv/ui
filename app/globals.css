@@ -41,6 +41,11 @@
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
     --radius-xl: calc(var(--radius) + 4px);
+    --color-github-0: var(--muted);
+    --color-github-1: var(--github-1);
+    --color-github-2: var(--github-2);
+    --color-github-3: var(--github-3);
+    --color-github-4: var(--github-4);
 }
 
 :root {
@@ -76,6 +81,10 @@
     --sidebar-ring: oklch(0.705 0.015 286.067);
     --background: oklch(1 0 0);
     --foreground: oklch(0.141 0.005 285.823);
+    --github-1: oklch(0.87 0.1182 148.74);
+    --github-2: oklch(0.73 0.1781 148.54);
+    --github-3: oklch(0.63 0.157 148.35);
+    --github-4: oklch(0.48 0.1122 150.02);
 }
 
 .dark {
@@ -110,6 +119,10 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.552 0.016 285.938);
+    --github-1: oklch(0.34 0.073 156.73);
+    --github-2: oklch(0.47 0.126255 150.8624);
+    --github-3: oklch(0.64 0.1777 146.24);
+    --github-4: oklch(0.76 0.2121 145.62);
 }
 
 @layer base {
