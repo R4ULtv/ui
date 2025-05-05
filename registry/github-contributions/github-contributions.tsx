@@ -18,17 +18,17 @@ const CONTRIBUTION_LEVEL_CLASSES = [
 // Types
 type ContributionLevel = (typeof CONTRIBUTION_LEVELS)[number];
 
-interface Contribution {
+export interface Contribution {
   date: string;
   count: number;
   level: ContributionLevel;
 }
 
-interface DayContributionMap {
+export interface DayContributionMap {
   [key: number]: Contribution[];
 }
 
-interface ContributionCellProps {
+export interface ContributionCellProps {
   contribution: Contribution;
 }
 
@@ -81,7 +81,7 @@ const MonthLabel = React.memo(function MonthLabel({
   );
 });
 
-export function GitHubContributions({
+export default function GitHubContributions({
   data,
 }: {
   data: Contribution[];
@@ -141,7 +141,7 @@ export function GitHubContributions({
 
   return (
     <div
-      className="overflow-x-auto"
+      className="overflow-x-auto max-w-full"
       role="region"
       aria-label="GitHub contributions calendar"
     >
