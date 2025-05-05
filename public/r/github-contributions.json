@@ -16,7 +16,7 @@
   ],
   "cssVars": {
     "theme": {
-      "--color-github": "var(--muted)"
+      "--color-github-0": "var(--muted)"
     },
     "light": {
       "github-1": "oklch(0.87 0.1182 148.74)",
