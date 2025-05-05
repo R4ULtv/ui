@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 
 import CopyShadcn from "@/components/copy-shadcn";
 import CopyURL from "@/components/copy-url";
+import { ArrowRightIcon } from "lucide-react";
 
 export default function Page() {
   return (
@@ -21,9 +22,9 @@ export default function Page() {
               Icon Picker
             </Link>
             <Separator orientation="vertical" className="!h-4 hidden lg:flex" />
-            <div className="text-sm text-muted-foreground line-clamp-1 hidden lg:flex">
+            <span className="text-sm text-muted-foreground line-clamp-1 hidden lg:flex">
               A simple icon picker component with search functionality.
-            </div>
+            </span>
           </div>
           <div className="flex gap-2">
             <CopyShadcn text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json" />
@@ -55,9 +56,9 @@ export default function Page() {
               Github Contributions
             </Link>
             <Separator orientation="vertical" className="!h-4 hidden lg:flex" />
-            <div className="text-sm text-muted-foreground line-clamp-1 hidden lg:flex">
+            <span className="text-sm text-muted-foreground line-clamp-1 hidden lg:flex">
               A simple Github contributions table.
-            </div>
+            </span>
           </div>
           <div className="flex gap-2">
             <CopyShadcn text="npx shadcn@latest add https://ui.raulcarini.dev/r/github-contributions.json" />
