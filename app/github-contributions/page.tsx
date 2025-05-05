@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import V0Icon from "@/components/icons/v0";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -9,16 +10,22 @@ import {
   GithubContributionsExample,
 } from "@/components/examples/github-contributions";
 
+export const metadata: Metadata = {
+  title: "Github Contributions",
+  description:
+    "A collection of Github Contributions components. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli.",
+};
+
 const components = [
   {
     name: "Github Contributions",
-    description: "A basic github contributions table.",
+    description: "A basic Github contributions table.",
     registry: "https://ui.raulcarini.dev/r/github-contributions.json",
     component: GithubContributionsExample,
   },
   {
     name: "Github Contributions Advanced",
-    description: "An advanced github contributions table.",
+    description: "An advanced Github contributions table.",
     registry: "https://ui.raulcarini.dev/r/github-contributions-advanced.json",
     component: GithubContributionsAdvancedExample,
   },
