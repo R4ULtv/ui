@@ -11,15 +11,29 @@ import {
 } from "@/components/examples/github-contributions";
 
 export const metadata: Metadata = {
-  title: "Github Contributions",
+  title: "Github Contributions Components",
   description:
     "A collection of Github Contributions components. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli.",
+  openGraph: {
+    url: "/github-contributions",
+    siteName: "Github Contributions Components",
+    images: [
+      {
+        url: "/github-contributions/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Github Contributions Components",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const components = [
   {
     name: "Github Contributions",
-    description: "A basic Github contributions table.",
+    description: "A simple Github contributions table.",
     registry: "https://ui.raulcarini.dev/r/github-contributions.json",
     component: GithubContributionsExample,
   },
