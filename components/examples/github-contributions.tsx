@@ -1,4 +1,6 @@
-import { type FC } from "react";
+"use client";
+
+import * as React from "react";
 import { GitHubContributions } from "@/registry/github-contributions/github-contributions";
 import { subMonths } from "date-fns";
 
@@ -44,7 +46,7 @@ const generateSampleData = (startDate: Date, endDate: Date): Contribution[] => {
   });
 };
 
-export const GithubContributionsExample: FC<
+export const GithubContributionsExample: React.FC<
   GithubContributionsExampleProps
 > = ({
   initialEndDate = new Date(),
