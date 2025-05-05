@@ -21,19 +21,19 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ui.raulcarini.dev"),
-  title: "Icon Picker Components",
+  title: "UI Components",
   description:
-    "A collection of different icon picker components. Using React, TypeScript, and Tailwind CSS. Icons are sourced from lucide.dev. Install the components using the shadcn/cli.",
+    "A collection of UI components built with Shadcn UI. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli.",
   authors: [{ name: "Raul Carini", url: "https://www.raulcarini.dev" }],
   openGraph: {
     url: new URL("https://ui.raulcarini.dev"),
-    siteName: "Icon Picker Components",
+    siteName: "UI Components",
     images: [
       {
-        url: "/icon-picker.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Icon Picker Components",
+        alt: "UI Components",
       },
     ],
     locale: "en_US",
@@ -56,7 +56,7 @@ export default function RootLayout({
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-2">
                 <MousePointerClickIcon className="size-5" />
-                <span className="font-medium">Icon Picker</span>
+                <span className="font-medium">UI Components</span>
               </Link>
               <Separator
                 orientation="vertical"
