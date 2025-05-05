@@ -1,6 +1,8 @@
-import { IconPickerExample } from "@/components/examples/icon-picker";
 import Link from "next/link";
+
+import { IconPickerExample } from "@/components/examples/icon-picker";
 import { GithubContributionsExample } from "@/components/examples/github-contributions";
+
 import V0Icon from "@/components/icons/v0";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
