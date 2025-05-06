@@ -1,7 +1,7 @@
 import * as React from "react";
 import GitHubContributions from "@/registry/github-contributions/github-contributions";
-import { subMonths } from "date-fns";
 import GithubContributionsAdvanced from "@/registry/github-contributions/github-contributions-advanced";
+import { subMonths } from "date-fns";
 
 export interface Contribution {
   date: string;
@@ -49,7 +49,11 @@ export const GithubContributionsExample: React.FC<
   GithubContributionsExampleProps
 > = ({
   initialEndDate = new Date(),
-  initialStartDate = subMonths(new Date(), 12),
+  initialStartDate = new Date(
+    subMonths(new Date(), 12).setDate(
+      subMonths(new Date(), 12).getDate() - subMonths(new Date(), 12).getDay(),
+    ),
+  ),
 }) => {
   const data = generateSampleData(initialStartDate, initialEndDate);
 
@@ -63,7 +67,11 @@ export const GithubContributionsAdvancedExample: React.FC<
   GithubContributionsExampleProps
 > = ({
   initialEndDate = new Date(),
-  initialStartDate = subMonths(new Date(), 12),
+  initialStartDate = new Date(
+    subMonths(new Date(), 12).setDate(
+      subMonths(new Date(), 12).getDate() - subMonths(new Date(), 12).getDay(),
+    ),
+  ),
 }) => {
   const data = generateSampleData(initialStartDate, initialEndDate);
   const newPublicRepositories = Math.floor(Math.random() * 9) + 1;
