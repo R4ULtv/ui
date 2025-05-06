@@ -5,9 +5,11 @@ import { Separator } from "@/components/ui/separator";
 
 import CopyShadcn from "@/components/copy-shadcn";
 import CopyURL from "@/components/copy-url";
+
 import {
-  GithubContributionsAdvancedExample,
   GithubContributionsExample,
+  GithubContributionsAdvancedExample,
+  GithubContributionsFetcherExample,
 } from "@/components/examples/github-contributions";
 
 export const metadata: Metadata = {
@@ -42,6 +44,12 @@ const components = [
     description: "An advanced Github contributions table.",
     registry: "https://ui.raulcarini.dev/r/github-contributions-advanced.json",
     component: GithubContributionsAdvancedExample,
+  },
+  {
+    name: "Github Contributions Fetcher",
+    description: "A Github contributions table with client-side fetcher.",
+    registry: "https://ui.raulcarini.dev/r/github-contributions-fetcher.json",
+    component: GithubContributionsFetcherExample,
   },
 ];
 

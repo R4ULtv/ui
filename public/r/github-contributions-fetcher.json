@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-contributions-fetcher",
+  "type": "registry:block",
+  "title": "GitHub Contributions with Fetch",
+  "description": "A Github contributions table with client-side fetcher.",
+  "registryDependencies": [
+    "https://ui.raulcarini.dev/r/github-contributions.json"
+  ],
+  "files": [
+    {
+      "path": "registry/github-contributions/github-contributions-fetcher.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport GitHubContributions, {\n  Contribution,\n} from \"@/registry/github-contributions/github-contributions\";\nimport { Grid3x3Icon, TriangleAlertIcon } from \"lucide-react\";\n\ninterface GithubContributionsResponse {\n  total: {\n    [year: string]: number; // 'lastYear'\n  };\n  contributions: Array<Contribution>;\n}\n\ninterface StatusDisplayProps {\n  icon: React.ReactNode;\n  message: string;\n  additionalClasses?: string;\n}\n\n// Helper component to display loading/error states\nconst StatusDisplay: React.FC<StatusDisplayProps> = ({\n  icon,\n  message,\n  additionalClasses,\n}) => {\n  return (\n    <div\n      className={`w-full max-w-[688px] h-[104px] border rounded-md flex flex-col items-center justify-center gap-1 ${\n        additionalClasses || \"\"\n      }`}\n    >\n      {icon}\n      <p className=\"text-sm text-muted-foreground\">{message}</p>\n    </div>\n  );\n};\n\nconst GithubContributionsFetcher: React.FC<{ username: string }> = ({\n  username,\n}) => {\n  const [loading, setLoading] = React.useState<boolean>(true);\n  const [error, setError] = React.useState<Error | null>(null);\n  const [data, setData] = React.useState<Contribution[] | null>(null);\n\n  React.useEffect(() => {\n    const fetchContributionData = async () => {\n      try {\n        // See https://github.com/grubersjoe/github-contributions-api for details\n        const response = await fetch(\n          `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,\n        );\n        if (!response.ok)\n          throw new Error(`HTTP error! status: ${response.status}`);\n\n        const result: GithubContributionsResponse = await response.json();\n        setData(result.contributions);\n      } catch (err) {\n        setError(err as Error);\n      } finally {\n        setLoading(false);\n      }\n    };\n\n    fetchContributionData();\n  }, [username]);\n\n  if (loading) {\n    return (\n      <StatusDisplay\n        icon={<Grid3x3Icon className=\"size-6 stroke-muted-foreground\" />}\n        message={`Loading ${username}'s contributions...`}\n        additionalClasses=\"motion-safe:animate-pulse\"\n      />\n    );\n  }\n\n  if (data === null || error) {\n    return (\n      <StatusDisplay\n        icon={<TriangleAlertIcon className=\"size-6 stroke-muted-foreground\" />}\n        message=\"Could not load contributions.\"\n      />\n    );\n  }\n\n  return <GitHubContributions data={data} />;\n};\n\nexport default GithubContributionsFetcher;\n",
+      "type": "registry:component"
+    }
+  ]
+}

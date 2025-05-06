@@ -1,7 +1,9 @@
 import * as React from "react";
+import { subMonths } from "date-fns";
+
 import GitHubContributions from "@/registry/github-contributions/github-contributions";
 import GithubContributionsAdvanced from "@/registry/github-contributions/github-contributions-advanced";
-import { subMonths } from "date-fns";
+import GithubContributionsFetcher from "@/registry/github-contributions/github-contributions-fetcher";
 
 export interface Contribution {
   date: string;
@@ -60,9 +62,6 @@ export const GithubContributionsExample: React.FC<
   return <GitHubContributions data={data} />;
 };
 
-// Add display name for better debugging
-GithubContributionsExample.displayName = "GithubContributionsExample";
-
 export const GithubContributionsAdvancedExample: React.FC<
   GithubContributionsExampleProps
 > = ({
@@ -84,6 +83,6 @@ export const GithubContributionsAdvancedExample: React.FC<
   );
 };
 
-// Add display name for better debugging
-GithubContributionsAdvancedExample.displayName =
-  "GithubContributionsAdvancedExample";
+export const GithubContributionsFetcherExample = () => {
+  return <GithubContributionsFetcher username="R4ULtv" />;
+};

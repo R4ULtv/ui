@@ -177,6 +177,21 @@
       "registryDependencies": [
         "https://ui.raulcarini.dev/r/github-contributions.json"
       ]
+    },
+    {
+      "name": "github-contributions-fetcher",
+      "type": "registry:block",
+      "title": "GitHub Contributions with Fetch",
+      "description": "A Github contributions table with client-side fetcher.",
+      "files": [
+        {
+          "path": "registry/github-contributions/github-contributions-fetcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "https://ui.raulcarini.dev/r/github-contributions.json"
+      ]
     }
   ]
 }
