@@ -13,7 +13,7 @@ const CONTRIBUTION_LEVEL_CLASSES = [
   "bg-github-2",
   "bg-github-3",
   "bg-github-4",
-];
+] as const;
 
 // Types
 type ContributionLevel = (typeof CONTRIBUTION_LEVELS)[number];
@@ -37,16 +37,17 @@ const ContributionCell = React.memo(function ContributionCell({
 }: ContributionCellProps) {
   const date = new Date(contribution.date);
   const formattedDate = format(date, "MMMM d");
+  const label = `${contribution.count} contributions on ${formattedDate}`;
 
   return (
     <td
       role="gridcell"
-      aria-label={`${contribution.count} contributions on ${formattedDate}`}
+      aria-label={label}
       className={cn(
         "w-2.5 p-0 rounded-xs -outline-offset-1",
         CONTRIBUTION_LEVEL_CLASSES[contribution.level],
       )}
-      title={`${contribution.count} contributions on ${formattedDate}`}
+      title={label}
       tabIndex={0}
     />
   );
@@ -71,12 +72,13 @@ const MonthLabel = React.memo(function MonthLabel({
   date?: Date;
   colSpan: number;
 }) {
+  if (!date) return <td colSpan={colSpan} />;
   return (
     <td
       colSpan={colSpan}
       className="text-xs font-semibold first-letter:uppercase"
     >
-      {date ? format(date, "MMM") : ""}
+      {format(date, "MMM")}
     </td>
   );
 });
@@ -89,49 +91,53 @@ export default function GitHubContributions({
   const contributionsByDay = React.useMemo(() => {
     return data.reduce<DayContributionMap>((acc, contribution) => {
       const day = getDay(new Date(contribution.date));
-      if (!acc[day]) {
-        acc[day] = [];
-      }
+      if (!acc[day]) acc[day] = [];
       acc[day].push(contribution);
       return acc;
     }, {});
   }, [data]);
 
-  const monthLabels = React.useMemo(() => {
-    return data.reduce<(React.JSX.Element | null)[]>((acc, contribution, i) => {
-      const date = new Date(contribution.date);
+  const monthLabels = React.useMemo(
+    () =>
+      data.reduce<(React.JSX.Element | null)[]>((acc, contribution, i) => {
+        const date = new Date(contribution.date);
+        const isStartOfWeek = i % 7 === 0;
+        const isWithinFirstWeekOfMonth =
+          date.getDate() >= 1 && date.getDate() <= 7;
+        const isBeforeLastWeek =
+          date < new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
 
-      const shouldShowLabel =
-        i === 0 ||
-        (i % 7 === 0 &&
-          date.getDate() >= 1 &&
-          date.getDate() <= 7 &&
-          date < new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000));
+        if (
+          i === 0 ||
+          (isStartOfWeek && isWithinFirstWeekOfMonth && isBeforeLastWeek)
+        ) {
+          const daysInMonth = new Date(
+            date.getFullYear(),
+            date.getMonth() + 1,
+            0,
+          ).getDate();
+          const remainingDays = daysInMonth - date.getDate();
 
-      if (shouldShowLabel) {
-        const remainingDaysTillEndOfMonth =
-          new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate() -
-          date.getDate();
-
-        acc[i] = (
-          <MonthLabel
-            key={i}
-            date={remainingDaysTillEndOfMonth > 14 ? date : undefined}
-            colSpan={
-              i === 0
-                ? Math.ceil(remainingDaysTillEndOfMonth / 7)
-                : remainingDaysTillEndOfMonth >= 28
-                  ? 5
-                  : 4
-            }
-          />
-        );
-      } else {
-        acc[i] = null;
-      }
-      return acc;
-    }, []);
-  }, [data]);
+          acc[i] = (
+            <MonthLabel
+              key={i}
+              date={remainingDays > 14 ? date : undefined}
+              colSpan={
+                i === 0
+                  ? Math.ceil(remainingDays / 7)
+                  : remainingDays >= 28
+                    ? 5
+                    : 4
+              }
+            />
+          );
+        } else {
+          acc[i] = null;
+        }
+        return acc;
+      }, []),
+    [data],
+  );
 
   const renderRow = React.useCallback(
     (dayNum: number) => (
