@@ -161,8 +161,7 @@
           "github-3": "oklch(0.64 0.1777 146.24)",
           "github-4": "oklch(0.76 0.2121 145.62)"
         }
-      },
-      "dependencies": ["date-fns"]
+      }
     },
     {
       "name": "github-contributions-advanced",

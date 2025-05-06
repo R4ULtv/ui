@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { format, getDay } from "date-fns";
 
 // Constants
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
@@ -36,7 +35,10 @@ const ContributionCell = React.memo(function ContributionCell({
   contribution,
 }: ContributionCellProps) {
   const date = new Date(contribution.date);
-  const formattedDate = format(date, "MMMM d");
+  const formattedDate = new Date(date).toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
   const label = `${contribution.count} contributions on ${formattedDate}`;
 
   return (
@@ -78,7 +80,7 @@ const MonthLabel = React.memo(function MonthLabel({
       colSpan={colSpan}
       className="text-xs font-semibold first-letter:uppercase"
     >
-      {format(date, "MMM")}
+      {new Date(date).toLocaleString("en-US", { month: "short" })}
     </td>
   );
 });
@@ -90,7 +92,7 @@ export default function GitHubContributions({
 }): React.JSX.Element {
   const contributionsByDay = React.useMemo(() => {
     return data.reduce<DayContributionMap>((acc, contribution) => {
-      const day = getDay(new Date(contribution.date));
+      const day = new Date(contribution.date).getDay();
       if (!acc[day]) acc[day] = [];
       acc[day].push(contribution);
       return acc;
