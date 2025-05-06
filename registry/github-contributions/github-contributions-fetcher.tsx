@@ -47,7 +47,6 @@ const GithubContributionsFetcher: React.FC<{ username: string }> = ({
   React.useEffect(() => {
     const fetchContributionData = async () => {
       try {
-        // See https://github.com/grubersjoe/github-contributions-api for details
         const response = await fetch(
           `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
         );
