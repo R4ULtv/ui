@@ -68,7 +68,7 @@ const MonthLabel = React.memo(function MonthLabel({
   date,
   colSpan,
 }: {
-  date: Date;
+  date?: Date;
   colSpan: number;
 }) {
   return (
@@ -76,7 +76,7 @@ const MonthLabel = React.memo(function MonthLabel({
       colSpan={colSpan}
       className="text-xs font-semibold first-letter:uppercase"
     >
-      {format(date, "MMM")}
+      {date ? format(date, "MMM") : ""}
     </td>
   );
 });
@@ -100,6 +100,7 @@ export default function GitHubContributions({
   const monthLabels = React.useMemo(() => {
     return data.reduce<(React.JSX.Element | null)[]>((acc, contribution, i) => {
       const date = new Date(contribution.date);
+
       const shouldShowLabel =
         i === 0 ||
         (i % 7 === 0 &&
@@ -115,8 +116,14 @@ export default function GitHubContributions({
         acc[i] = (
           <MonthLabel
             key={i}
-            date={date}
-            colSpan={remainingDaysTillEndOfMonth >= 28 ? 5 : 4}
+            date={remainingDaysTillEndOfMonth > 14 ? date : undefined}
+            colSpan={
+              i === 0
+                ? Math.ceil(remainingDaysTillEndOfMonth / 7)
+                : remainingDaysTillEndOfMonth >= 28
+                  ? 5
+                  : 4
+            }
           />
         );
       } else {
