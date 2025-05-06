@@ -18,6 +18,7 @@ This is a collection of UI components built with Shadcn UI, featuring customizab
 
 - **Basic Github Contributions**: Displays contributions in a calendar-like grid.
 - **Advanced Github Contributions**: Extends the basic component with additional stats.
+- **Github Contributions Fetcher**: A Github contributions table with client-side fetcher.
 
 ## Technologies
 
@@ -160,6 +161,16 @@ function MyComponent() {
   return (
     <GithubContributions data={dummyData} />
   );
+}
+```
+
+### Github Contributions Fetcher
+
+```tsx
+import GithubContributionsFetcher from "@/components/github-contributions-fetcher";
+
+function MyComponent() {
+  return <GithubContributionsFetcher username="R4ULtv" />;
 }
 ```
 
