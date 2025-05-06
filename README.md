@@ -1,6 +1,6 @@
 ![UI Components Library](./public/og-image.png)
 
-This is a collection of UI components built with Shadcn UI. The project currently focuses on providing customizable Icon Picker components implemented in several different ways.
+This is a collection of UI components built with Shadcn UI, featuring customizable Icon Picker and Github Contributions components.
 
 ## Features
 
@@ -13,6 +13,11 @@ This is a collection of UI components built with Shadcn UI. The project currentl
 - **Icon Picker Tanstack**: A virtualization implementation using "@tanstack/react-virtual".
 - **Icon Picker Virtualized**: A virtualization implementation using "react-virtualized".
 - **Icon Picker Popover**: An implementation integrated within a popover for compact UI.
+
+### Github Contributions Components
+
+- **Basic Github Contributions**: Displays contributions in a calendar-like grid.
+- **Advanced Github Contributions**: Extends the basic component with additional stats.
 
 ## Technologies
 
@@ -28,7 +33,7 @@ This is a collection of UI components built with Shadcn UI. The project currentl
 ### Prerequisites
 
 - Node.js
-- npm or yarn
+- pnpm or npm or yarn
 
 ### Installation
 
@@ -37,9 +42,7 @@ Clone the repository then install dependencies:
 ```bash
 git clone https://github.com/r4ultv/ui
 cd ui
-npm install
-# or
-yarn install
+pnpm install
 ```
 
 ### Adding Components via Registry
@@ -48,20 +51,13 @@ You can add any variant using shadcn/cli. For example:
 
 ```bash
 npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json
-npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-multiple.json
-npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-custom-color.json
-npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-virtua.json
-npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-tanstack.json
-npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-virtualized.json
-npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker-popover.json
+npx shadcn@latest add https://ui.raulcarini.dev/r/github-contributions.json
 ```
 
 ### Running the Development Server
 
 ```bash
-npm run dev
-# or
-yarn dev
+pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -70,7 +66,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Check the examples below for an overview of how to integrate each variant:
 > NOTE: For optimal performance and to reduce initial bundle size, it is recommended to use dynamic import.
-  ```jsx title="IconPicker Example"
+  ```tsx
   const IconPicker = dynamic(() => import("@/components/icon-picker"));
   ```
 
@@ -143,6 +139,27 @@ import IconPicker from "@/components/icon-picker-popover";
 
 function MyComponent() {
   return <IconPicker />;
+}
+```
+
+### Github Contributions
+
+```tsx
+import GithubContributions from "@/components/github-contributions";
+
+function MyComponent() {
+  // Example data - replace with your actual contribution data
+  const dummyData = [
+    // ... your contribution data array here
+    { date: "2023-10-26", count: 1, level: 1 },
+    { date: "2023-10-27", count: 3, level: 3 },
+    { date: "2023-10-28", count: 0, level: 0 },
+    // ... more data
+  ];
+
+  return (
+    <GithubContributions data={dummyData} />
+  );
 }
 ```
 
