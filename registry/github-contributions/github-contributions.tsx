@@ -50,7 +50,6 @@ const ContributionCell = React.memo(function ContributionCell({
         CONTRIBUTION_LEVEL_CLASSES[contribution.level],
       )}
       title={label}
-      tabIndex={0}
     />
   );
 });
