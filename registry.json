@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "raulcarini.dev",
+  "name": "UI Components",
+  "author": "Raul Carini <contact@raulcarini.dev>",
   "homepage": "https://ui.raulcarini.dev",
   "items": [
     {
