@@ -182,7 +182,7 @@
     {
       "name": "github-contributions-fetcher",
       "type": "registry:block",
-      "title": "GitHub Contributions with Fetch",
+      "title": "GitHub Contributions Fetcher",
       "description": "A Github contributions table with client-side fetcher.",
       "files": [
         {
@@ -192,6 +192,21 @@
       ],
       "registryDependencies": [
         "https://ui.raulcarini.dev/r/github-contributions.json"
+      ]
+    },
+    {
+      "name": "github-contributions-advanced-fetcher",
+      "type": "registry:block",
+      "title": "GitHub Contributions Advanced Fetcher",
+      "description": "An advanced Github contributions table with client-side fetcher.",
+      "files": [
+        {
+          "path": "registry/github-contributions/github-contributions-advanced-fetcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "https://ui.raulcarini.dev/r/github-contributions-advanced.json"
       ]
     }
   ]

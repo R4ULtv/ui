@@ -4,6 +4,7 @@ import { subMonths } from "date-fns";
 import GitHubContributions from "@/registry/github-contributions/github-contributions";
 import GithubContributionsAdvanced from "@/registry/github-contributions/github-contributions-advanced";
 import GithubContributionsFetcher from "@/registry/github-contributions/github-contributions-fetcher";
+import GithubContributionsAdvancedFetcher from "@/registry/github-contributions/github-contributions-advanced-fetcher";
 
 export interface Contribution {
   date: string;
@@ -85,4 +86,8 @@ export const GithubContributionsAdvancedExample: React.FC<
 
 export const GithubContributionsFetcherExample = () => {
   return <GithubContributionsFetcher username="R4ULtv" />;
+};
+
+export const GithubContributionsAdvancedFetcherExample = () => {
+  return <GithubContributionsAdvancedFetcher username="R4ULtv" />;
 };

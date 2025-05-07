@@ -10,6 +10,7 @@ import {
   GithubContributionsExample,
   GithubContributionsAdvancedExample,
   GithubContributionsFetcherExample,
+  GithubContributionsAdvancedFetcherExample,
 } from "@/components/examples/github-contributions";
 
 export const metadata: Metadata = {
@@ -50,6 +51,14 @@ const components = [
     description: "A Github contributions table with client-side fetcher.",
     registry: "https://ui.raulcarini.dev/r/github-contributions-fetcher.json",
     component: GithubContributionsFetcherExample,
+  },
+  {
+    name: "Github Contributions Advanced Fetcher",
+    description:
+      "An advanced Github contributions table with client-side fetcher.",
+    registry:
+      "https://ui.raulcarini.dev/r/github-contributions-advanced-fetcher.json",
+    component: GithubContributionsAdvancedFetcherExample,
   },
 ];
 
