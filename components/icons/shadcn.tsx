@@ -1,28 +1,21 @@
-export default function ShadcnIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-      <line
-        x1="208"
-        y1="128"
-        x2="128"
-        y2="208"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="32"
-      />
-      <line
-        x1="192"
-        y1="40"
-        x2="40"
-        y2="192"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="32"
-      />
-    </svg>
-  );
-}
+import * as React from "react";
+import type { SVGProps } from "react";
+const shadcnui = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 256 256"
+    width="1em"
+    height="1em"
+    {...props}
+  >
+    <path fill="none" d="M0 0h256v256H0z" />
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={25}
+      strokeLinecap="round"
+      d="M208 128l-80 80M192 40L40 192"
+    />
+  </svg>
+);
+export default shadcnui;
