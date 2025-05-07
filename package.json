@@ -20,7 +20,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.507.0",
-    "next": "^15.3.1",
+    "next": "^15.3.2",
     "next-themes": "^0.4.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -38,7 +38,7 @@
     "@types/react-dom": "^19",
     "@types/react-virtualized": "^9.22.2",
     "eslint": "^9",
-    "eslint-config-next": "^15.3.1",
+    "eslint-config-next": "^15.3.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
