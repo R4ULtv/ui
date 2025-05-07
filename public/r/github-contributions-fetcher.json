@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "github-contributions-fetcher",
   "type": "registry:block",
-  "title": "GitHub Contributions with Fetch",
+  "title": "GitHub Contributions Fetcher",
   "description": "A Github contributions table with client-side fetcher.",
   "registryDependencies": [
     "https://ui.raulcarini.dev/r/github-contributions.json"
