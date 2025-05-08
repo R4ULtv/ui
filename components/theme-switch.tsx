@@ -3,7 +3,7 @@
 import { MoonIcon, SunIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
@@ -17,9 +17,9 @@ export default function ThemeSwitch() {
     return <div className="size-8 rounded-md"></div>;
   }
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  const toggleTheme = useCallback(() => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  }, [setTheme]);
 
   return (
     <Button
