@@ -56,7 +56,7 @@ export default function RootLayout({
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-2">
                 <MousePointerClickIcon className="size-5" />
-                <span className="font-medium">UI Components</span>
+                <h1 className="font-semibold tracking-tight">UI Components</h1>
               </Link>
               <Separator
                 orientation="vertical"
