@@ -9,6 +9,10 @@ export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
+  const toggleTheme = useCallback(() => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  }, [setTheme]);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -16,10 +20,6 @@ export default function ThemeSwitch() {
   if (!mounted) {
     return <div className="size-8 rounded-md"></div>;
   }
-
-  const toggleTheme = useCallback(() => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  }, [setTheme]);
 
   return (
     <Button
