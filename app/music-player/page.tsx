@@ -6,7 +6,10 @@ import { Separator } from "@/components/ui/separator";
 import CopyShadcn from "@/components/copy-shadcn";
 import CopyURL from "@/components/copy-url";
 
-import { MusicPlayerExample } from "@/components/examples/music-player";
+import {
+  MusicPlayerExample,
+  MusicPlayerSpotifyExample,
+} from "@/components/examples/music-player";
 
 export const metadata: Metadata = {
   title: "Music Player Components",
@@ -35,6 +38,12 @@ const components = [
       "A music player component featuring essential playback controls and a progress slider.",
     registry: "https://ui.raulcarini.dev/r/music-player.json",
     component: MusicPlayerExample,
+  },
+  {
+    name: "Spotify Music Player",
+    description: "A music player component with a design inspired by Spotify.",
+    registry: "https://ui.raulcarini.dev/r/music-player-spotify.json",
+    component: MusicPlayerSpotifyExample,
   },
 ];
 
