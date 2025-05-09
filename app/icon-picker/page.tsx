@@ -18,7 +18,7 @@ import CopyURL from "@/components/copy-url";
 export const metadata: Metadata = {
   title: "Icon Picker Components",
   description:
-    "A collection of different icon picker components. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli.",
+    "A collection of different icon picker components. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli or open it in v0.",
   openGraph: {
     url: "/icon-picker",
     siteName: "Icon Picker Components",

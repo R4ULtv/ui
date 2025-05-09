@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ui.raulcarini.dev"),
   title: "UI Components",
   description:
-    "A collection of UI components built with Shadcn UI. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli.",
+    "A collection of UI components built with Shadcn UI. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli or open it in v0.",
   authors: [{ name: "Raul Carini", url: "https://www.raulcarini.dev" }],
   openGraph: {
     url: new URL("https://ui.raulcarini.dev"),

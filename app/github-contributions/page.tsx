@@ -16,7 +16,7 @@ import {
 export const metadata: Metadata = {
   title: "Github Contributions Components",
   description:
-    "A collection of Github Contributions components. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli.",
+    "A collection of Github Contributions components. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli or open it in v0.",
   openGraph: {
     url: "/github-contributions",
     siteName: "Github Contributions Components",
