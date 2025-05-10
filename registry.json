@@ -208,6 +208,43 @@
       "registryDependencies": [
         "https://ui.raulcarini.dev/r/github-contributions-advanced.json"
       ]
+    },
+    {
+      "name": "music-player",
+      "type": "registry:block",
+      "title": "Music Player",
+      "description": "A music player component featuring essential playback controls and a progress slider.",
+      "files": [
+        {
+          "path": "registry/music-player/music-player.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-music-player.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["slider", "button"]
+    },
+    {
+      "name": "music-player-spotify",
+      "type": "registry:block",
+      "title": "Spotify Music Player",
+      "description": "A music player component with a design inspired by Spotify.",
+      "files": [
+        {
+          "path": "registry/music-player/music-player-spotify.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-music-player.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "cssVars": {
+        "theme": { "spotify": "oklch(0.77 0.2124 148.67)" }
+      },
+      "registryDependencies": ["slider", "button"]
     }
   ]
 }
