@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { IconPickerExample } from "@/components/examples/icon-picker";
 import { GithubContributionsExample } from "@/components/examples/github-contributions";
+import { MusicPlayerExample } from "@/components/examples/music-player";
 
 import V0Icon from "@/components/icons/v0";
 import { Button } from "@/components/ui/button";
@@ -78,6 +79,41 @@ export default function Page() {
         </div>
         <div className="flex items-center border rounded-lg justify-center min-h-[400px] p-4 md:p-10 relative bg-muted/30">
           <GithubContributionsExample />
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2 md:flex-row items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Link
+              href="/music-player"
+              className="text-sm line-clamp-1 font-medium"
+            >
+              Music Player
+            </Link>
+            <Separator orientation="vertical" className="!h-4 hidden lg:flex" />
+            <span className="text-sm text-muted-foreground line-clamp-1 hidden lg:flex">
+              A music player component featuring essential playback controls and
+              a progress slider.
+            </span>
+          </div>
+          <div className="flex gap-2">
+            <CopyShadcn text="npx shadcn@latest add https://ui.raulcarini.dev/r/music-player.json" />
+            <CopyURL url="https://ui.raulcarini.dev/r/music-player.json" />
+            <Button variant="default" size="sm" asChild>
+              <a
+                href="https://v0.dev/chat/api/open?url=https://ui.raulcarini.dev/r/music-player.json"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open in
+                <V0Icon />
+              </a>
+            </Button>
+          </div>
+        </div>
+        <div className="flex items-center border rounded-lg justify-center min-h-[400px] p-4 md:p-10 relative bg-muted/30">
+          <MusicPlayerExample />
         </div>
       </div>
     </main>
