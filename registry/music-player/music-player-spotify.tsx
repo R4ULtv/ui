@@ -42,14 +42,14 @@ export default function MusicPlayerSpotify({ song }: { song: Song }) {
           />
         ) : (
           <div
-            className="size-16 rounded-md bg-muted flex items-center justify-center"
+            className="size-full md:size-16 rounded-md bg-muted flex items-center justify-center"
             aria-hidden="true"
           >
             <MusicIcon className="size-8 text-muted-foreground" />
           </div>
         )}
         <div>
-          <h2 className="text-lg font-semibold">{song.name}</h2>
+          <p className="text-lg font-semibold">{song.name}</p>
           <p className="text-sm text-muted-foreground">
             {song.artists.join(", ")}
           </p>
