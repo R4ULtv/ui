@@ -21,6 +21,11 @@ This is a collection of UI components built with Shadcn UI, featuring customizab
 - **Github Contributions Fetcher**: A Github contributions table with client-side fetcher.
 - **Github Contributions Advanced Fetcher**: An advanced Github contributions table with client-side fetcher.
 
+### Music Player Components
+
+- **Music Player**: A music player component featuring essential playback controls and a progress slider.
+- **Spotify Music Player**: A music player component with a design inspired by Spotify.
+
 ## Technologies
 
 - Next.js (App Router) v15
@@ -52,8 +57,9 @@ pnpm install
 You can add any variant using shadcn/cli. For example:
 
 ```bash
-npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json
-npx shadcn@latest add https://ui.raulcarini.dev/r/github-contributions.json
+pnpx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json
+pnpx shadcn@latest add https://ui.raulcarini.dev/r/github-contributions.json
+pnpx shadcn@latest add https://ui.raulcarini.dev/r/music-player.json
 ```
 
 ### Running the Development Server
@@ -67,11 +73,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Component Usage
 
 Check the examples below for an overview of how to integrate each variant:
-> NOTE: For optimal performance and to reduce initial bundle size, it is recommended to use dynamic import.
-  ```tsx
-  const IconPicker = dynamic(() => import("@/components/icon-picker"));
-  ```
 
+> NOTE: For optimal performance and to reduce initial bundle size, it is recommended to use dynamic import.
+
+```tsx
+const IconPicker = dynamic(() => import("@/components/icon-picker"));
+```
 
 ### Basic Icon Picker
 
@@ -81,10 +88,7 @@ import IconPicker from "@/components/icon-picker";
 function MyComponent() {
   const [selectedIcon, setSelectedIcon] = React.useState<string | null>(null);
   return (
-    <IconPicker
-      selectedIcon={selectedIcon}
-      setSelectedIcon={setSelectedIcon}
-    />
+    <IconPicker selectedIcon={selectedIcon} setSelectedIcon={setSelectedIcon} />
   );
 }
 ```
@@ -112,7 +116,9 @@ import IconPicker from "@/registry/icon-picker/icon-picker-custom-color";
 
 function MyComponent() {
   const [selectedIcon, setSelectedIcon] = React.useState<string | null>(null);
-  const [selectedColor, setSelectedColor] = React.useState<string>("oklch(62.3% 0.214 259.815)");
+  const [selectedColor, setSelectedColor] = React.useState<string>(
+    "oklch(62.3% 0.214 259.815)"
+  );
   return (
     <IconPicker
       selectedIcon={selectedIcon}
@@ -127,6 +133,7 @@ function MyComponent() {
 ### Virtualized Implementations
 
 Replace imports with the desired version:
+
 - **Virtua Version:**
   `import IconPicker from "@/components/icon-picker-virtua";`
 - **Tanstack Version:**
@@ -159,9 +166,7 @@ function MyComponent() {
     // ... more data
   ];
 
-  return (
-    <GithubContributions data={dummyData} />
-  );
+  return <GithubContributions data={dummyData} />;
 }
 ```
 
@@ -175,9 +180,32 @@ function MyComponent() {
 }
 ```
 
+### Music Player
+
+```tsx
+import MusicPlayer from "@/registry/music-player/music-player";
+
+function MyComponent() {
+  return (
+    <MusicPlayer
+      song={{
+        name: "Bean (Kobe) [feat. Chief Keef]",
+        artists: ["Lil Uzi Vert", "Chief Keef"],
+        album: {
+          name: "Eternal Atake (Deluxe) - LUV vs. The World 2",
+          image:
+            "https://i.scdn.co/image/ab67616d00001e02bd5f03953f9f1d3b833369c0",
+        },
+        duration: 238,
+      }}
+    />
+  );
+}
+```
+
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
