@@ -13,13 +13,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: url("/icon-picker"),
-      lastModified: new Date(),
+      lastModified: new Date("2025-04-27"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: url("/github-contributions"),
-      lastModified: new Date(),
+      lastModified: new Date("2025-05-04"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: url("/music-player"),
+      lastModified: new Date("2025-05-11"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
