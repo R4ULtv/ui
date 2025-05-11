@@ -7,6 +7,7 @@ import CopyShadcn from "@/components/copy-shadcn";
 import CopyURL from "@/components/copy-url";
 
 import {
+  MusicPlayerAppleExample,
   MusicPlayerExample,
   MusicPlayerSpotifyExample,
 } from "@/components/examples/music-player";
@@ -44,6 +45,13 @@ const components = [
     description: "A music player component with a design inspired by Spotify.",
     registry: "https://ui.raulcarini.dev/r/music-player-spotify.json",
     component: MusicPlayerSpotifyExample,
+  },
+  {
+    name: "Apple Music Player",
+    description:
+      "A music player component with a design inspired by Apple Music.",
+    registry: "https://ui.raulcarini.dev/r/music-player-apple.json",
+    component: MusicPlayerAppleExample,
   },
 ];
 

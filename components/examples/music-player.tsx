@@ -1,5 +1,6 @@
 import MusicPlayer from "@/registry/music-player/music-player";
 import MusicPlayerSpotify from "@/registry/music-player/music-player-spotify";
+import MusicPlayerApple from "@/registry/music-player/music-player-apple";
 
 export const MusicPlayerExample = () => {
   return (
@@ -30,6 +31,23 @@ export const MusicPlayerSpotifyExample = () => {
             "https://i.scdn.co/image/ab67616d00001e0264353426de6dfe0206f6d1d3",
         },
         duration: 175,
+      }}
+    />
+  );
+};
+
+export const MusicPlayerAppleExample = () => {
+  return (
+    <MusicPlayerApple
+      song={{
+        name: "CAN'T SAY",
+        artists: ["Travis Scott"],
+        album: {
+          name: "ASTROWORLD",
+          image:
+            "https://i.scdn.co/image/ab67616d00001e02072e9faef2ef7b6db63834a3",
+        },
+        duration: 198,
       }}
     />
   );

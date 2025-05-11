@@ -47,6 +47,7 @@
     --color-github-3: var(--github-3);
     --color-github-4: var(--github-4);
     --color-spotify: var(--spotify);
+    --color-apple: var(--apple);
 }
 
 :root {
@@ -87,6 +88,7 @@
     --github-3: oklch(0.63 0.157 148.35);
     --github-4: oklch(0.48 0.1122 150.02);
     --spotify: oklch(0.77 0.2124 148.67);
+    --apple: oklch(0.68 0.1968 17.66);
 }
 
 .dark {
