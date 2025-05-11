@@ -245,6 +245,26 @@
         "theme": { "spotify": "oklch(0.77 0.2124 148.67)" }
       },
       "registryDependencies": ["slider", "button"]
+    },
+    {
+      "name": "music-player-apple",
+      "type": "registry:block",
+      "title": "Apple Music Player",
+      "description": "A music player component with a design inspired by Apple.",
+      "files": [
+        {
+          "path": "registry/music-player/music-player-apple.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-music-player.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "cssVars": {
+        "theme": { "spotify": "oklch(0.68 0.1968 17.66)" }
+      },
+      "registryDependencies": ["slider", "button"]
     }
   ]
 }
