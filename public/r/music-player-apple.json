@@ -22,7 +22,7 @@
   ],
   "cssVars": {
     "theme": {
-      "apple": "oklch(0.68 0.1968 17.66)"
+      "--color-apple": "oklch(0.68 0.1968 17.66)"
     }
   }
 }
