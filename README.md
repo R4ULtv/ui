@@ -25,6 +25,7 @@ This is a collection of UI components built with Shadcn UI, featuring customizab
 
 - **Music Player**: A music player component featuring essential playback controls and a progress slider.
 - **Spotify Music Player**: A music player component with a design inspired by Spotify.
+- **Apple Music Player**: A music player component with a design inspired by Apple.
 
 ## Technologies
 
