@@ -242,7 +242,7 @@
         }
       ],
       "cssVars": {
-        "theme": { "--color-spotify": "oklch(0.77 0.2124 148.67)" }
+        "light": { "spotify": "oklch(0.77 0.2124 148.67)" }
       },
       "registryDependencies": ["slider", "button"]
     },
@@ -262,7 +262,7 @@
         }
       ],
       "cssVars": {
-        "theme": { "--color-apple": "oklch(0.68 0.1968 17.66)" }
+        "light": { "apple": "oklch(0.68 0.1968 17.66)" }
       },
       "registryDependencies": ["slider", "button"]
     }
