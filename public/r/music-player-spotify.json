@@ -22,7 +22,7 @@
   ],
   "cssVars": {
     "theme": {
-      "spotify": "oklch(0.77 0.2124 148.67)"
+      "color-spotify": "oklch(0.77 0.2124 148.67)"
     }
   }
 }
