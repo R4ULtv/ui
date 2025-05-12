@@ -8,7 +8,10 @@ import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "@/components/ui/sonner";
 import { Separator } from "@/components/ui/separator";
 import ThemeSwitch from "@/components/theme-switch";
+
 import { MousePointerClickIcon } from "lucide-react";
+import XformerlyTwitter from "@/components/icons/twitter";
+import GitHub from "@/components/icons/github";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,25 +75,27 @@ export default function RootLayout({
             </div>
           </header>
           {children}
-          <footer className="max-w-6xl mx-auto flex items-center px-4 py-6">
+          <footer className="max-w-6xl mx-auto flex items-center justify-between px-4 py-8">
             <span className="text-sm text-muted-foreground text-pretty">
-              Built by{" "}
+              Built with passion by{" "}
               <a
                 href="https://x.com/lil_poop__"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-foreground transition-colors"
+                className="font-medium text-foreground/90 hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground/50 transition-colors inline-flex items-center gap-1 group"
               >
                 Raul Carini
+                <XformerlyTwitter className="size-3.5 inline-block opacity-70 group-hover:opacity-100 transition-opacity" />
               </a>
-              . The source code is available on{" "}
+              . Explore the source code on{" "}
               <a
                 href="https://github.com/r4ultv/ui"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-foreground transition-colors"
+                className="font-medium text-foreground/90 hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground/50 transition-colors inline-flex items-center gap-1 group"
               >
                 Github
+                <GitHub className="size-3.5 inline-block opacity-70 group-hover:opacity-100 transition-opacity" />
               </a>
               .
             </span>
