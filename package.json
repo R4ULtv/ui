@@ -16,7 +16,7 @@
     "@radix-ui/react-separator": "^1.1.6",
     "@radix-ui/react-slider": "^1.3.4",
     "@radix-ui/react-slot": "^1.2.2",
-    "@tanstack/react-virtual": "^3.13.6",
+    "@tanstack/react-virtual": "^3.13.8",
     "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -30,21 +30,21 @@
     "react-dom": "^19.1.0",
     "react-virtualized": "^9.22.6",
     "sonner": "^2.0.3",
-    "tailwind-merge": "^3.2.0",
-    "tw-animate-css": "^1.2.8",
-    "virtua": "^0.40.3"
+    "tailwind-merge": "^3.3.0",
+    "tw-animate-css": "^1.3.0",
+    "virtua": "^0.40.4"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@eslint/eslintrc": "^3.3.1",
+    "@tailwindcss/postcss": "^4.1.7",
+    "@types/node": "^20.17.47",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
     "@types/react-virtualized": "^9.22.2",
     "babel-plugin-react-compiler": "19.1.0-rc.2",
-    "eslint": "^9",
+    "eslint": "^9.27.0",
     "eslint-config-next": "^15.3.2",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.8.3"
   }
 }
