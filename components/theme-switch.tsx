@@ -3,23 +3,14 @@
 import { MoonIcon, SunIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
-import { useState, useEffect, useCallback } from "react";
+import { useCallback } from "react";
 
 export default function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = useCallback(() => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   }, [setTheme]);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return <div className="size-8 rounded-md"></div>;
-  }
 
   return (
     <Button
@@ -29,7 +20,8 @@ export default function ThemeSwitch() {
       aria-label="Change Theme"
       onClick={toggleTheme}
     >
-      {theme === "light" ? <MoonIcon /> : <SunIcon />}
+      <MoonIcon className="hidden dark:block" aria-hidden="true" />
+      <SunIcon className="dark:hidden" aria-hidden="true" />
     </Button>
   );
 }

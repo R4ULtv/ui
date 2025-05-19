@@ -55,7 +55,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class">
+        <ThemeProvider attribute="class" disableTransitionOnChange>
           <header className="max-w-6xl mx-auto flex items-center px-4 py-6">
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-2">
