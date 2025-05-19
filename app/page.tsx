@@ -1,121 +1,112 @@
 import Link from "next/link";
+import Image from "next/image";
 
-import { IconPickerExample } from "@/components/examples/icon-picker";
-import { GithubContributionsExample } from "@/components/examples/github-contributions";
-import { MusicPlayerExample } from "@/components/examples/music-player";
+import { cn } from "@/lib/utils";
 
-import V0Icon from "@/components/icons/v0";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-
-import CopyShadcn from "@/components/copy-shadcn";
-import CopyURL from "@/components/copy-url";
+const components = [
+  {
+    name: "Icon Picker",
+    count: 7,
+    path: "/icon-picker",
+    images: {
+      light: "/icon-picker-light.png",
+      dark: "/icon-picker-dark.png",
+    },
+  },
+  {
+    name: "Github Contributions",
+    count: 4,
+    path: "/github-contributions",
+    images: {
+      light: "/github-contributions-light.png",
+      dark: "/github-contributions-dark.png",
+    },
+  },
+  {
+    name: "Music Player",
+    count: 3,
+    path: "/music-player",
+    images: {
+      light: "/music-player-light.png",
+      dark: "/music-player-dark.png",
+    },
+  },
+  {
+    name: "Search Bar",
+    count: 3,
+    path: "/search-bar",
+    images: {
+      light: "/search-bar-light.png",
+      dark: "/search-bar-dark.png",
+    },
+    soon: true,
+  },
+];
 
 export default function Page() {
   return (
-    <main className="max-w-6xl mx-auto flex flex-col px-4 py-8 flex-1 gap-8 md:gap-12">
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-2 md:flex-row items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Link
-              href="/icon-picker"
-              className="text-sm line-clamp-1 font-medium"
-            >
-              Icon Picker
-            </Link>
-            <Separator orientation="vertical" className="!h-4 hidden lg:flex" />
-            <span className="text-sm text-muted-foreground line-clamp-1 hidden lg:flex">
-              A simple icon picker component with search functionality.
-            </span>
-          </div>
-          <div className="flex gap-2">
-            <CopyShadcn text="npx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json" />
-            <CopyURL url="https://ui.raulcarini.dev/r/icon-picker.json" />
-            <Button variant="default" size="sm" asChild>
-              <a
-                href="https://v0.dev/chat/api/open?url=https://ui.raulcarini.dev/r/icon-picker.json"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open in
-                <V0Icon />
-              </a>
-            </Button>
-          </div>
-        </div>
-        <div className="flex items-center border rounded-lg justify-center min-h-[400px] p-4 md:p-10 relative bg-muted/30">
-          <IconPickerExample />
-        </div>
+    <div className="max-w-6xl mx-auto px-4 py-8 min-h-[calc(100vh-164px)]">
+      <div className="max-w-3xl space-y-4 max-sm:text-center">
+        <h1 className="text-foreground text-4xl/tight font-bold tracking-tight md:text-5xl/tight">
+          Open-Source UI Components built with Tailwind CSS, and React.
+        </h1>
+        <p className="text-muted-foreground mb-8 text-lg">
+          A collection of ready-to-use, importable components to speed up your
+          development workflow.
+        </p>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-2 md:flex-row items-center justify-between">
-          <div className="flex items-center gap-2">
+      <main className="grid gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 my-16">
+        {components.map((component) => (
+          <div className="space-y-3 text-center" key={component.name}>
             <Link
-              href="/github-contributions"
-              className="text-sm line-clamp-1 font-medium"
+              className={cn(
+                "peer relative inline-flex overflow-hidden rounded-xl border sm:flex hover:brightness-95 dark:hover:brightness-110 transition-[filter] ease-out duration-200 group",
+                component.soon && "pointer-events-none",
+              )}
+              href={component.path}
             >
-              Github Contributions
+              <Image
+                src={component.path + component.images.light}
+                width={640}
+                height={430}
+                alt={`${component.name} components light`}
+                loading="lazy"
+                quality={100}
+                className="w-full dark:hidden group-hover:scale-110 transition-transform ease-out duration-200"
+              />
+              <Image
+                src={component.path + component.images.dark}
+                width={640}
+                height={430}
+                alt={`${component.name} components dark`}
+                loading="lazy"
+                quality={100}
+                className="hidden w-full dark:block group-hover:scale-110 transition-transform ease-out duration-200"
+              />
+              {component.soon && (
+                <span className="absolute bottom-2 right-3 text-xs text-muted-foreground font-mono">
+                  Available Soon
+                </span>
+              )}
             </Link>
-            <Separator orientation="vertical" className="!h-4 hidden lg:flex" />
-            <span className="text-sm text-muted-foreground line-clamp-1 hidden lg:flex">
-              A simple Github contributions table.
-            </span>
-          </div>
-          <div className="flex gap-2">
-            <CopyShadcn text="npx shadcn@latest add https://ui.raulcarini.dev/r/github-contributions.json" />
-            <CopyURL url="https://ui.raulcarini.dev/r/github-contributions.json" />
-            <Button variant="default" size="sm" asChild>
-              <a
-                href="https://v0.dev/chat/api/open?url=https://ui.raulcarini.dev/r/github-contributions.json"
-                target="_blank"
-                rel="noreferrer"
+            <div>
+              <Link
+                className={cn(
+                  "text-sm font-medium hover:underline",
+                  component.soon && "pointer-events-none",
+                )}
+                href={component.path}
               >
-                Open in
-                <V0Icon />
-              </a>
-            </Button>
+                {component.name}
+              </Link>
+              <p className="text-muted-foreground text-sm">
+                {component.count} Components
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="flex items-center border rounded-lg justify-center min-h-[400px] p-4 md:p-10 relative bg-muted/30">
-          <GithubContributionsExample />
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-2 md:flex-row items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Link
-              href="/music-player"
-              className="text-sm line-clamp-1 font-medium"
-            >
-              Music Player
-            </Link>
-            <Separator orientation="vertical" className="!h-4 hidden lg:flex" />
-            <span className="text-sm text-muted-foreground line-clamp-1 hidden lg:flex">
-              A music player component featuring essential playback controls and
-              a progress slider.
-            </span>
-          </div>
-          <div className="flex gap-2">
-            <CopyShadcn text="npx shadcn@latest add https://ui.raulcarini.dev/r/music-player.json" />
-            <CopyURL url="https://ui.raulcarini.dev/r/music-player.json" />
-            <Button variant="default" size="sm" asChild>
-              <a
-                href="https://v0.dev/chat/api/open?url=https://ui.raulcarini.dev/r/music-player.json"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open in
-                <V0Icon />
-              </a>
-            </Button>
-          </div>
-        </div>
-        <div className="flex items-center border rounded-lg justify-center min-h-[400px] p-4 md:p-10 relative bg-muted/30">
-          <MusicPlayerExample />
-        </div>
-      </div>
-    </main>
+        ))}
+      </main>
+    </div>
   );
 }
