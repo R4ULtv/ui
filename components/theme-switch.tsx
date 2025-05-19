@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { useCallback } from "react";
 
 export default function ThemeSwitch() {
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
   const toggleTheme = useCallback(() => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
