@@ -3,7 +3,17 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-const components = [
+interface Component {
+  name: string;
+  count: number;
+  path: string;
+  images: { light: string; dark: string };
+  soon?: boolean;
+  new?: boolean;
+  update?: boolean;
+}
+
+const components: Component[] = [
   {
     name: "Icon Picker",
     count: 7,
@@ -33,13 +43,13 @@ const components = [
   },
   {
     name: "Search Bar",
-    count: 3,
+    count: 2,
     path: "/search-bar",
     images: {
       light: "/search-bar-light.png",
       dark: "/search-bar-dark.png",
     },
-    soon: true,
+    new: true,
   },
 ];
 
@@ -87,6 +97,16 @@ export default function Page() {
               {component.soon && (
                 <span className="absolute bottom-2 right-3 text-xs text-muted-foreground font-mono">
                   Available Soon
+                </span>
+              )}
+              {component.update && (
+                <span className="absolute bottom-2 right-3 text-xs text-muted-foreground font-mono">
+                  New Update
+                </span>
+              )}
+              {component.new && (
+                <span className="absolute bottom-2 right-3 text-xs text-muted-foreground font-mono">
+                  New Components
                 </span>
               )}
             </Link>
