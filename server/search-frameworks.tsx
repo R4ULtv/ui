@@ -104,6 +104,17 @@ const allFrameworks: InternalFramework[] = rawFrameworks.map((framework) => ({
   lowerDescription: framework.description.toLowerCase(),
 }));
 
+/**
+ * Searches the list of frameworks based on a query string.
+ * The search is performed against the framework's id, name, or description (case-insensitive).
+ * Results are limited to the first 5 matches.
+ *
+ * This is an example for the search-bar-autosuggestions component. In a real application,
+ * you would likely replace this with a database query or similar backend search mechanism.
+ *
+ * @param query The search query string.
+ * @returns A promise that resolves to an array of matching Framework objects.
+ */
 export async function searchFrameworks(query: string): Promise<Framework[]> {
   if (!query) {
     return [];
