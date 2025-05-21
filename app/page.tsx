@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
+import { GiftIcon } from "lucide-react";
 
 interface Component {
   name: string;
@@ -102,18 +103,18 @@ export default function Page() {
                 className="hidden w-full dark:block group-hover:scale-110 transition-transform ease-out duration-200"
               />
               {component.soon && (
-                <span className="absolute bottom-2 right-3 text-xs text-muted-foreground font-mono">
-                  Available Soon
+                <span className="absolute bottom-3 right-4 text-xs text-muted-foreground font-mono">
+                  Soon
                 </span>
               )}
               {component.update && (
-                <span className="absolute bottom-2 right-3 text-xs text-muted-foreground font-mono">
-                  New Update
+                <span className="absolute bottom-3 right-4 text-xs text-muted-foreground font-mono">
+                  Update
                 </span>
               )}
               {component.new && (
-                <span className="absolute bottom-2 right-3 text-xs text-muted-foreground font-mono">
-                  New Components
+                <span className="absolute bottom-3 right-4 text-xs text-muted-foreground font-mono">
+                  New
                 </span>
               )}
             </Link>
