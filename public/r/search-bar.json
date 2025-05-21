@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-bar",
+  "type": "registry:block",
+  "title": "Search Bar",
+  "description": "Search Bar managing URL queries client-side (Nuqs).",
+  "dependencies": [
+    "nuqs"
+  ],
+  "registryDependencies": [
+    "input",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/search-bar/search-bar.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { Input } from \"@/components/ui/input\";\nimport { Button } from \"@/components/ui/button\";\nimport { useDebounce } from \"@/hooks/use-debounce\";\n\nimport { useQueryState, parseAsString } from \"nuqs\";\nimport { SearchIcon, XIcon } from \"lucide-react\";\n\nexport default function SearchBar() {\n  const [query, setQuery] = useQueryState(\"search\", parseAsString);\n  const [inputValue, setInputValue] = React.useState(query || \"\");\n  const debouncedInput = useDebounce(inputValue, 300);\n\n  React.useEffect(() => {\n    if (debouncedInput.trim() === \"\") {\n      if (query !== null) setQuery(null);\n    } else if (debouncedInput !== query) {\n      setQuery(debouncedInput);\n    }\n  }, [debouncedInput, query, setQuery]);\n\n  const clearQuery = React.useCallback(() => {\n    setInputValue(\"\");\n    setQuery(null);\n  }, [setQuery]);\n\n  const handleInputChange = React.useCallback(\n    (event: React.ChangeEvent<HTMLInputElement>) => {\n      setInputValue(event.target.value);\n    },\n    [],\n  );\n\n  return (\n    <form\n      className=\"relative w-full max-w-xs\"\n      role=\"search\"\n      aria-label=\"Site search\"\n    >\n      <Input\n        className=\"peer ps-9 pe-9 h-10 [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none [&::-webkit-search-results-button]:appearance-none [&::-webkit-search-results-decoration]:appearance-none\"\n        placeholder=\"Search...\"\n        type=\"search\"\n        value={inputValue}\n        onChange={handleInputChange}\n        autoComplete=\"off\"\n        aria-label=\"Search input\"\n      />\n      <div className=\"text-muted-foreground/80 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 peer-disabled:opacity-50\">\n        <SearchIcon aria-hidden=\"true\" className=\"size-4\" />\n      </div>\n      {inputValue && (\n        <Button\n          type=\"button\"\n          variant=\"ghost\"\n          size=\"icon\"\n          onClick={clearQuery}\n          aria-label=\"Clear search\"\n          className=\"text-muted-foreground hover:text-foreground hover:bg-transparent dark:hover:bg-transparent absolute inset-y-0 end-0 h-full w-10 transition-colors\"\n        >\n          <XIcon aria-hidden=\"true\" className=\"animate-in fade-in zoom-in-95\" />\n        </Button>\n      )}\n    </form>\n  );\n}\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "hooks/use-debounce.ts",
+      "content": "import * as React from \"react\";\n\nexport function useDebounce<T>(value: T, delay?: number): T {\n  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);\n\n  React.useEffect(() => {\n    const timer = setTimeout(() => {\n      setDebouncedValue(value);\n    }, delay || 500);\n\n    return () => {\n      clearTimeout(timer);\n    };\n  }, [value, delay]);\n\n  return debouncedValue;\n}\n",
+      "type": "registry:hook"
+    }
+  ]
+}
