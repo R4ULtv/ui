@@ -27,6 +27,11 @@ This is a collection of UI components built with Shadcn UI, featuring customizab
 - **Spotify Music Player**: A music player component with a design inspired by Spotify.
 - **Apple Music Player**: A music player component with a design inspired by Apple.
 
+### Search Bar Components
+
+- **Search Bar**: A search bar component managing URL queries client-side (Nuqs).
+- **Search Bar Suggestions**: A search bar component featuring autosuggestions (Nuqs).
+
 ## Technologies
 
 - Next.js (App Router) v15
@@ -61,6 +66,7 @@ You can add any variant using shadcn/cli. For example:
 pnpx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json
 pnpx shadcn@latest add https://ui.raulcarini.dev/r/github-contributions.json
 pnpx shadcn@latest add https://ui.raulcarini.dev/r/music-player.json
+pnpx shadcn@latest add https://ui.raulcarini.dev/r/search-bar.json
 ```
 
 ### Running the Development Server
@@ -113,7 +119,7 @@ function MyComponent() {
 ### Icon Picker Custom Color
 
 ```tsx
-import IconPicker from "@/registry/icon-picker/icon-picker-custom-color";
+import IconPicker from "@/components/icon-picker-custom-color";
 
 function MyComponent() {
   const [selectedIcon, setSelectedIcon] = React.useState<string | null>(null);
@@ -184,7 +190,7 @@ function MyComponent() {
 ### Music Player
 
 ```tsx
-import MusicPlayer from "@/registry/music-player/music-player";
+import MusicPlayer from "@/components/music-player";
 
 function MyComponent() {
   return (
@@ -204,6 +210,21 @@ function MyComponent() {
 }
 ```
 
+### Search Bar
+
+```tsx
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+import SearchBar from "@/components/search-bar";
+
+function MyComponent() {
+  return (
+    <NuqsAdapter>
+      <SearchBar />
+    </NuqsAdapter>
+  );
+}
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -216,3 +237,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Tanstack Virtual](https://tanstack.com/virtual/latest)
 - [React Virtualized](https://github.com/bvaughn/react-virtualized)
 - [Github Contributions API](https://github.com/grubersjoe/github-contributions-api)
+- [Nuqs](https://nuqs.47ng.com/)
