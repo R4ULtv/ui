@@ -46,13 +46,7 @@ export default function SearchBarSuggestions() {
   );
 
   React.useEffect(() => {
-    if (!debouncedInput) {
-      setSuggestions([]);
-      setIsLoading(false);
-      return;
-    }
-
-    if (debouncedInput.length === 0) {
+    if (!debouncedInput || debouncedInput.length < 2) {
       setSuggestions([]);
       setIsLoading(false);
       return;
@@ -78,8 +72,10 @@ export default function SearchBarSuggestions() {
     >
       <div
         className={cn(
-          "relative [&_div]:data-slot:h-10 [&_div]:data-slot:border-0",
-          suggestions.length > 0 && "[&_div]:data-slot:border-b",
+          "relative [&_div[data-slot='command-input-wrapper']]:h-10",
+          suggestions.length > 0
+            ? "[&_div[data-slot='command-input-wrapper']]:border-b"
+            : "[&_div[data-slot='command-input-wrapper']]:border-0",
         )}
       >
         <CommandInput
