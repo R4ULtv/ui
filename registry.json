@@ -265,6 +265,42 @@
         "light": { "apple": "oklch(0.68 0.1968 17.66)" }
       },
       "registryDependencies": ["slider", "button"]
+    },
+    {
+      "name": "search-bar",
+      "type": "registry:block",
+      "title": "Search Bar",
+      "description": "Search Bar managing URL queries client-side (Nuqs).",
+      "files": [
+        {
+          "path": "registry/search-bar/search-bar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["input", "button"],
+      "dependencies": ["nuqs"]
+    },
+    {
+      "name": "search-bar-suggestions",
+      "type": "registry:block",
+      "title": "Search Bar Suggestions",
+      "description": "Search bar featuring autosuggestions (Nuqs).",
+      "files": [
+        {
+          "path": "registry/search-bar/search-bar-suggestions.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["command", "button"],
+      "dependencies": ["nuqs"]
     }
   ]
 }
