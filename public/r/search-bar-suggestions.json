@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-bar-suggestions",
+  "type": "registry:block",
+  "title": "Search Bar Suggestions",
+  "description": "Search bar featuring autosuggestions (Nuqs).",
+  "dependencies": [
+    "nuqs"
+  ],
+  "registryDependencies": [
+    "command",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/search-bar/search-bar-suggestions.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Command,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n} from \"@/components/ui/command\";\n\nimport { useQueryState, parseAsString } from \"nuqs\";\nimport { Loader2Icon, SearchIcon, XIcon } from \"lucide-react\";\n\nimport { useDebounce } from \"@/hooks/use-debounce\";\nimport { cn } from \"@/lib/utils\";\n\n// Code at https://github.com/R4ULtv/ui/tree/master/server/search-frameworks.tsx\nimport { searchFrameworks, Framework } from \"@/server/search-frameworks\";\n\nexport default function SearchBarSuggestions() {\n  const [query, setQuery] = useQueryState(\"framework\", parseAsString);\n  const [inputValue, setInputValue] = React.useState(query || \"\");\n  const debouncedInput = useDebounce(inputValue, 200);\n\n  const [suggestions, setSuggestions] = React.useState<Framework[]>([]);\n  const [isLoading, setIsLoading] = React.useState(false);\n\n  const clearQuery = React.useCallback(() => {\n    setInputValue(\"\");\n    setQuery(null);\n    setSuggestions([]);\n  }, [setQuery]);\n\n  const handleInputChange = React.useCallback((value: string) => {\n    setInputValue(value);\n  }, []);\n\n  const handleSelect = React.useCallback(\n    (value: string) => {\n      setQuery(value);\n      setInputValue(value);\n    },\n    [setQuery],\n  );\n\n  React.useEffect(() => {\n    if (!debouncedInput) {\n      setSuggestions([]);\n      setIsLoading(false);\n      return;\n    }\n\n    if (debouncedInput.length === 0) {\n      setSuggestions([]);\n      setIsLoading(false);\n      return;\n    }\n    const getSuggestions = async () => {\n      if (debouncedInput && debouncedInput.length > 0) {\n        setIsLoading(true);\n        const data = await searchFrameworks(debouncedInput);\n        setSuggestions(data);\n        setIsLoading(false);\n      } else {\n        setSuggestions([]);\n        setIsLoading(false);\n      }\n    };\n    getSuggestions();\n  }, [debouncedInput]);\n\n  return (\n    <Command\n      shouldFilter={false}\n      className=\"w-full max-w-[322px] bg-input/30 border\"\n    >\n      <div\n        className={cn(\n          \"relative [&_div]:data-slot:h-10 [&_div]:data-slot:border-0\",\n          suggestions.length > 0 && \"[&_div]:data-slot:border-b\",\n        )}\n      >\n        <CommandInput\n          className=\"peer pe-9\"\n          placeholder=\"Search frameworks...\"\n          value={inputValue}\n          onValueChange={handleInputChange}\n          autoComplete=\"off\"\n          aria-label=\"Search input\"\n        />\n        {inputValue && (\n          <Button\n            type=\"button\"\n            variant=\"ghost\"\n            size=\"icon\"\n            onClick={clearQuery}\n            aria-label={isLoading ? \"Loading suggestions...\" : \"Clear search\"}\n            disabled={isLoading}\n            className=\"text-muted-foreground hover:text-foreground hover:bg-transparent dark:hover:bg-transparent absolute inset-y-0 end-0 h-full w-10 transition-colors\"\n          >\n            {isLoading ? (\n              <Loader2Icon\n                aria-hidden=\"true\"\n                className=\"animate-spin text-foreground\"\n              />\n            ) : (\n              <XIcon\n                aria-hidden=\"true\"\n                className=\"animate-in fade-in zoom-in-95\"\n              />\n            )}\n          </Button>\n        )}\n      </div>\n      {suggestions.length > 0 && (\n        <CommandList>\n          <CommandGroup heading=\"Suggestions\">\n            {suggestions.map((framework) => (\n              <CommandItem\n                key={framework.id}\n                value={framework.id}\n                onSelect={handleSelect}\n                className=\"flex flex-row items-center cursor-pointer\"\n              >\n                <span className=\"font-medium shrink-0\">{framework.name}</span>\n                <span className=\"text-xs text-muted-foreground truncate\">\n                  {framework.description}\n                </span>\n              </CommandItem>\n            ))}\n          </CommandGroup>\n        </CommandList>\n      )}\n    </Command>\n  );\n}\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "hooks/use-debounce.ts",
+      "content": "import * as React from \"react\";\n\nexport function useDebounce<T>(value: T, delay?: number): T {\n  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);\n\n  React.useEffect(() => {\n    const timer = setTimeout(() => {\n      setDebouncedValue(value);\n    }, delay || 500);\n\n    return () => {\n      clearTimeout(timer);\n    };\n  }, [value, delay]);\n\n  return debouncedValue;\n}\n",
+      "type": "registry:hook"
+    }
+  ]
+}
