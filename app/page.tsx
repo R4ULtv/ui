@@ -54,6 +54,13 @@ const components: Component[] = [
 ];
 
 export default function Page() {
+  const sortedComponents = [...components].sort((a, b) => {
+    if (a.soon !== b.soon) return a.soon ? -1 : 1;
+    if (a.new !== b.new) return a.new ? -1 : 1;
+    if (a.update !== b.update) return a.update ? -1 : 1;
+    return 0;
+  });
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 min-h-[calc(100vh-164px)]">
       <div className="max-w-3xl space-y-4 max-sm:text-center">
@@ -67,7 +74,7 @@ export default function Page() {
       </div>
 
       <main className="grid gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 my-16">
-        {components.map((component) => (
+        {sortedComponents.map((component) => (
           <div className="space-y-3 text-center" key={component.name}>
             <Link
               className={cn(
