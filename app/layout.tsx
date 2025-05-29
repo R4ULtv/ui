@@ -9,9 +9,10 @@ import { Toaster } from "@/components/ui/sonner";
 import { Separator } from "@/components/ui/separator";
 import ThemeSwitch from "@/components/theme-switch";
 
-import { MousePointerClickIcon } from "lucide-react";
+import { HeartIcon, MousePointerClickIcon } from "lucide-react";
 import XformerlyTwitter from "@/components/icons/twitter";
 import GitHub from "@/components/icons/github";
+import { Button } from "@/components/ui/button";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,7 +71,22 @@ export default function RootLayout({
                 A collection of UI components built with Shadcn UI.
               </p>
             </div>
-            <div className="ml-auto">
+            <div className="ml-auto flex items-center md:gap-1">
+              <Button asChild variant="ghost" size="sm" className="h-8">
+                <a
+                  href="https://github.com/sponsors/R4ULtv"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="hidden md:block">Sponsorship</span>
+                  <HeartIcon />
+                </a>
+              </Button>
+
+              <Separator
+                orientation="vertical"
+                className="!h-6 hidden md:block"
+              />
               <ThemeSwitch />
             </div>
           </header>
