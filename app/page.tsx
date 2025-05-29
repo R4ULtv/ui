@@ -49,7 +49,6 @@ const components: Component[] = [
       light: "/search-bar-light.png",
       dark: "/search-bar-dark.png",
     },
-    new: true,
   },
 ];
 
