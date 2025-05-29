@@ -74,7 +74,7 @@ export default function RootLayout({
             <div className="ml-auto flex items-center md:gap-1">
               <Button asChild variant="ghost" size="sm" className="h-8">
                 <a
-                  href="https://github.com/sponsors/R4ULtv"
+                  href="https://github.com/sponsors/R4ULtv?frequency=one-time"
                   target="_blank"
                   rel="noreferrer"
                 >
