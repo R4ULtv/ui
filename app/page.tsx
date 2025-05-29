@@ -77,7 +77,7 @@ export default function Page() {
           <div className="space-y-3 text-center" key={component.name}>
             <Link
               className={cn(
-                "peer relative inline-flex overflow-hidden rounded-xl border sm:flex hover:brightness-95 dark:hover:brightness-110 transition-[filter] ease-out duration-200 group",
+                "relative inline-flex overflow-hidden rounded-xl border sm:flex group",
                 component.soon && "pointer-events-none",
               )}
               href={component.path}
