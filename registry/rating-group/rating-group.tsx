@@ -63,6 +63,7 @@ function RatingGroup({
           <ToggleGroupItem
             key={starValue}
             value={starValue}
+            aria-label={`${starIndex} star rating`}
             className={cn(
               "relative border-0 bg-transparent p-0 hover:bg-transparent data-[state=on]:bg-transparent hover:scale-110 transition-transform ease-out focus-visible:ring-0",
               disabled && "pointer-events-none opacity-50",
