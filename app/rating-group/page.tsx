@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "A collection of Rating Group components. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli.",
   openGraph: {
-    url: "/search-bar",
+    url: "/rating-group",
     siteName: "Rating Group Components",
     images: [
       {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const components = [
   {
     name: "Rating Group",
-    description: "",
+    description: "A star rating component for user feedback.",
     registry: "https://ui.raulcarini.dev/r/rating-group.json",
     component: BasicRatingExample,
   },
