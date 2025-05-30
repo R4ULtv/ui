@@ -72,14 +72,14 @@ export default function RootLayout({
               </p>
             </div>
             <div className="ml-auto flex items-center md:gap-1">
-              <Button asChild variant="ghost" size="sm" className="h-8">
+              <Button asChild variant="ghost" size="sm" className="h-8 group">
                 <a
                   href="https://github.com/sponsors/R4ULtv?frequency=one-time"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <span className="hidden md:block">Sponsorship</span>
-                  <HeartIcon />
+                  <HeartIcon className="group-hover:stroke-red-400 group-hover:fill-red-400 group-hover:scale-110 transition-all ease-out" />
                 </a>
               </Button>
 
