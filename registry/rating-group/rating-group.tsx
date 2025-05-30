@@ -23,24 +23,27 @@ function RatingGroup({
   size = "default",
   ...props
 }: RatingGroupProps) {
-  const [hoveredValue, setHoveredValue] = React.useState<string | null>(null);
-  const currentValue = parseInt(value || "0");
-  const hoveredValueInt = hoveredValue ? parseInt(hoveredValue) : null;
+  const [hoveredValue, setHoveredValue] = React.useState<number | null>(null);
+  const currentValue = React.useMemo(() => parseInt(value || "0", 10), [value]);
+  const displayValue = hoveredValue ?? currentValue;
 
-  const handleMouseEnter = (starValue: string) => {
-    if (!disabled) {
-      setHoveredValue(starValue);
-    }
-  };
+  const starIndices = React.useMemo(
+    () => Array.from({ length: max }, (_, i) => i + 1),
+    [max],
+  );
 
-  const handleMouseLeave = () => {
+  const handleMouseEnter = React.useCallback(
+    (starValue: number) => {
+      if (!disabled) {
+        setHoveredValue(starValue);
+      }
+    },
+    [disabled],
+  );
+
+  const handleMouseLeave = React.useCallback(() => {
     setHoveredValue(null);
-  };
-
-  const getStarState = (starIndex: number) => {
-    const displayValue = hoveredValueInt ?? currentValue;
-    return starIndex <= displayValue;
-  };
+  }, []);
 
   return (
     <ToggleGroup
@@ -53,10 +56,9 @@ function RatingGroup({
       onMouseLeave={handleMouseLeave}
       {...props}
     >
-      {Array.from({ length: max }, (_, i) => {
-        const starValue = (i + 1).toString();
-        const isActive = getStarState(i + 1);
-
+      {starIndices.map((starIndex) => {
+        const starValue = starIndex.toString();
+        const isActive = starIndex <= displayValue;
         return (
           <ToggleGroupItem
             key={starValue}
@@ -65,12 +67,12 @@ function RatingGroup({
               "relative border-0 bg-transparent p-0 hover:bg-transparent data-[state=on]:bg-transparent hover:scale-110 transition-transform ease-out focus-visible:ring-0",
               disabled && "pointer-events-none opacity-50",
             )}
-            onMouseEnter={() => handleMouseEnter(starValue)}
+            onMouseEnter={() => handleMouseEnter(starIndex)}
             disabled={disabled}
           >
             <StarIcon
               className={cn(
-                "transition-colors ease-out ",
+                "transition-colors ease-out",
                 size === "sm" && "size-4",
                 size === "default" && "size-5",
                 size === "lg" && "size-6",
