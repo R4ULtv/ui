@@ -79,7 +79,7 @@ function RatingGroup({
                 size === "lg" && "size-6",
                 isActive
                   ? "fill-yellow-400 text-yellow-400"
-                  : "text-muted-foreground/50 hover:text-yellow-400",
+                  : "text-muted-foreground/50",
               )}
             />
           </ToggleGroupItem>
