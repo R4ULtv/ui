@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import V0Icon from "@/components/icons/v0";
-import { Button } from "@/components/ui/button";
+import OpenV0 from "@/components/open-v0";
 import { Separator } from "@/components/ui/separator";
 
 import CopyShadcn from "@/components/copy-shadcn";
@@ -59,7 +58,7 @@ export default function Page() {
             id={component.name.toLowerCase().replace(/ /g, "-")}
             className="flex flex-col gap-4"
           >
-            <div className="flex flex-col gap-2 md:flex-row items-center justify-between">
+            <div className="flex gap-2 items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-sm line-clamp-1 font-medium">
                   {component.name}
@@ -77,16 +76,7 @@ export default function Page() {
                   text={`npx shadcn@latest add ${component.registry}`}
                 />
                 <CopyURL url={component.registry} />
-                <Button variant="default" size="sm" asChild>
-                  <a
-                    href={`https://v0.dev/chat/api/open?url=${component.registry}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Open in
-                    <V0Icon />
-                  </a>
-                </Button>
+                <OpenV0 registry={component.registry} />
               </div>
             </div>
             <div className="flex items-center border rounded-lg justify-center min-h-[400px] p-4 md:p-10 relative bg-muted/30">
