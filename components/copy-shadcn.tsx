@@ -25,7 +25,8 @@ export default function CopyShadcn({ text }: { text: string }) {
       size="sm"
       onClick={handleCopy}
     >
-      {copied ? <CheckIcon size={16} /> : <ShadcnIcon />} shadcn/cli
+      {copied ? <CheckIcon size={16} /> : <ShadcnIcon />}
+      <span className="hidden md:block">shadcn/cli</span>
     </Button>
   );
 }

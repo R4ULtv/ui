@@ -24,7 +24,8 @@ export default function CopyURL({ url }: { url: string }) {
       size="sm"
       onClick={handleCopy}
     >
-      {copied ? <CheckIcon size={16} /> : <ClipboardIcon size={16} />} URL
+      {copied ? <CheckIcon size={16} /> : <ClipboardIcon size={16} />}
+      <span className="hidden md:block">URL</span>
     </Button>
   );
 }
