@@ -50,6 +50,16 @@ const components: Component[] = [
       dark: "/search-bar-dark.png",
     },
   },
+  {
+    name: "Rating Group",
+    count: 2,
+    path: "/rating-group",
+    images: {
+      light: "/rating-group-light.png",
+      dark: "/rating-group-dark.png",
+    },
+    soon: true,
+  },
 ];
 
 export default function Page() {
