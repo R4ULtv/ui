@@ -6,7 +6,13 @@ import { Separator } from "@/components/ui/separator";
 import CopyShadcn from "@/components/copy-shadcn";
 import CopyURL from "@/components/copy-url";
 
-import { BasicRatingExample } from "@/components/examples/rating-group";
+import {
+  BasicRatingExample,
+  CustomIconRatingExample,
+  HalfStarRatingExample,
+  HeartRatingExample,
+  ReadOnlyRatingExample,
+} from "@/components/examples/rating-group";
 
 export const metadata: Metadata = {
   title: "Rating Group Components",
@@ -34,6 +40,34 @@ const components = [
     description: "A star rating component for user feedback.",
     registry: "https://ui.raulcarini.dev/r/rating-group.json",
     component: BasicRatingExample,
+  },
+  {
+    name: "Half Star Rating",
+    description:
+      "Advanced example: Rating component that supports half-star ratings.",
+    registry: "https://ui.raulcarini.dev/r/rating-group-advanced.json",
+    component: HalfStarRatingExample,
+  },
+  {
+    name: "Heart Rating",
+    description:
+      "Advanced example: Heart-themed rating component with custom colors.",
+    registry: "https://ui.raulcarini.dev/r/rating-group-advanced.json",
+    component: HeartRatingExample,
+  },
+  {
+    name: "Read-only Rating",
+    description:
+      "Advanced example: Display-only rating component for showing scores.",
+    registry: "https://ui.raulcarini.dev/r/rating-group-advanced.json",
+    component: ReadOnlyRatingExample,
+  },
+  {
+    name: "Custom Icon Rating",
+    description:
+      "Advanced example: Rating with completely custom icons and styling.",
+    registry: "https://ui.raulcarini.dev/r/rating-group-advanced.json",
+    component: CustomIconRatingExample,
   },
 ];
 
