@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating-group",
+  "type": "registry:block",
+  "title": "Rating Group",
+  "description": "A star rating component for user feedback.",
+  "registryDependencies": [
+    "toggle-group"
+  ],
+  "files": [
+    {
+      "path": "registry/rating-group/rating-group.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { StarIcon } from \"lucide-react\";\r\nimport { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle-group\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface RatingGroupProps {\r\n  value?: string;\r\n  onValueChange?: (value: string) => void;\r\n  max?: number;\r\n  className?: string;\r\n  disabled?: boolean;\r\n  size?: \"default\" | \"sm\" | \"lg\";\r\n}\r\n\r\nfunction RatingGroup({\r\n  value = \"0\",\r\n  onValueChange,\r\n  max = 5,\r\n  className,\r\n  disabled = false,\r\n  size = \"default\",\r\n  ...props\r\n}: RatingGroupProps) {\r\n  const [hoveredValue, setHoveredValue] = React.useState<number | null>(null);\r\n  const currentValue = React.useMemo(() => parseInt(value || \"0\", 10), [value]);\r\n  const displayValue = hoveredValue ?? currentValue;\r\n\r\n  const starIndices = React.useMemo(\r\n    () => Array.from({ length: max }, (_, i) => i + 1),\r\n    [max],\r\n  );\r\n\r\n  const handleMouseEnter = React.useCallback(\r\n    (starValue: number) => {\r\n      if (!disabled) {\r\n        setHoveredValue(starValue);\r\n      }\r\n    },\r\n    [disabled],\r\n  );\r\n\r\n  const handleMouseLeave = React.useCallback(() => {\r\n    setHoveredValue(null);\r\n  }, []);\r\n\r\n  return (\r\n    <ToggleGroup\r\n      type=\"single\"\r\n      value={value}\r\n      onValueChange={onValueChange}\r\n      size={size}\r\n      className={cn(\"gap-0\", className)}\r\n      disabled={disabled}\r\n      onMouseLeave={handleMouseLeave}\r\n      {...props}\r\n    >\r\n      {starIndices.map((starIndex) => {\r\n        const starValue = starIndex.toString();\r\n        const isActive = starIndex <= displayValue;\r\n        return (\r\n          <ToggleGroupItem\r\n            key={starValue}\r\n            value={starValue}\r\n            aria-label={`${starIndex} star rating`}\r\n            className={cn(\r\n              \"relative border-0 bg-transparent p-0 hover:bg-transparent data-[state=on]:bg-transparent focus-visible:ring-0\",\r\n              \"hover:scale-110 focus-visible:scale-110 transition-transform ease-out\",\r\n              disabled && \"pointer-events-none opacity-50\",\r\n            )}\r\n            onMouseEnter={() => handleMouseEnter(starIndex)}\r\n            disabled={disabled}\r\n          >\r\n            <StarIcon\r\n              className={cn(\r\n                \"transition-colors ease-out\",\r\n                size === \"sm\" && \"size-4\",\r\n                size === \"default\" && \"size-5\",\r\n                size === \"lg\" && \"size-6\",\r\n                isActive\r\n                  ? \"fill-yellow-400 text-yellow-400\"\r\n                  : \"text-muted-foreground/50\",\r\n              )}\r\n            />\r\n          </ToggleGroupItem>\r\n        );\r\n      })}\r\n    </ToggleGroup>\r\n  );\r\n}\r\n\r\nexport { RatingGroup };\r\n",
+      "type": "registry:component"
+    }
+  ]
+}
