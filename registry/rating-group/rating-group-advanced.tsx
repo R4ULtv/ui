@@ -132,18 +132,25 @@ function RatingGroupAdvanced({
                   "hover:scale-110 focus-visible:scale-110 transition-transform ease-out",
                   (disabled || readOnly) && "pointer-events-none opacity-50",
                 )}
-                onClick={() => handleClick(index)}
                 disabled={disabled || readOnly}
               >
                 {allowHalf ? (
                   <div className="relative">
                     <div
-                      className="absolute inset-0 w-1/2 z-10"
+                      className="absolute inset-0 w-1/2 z-10 cursor-pointer"
                       onMouseEnter={() => handleMouseEnter(index, true)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleClick(index, true);
+                      }}
                     />
                     <div
-                      className="absolute inset-0 left-1/2 w-1/2 z-10"
+                      className="absolute inset-0 left-1/2 w-1/2 z-10 cursor-pointer"
                       onMouseEnter={() => handleMouseEnter(index, false)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleClick(index, false);
+                      }}
                     />
                     <div className="relative">
                       {iconState === "half" ? (
