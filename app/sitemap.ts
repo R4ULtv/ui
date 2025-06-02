@@ -29,5 +29,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: url("/search-bar"),
+      lastModified: new Date("2025-05-26"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: url("/rating-group"),
+      lastModified: new Date("2025-06-03"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
   ];
 }
