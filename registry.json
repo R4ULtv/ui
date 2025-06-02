@@ -301,6 +301,32 @@
       ],
       "registryDependencies": ["command", "button"],
       "dependencies": ["nuqs"]
+    },
+    {
+      "name": "rating-group",
+      "type": "registry:block",
+      "title": "Rating Group",
+      "description": "A star rating component for user feedback.",
+      "files": [
+        {
+          "path": "registry/rating-group/rating-group.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["toggle-group"]
+    },
+    {
+      "name": "rating-group-advanced",
+      "type": "registry:block",
+      "title": "Rating Group Advanced",
+      "description": "Advanced rating group components with half-star, heart, read-only, and custom icon variants.",
+      "files": [
+        {
+          "path": "registry/rating-group/rating-group-advanced.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["toggle-group"]
     }
   ]
 }
