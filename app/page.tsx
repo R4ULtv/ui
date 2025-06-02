@@ -52,13 +52,13 @@ const components: Component[] = [
   },
   {
     name: "Rating Group",
-    count: 2,
+    count: 5,
     path: "/rating-group",
     images: {
       light: "/rating-group-light.png",
       dark: "/rating-group-dark.png",
     },
-    soon: true,
+    new: true,
   },
 ];
 
