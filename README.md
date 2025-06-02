@@ -32,6 +32,11 @@ This is a collection of UI components built with Shadcn UI, featuring customizab
 - **Search Bar**: A search bar component managing URL queries client-side (Nuqs).
 - **Search Bar Suggestions**: A search bar component featuring autosuggestions (Nuqs).
 
+### Rating Group Components
+
+- **Rating Group**: A star rating component for user feedback.
+- **Rating Group Advanced**: A star rating component offering half-ratings, read-only mode, and customizable icons and colors.
+
 ## Technologies
 
 - Next.js (App Router) v15
@@ -67,6 +72,7 @@ pnpx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json
 pnpx shadcn@latest add https://ui.raulcarini.dev/r/github-contributions.json
 pnpx shadcn@latest add https://ui.raulcarini.dev/r/music-player.json
 pnpx shadcn@latest add https://ui.raulcarini.dev/r/search-bar.json
+pnpx shadcn@latest add https://ui.raulcarini.dev/r/rating-group.json
 ```
 
 ### Running the Development Server
@@ -221,6 +227,23 @@ function MyComponent() {
     <NuqsAdapter>
       <SearchBar />
     </NuqsAdapter>
+  );
+}
+```
+
+### Rating Group
+
+```tsx
+import RatingGroup from "@/components/rating-group";
+
+function MyComponent() {
+  const [rating, setRating] = React.useState<number>(0);
+  return (
+    <RatingGroup
+      value={rating}
+      onValueChange={setRating}
+      maxRating={5}
+    />
   );
 }
 ```
