@@ -52,7 +52,7 @@ const components: Component[] = [
   },
   {
     name: "Rating Group",
-    count: 5,
+    count: 2,
     path: "/rating-group",
     images: {
       light: "/rating-group-light.png",
@@ -98,7 +98,6 @@ export default function Page() {
                 height={430}
                 alt={`${component.name} components light`}
                 loading="lazy"
-                quality={100}
                 className="w-full dark:hidden group-hover:scale-110 transition-transform ease-out duration-200"
               />
               <Image
@@ -107,7 +106,6 @@ export default function Page() {
                 height={430}
                 alt={`${component.name} components dark`}
                 loading="lazy"
-                quality={100}
                 className="hidden w-full dark:block group-hover:scale-110 transition-transform ease-out duration-200"
               />
               {component.soon && (
