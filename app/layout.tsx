@@ -71,7 +71,7 @@ export default function RootLayout({
                 A collection of UI components built with Shadcn UI.
               </p>
             </div>
-            <div className="ml-auto flex items-center md:gap-2">
+            <div className="ml-auto flex items-center gap-2">
               <Button asChild variant="ghost" size="sm" className="h-8 group">
                 <a
                   href="https://github.com/sponsors/R4ULtv?frequency=one-time"
@@ -79,13 +79,10 @@ export default function RootLayout({
                   rel="noreferrer"
                 >
                   <span className="hidden md:block">Sponsorship</span>
-                  <HeartIcon className="group-hover:stroke-red-400 group-hover:fill-red-400 group-hover:scale-110 transition-all ease-out" />
+                  <HeartIcon className="group-hover:stroke-red-400 group-hover:fill-red-400 group-hover:scale-110 transition-all duration-200 ease-out" />
                 </a>
               </Button>
-              <Separator
-                orientation="vertical"
-                className="!h-4 hidden md:block"
-              />
+              <Separator orientation="vertical" className="!h-4" />
               <ThemeSwitch />
             </div>
           </header>

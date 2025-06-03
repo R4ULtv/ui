@@ -16,12 +16,18 @@ export default function ThemeSwitch() {
     <Button
       size="icon"
       variant="ghost"
-      className="size-8"
+      className="size-8 group"
       aria-label="Change Theme"
       onClick={toggleTheme}
     >
-      <MoonIcon className="hidden dark:block" aria-hidden="true" />
-      <SunIcon className="dark:hidden" aria-hidden="true" />
+      <MoonIcon
+        className="hidden dark:block fill-transparent group-hover:fill-foreground group-hover:scale-110 transition-all duration-200 ease-out"
+        aria-hidden="true"
+      />
+      <SunIcon
+        className="dark:hidden fill-transparent group-hover:fill-foreground group-hover:scale-110 transition-all duration-200 ease-out"
+        aria-hidden="true"
+      />
     </Button>
   );
 }
