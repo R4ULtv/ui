@@ -31,7 +31,8 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-virtualized": "^9.22.6",
-    "sonner": "^2.0.4",
+    "sonner": "^2.0.5",
+    "swr": "^2.3.3",
     "tailwind-merge": "^3.3.0",
     "tw-animate-css": "^1.3.3",
     "virtua": "^0.41.3"
