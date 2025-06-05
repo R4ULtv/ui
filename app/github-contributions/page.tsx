@@ -70,8 +70,8 @@ export default function Page() {
           id={component.name.toLowerCase().replace(/ /g, "-")}
           className="flex flex-col gap-4"
         >
-          <div className="flex flex-col gap-2 md:flex-row items-center justify-between">
-            <div className="flex items-center gap-2">
+          <div className="flex gap-2 items-center justify-between">
+          <div className="flex items-center gap-2">
               <span className="text-sm line-clamp-1 font-medium">
                 {component.name}
               </span>
