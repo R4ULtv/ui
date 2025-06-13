@@ -58,7 +58,6 @@ const components: Component[] = [
       light: "/rating-group-light.png",
       dark: "/rating-group-dark.png",
     },
-    new: true,
   },
 ];
 
