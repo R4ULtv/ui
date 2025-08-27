@@ -1,0 +1,332 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "UI Components",
+  "author": "Raul Carini <contact@raulcarini.dev>",
+  "homepage": "https://ui.raulcarini.dev",
+  "items": [
+    {
+      "name": "icon-picker",
+      "type": "registry:block",
+      "title": "Icon Picker",
+      "description": "A simple icon picker component.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["input", "scroll-area"],
+      "dependencies": ["lucide-react"]
+    },
+    {
+      "name": "icon-picker-multiple",
+      "type": "registry:block",
+      "title": "Icon Picker Multiple",
+      "description": "A simple icon picker component with multiple selectable icons.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker-multiple.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["input", "scroll-area", "button"],
+      "dependencies": ["lucide-react"]
+    },
+    {
+      "name": "icon-picker-custom-color",
+      "type": "registry:block",
+      "title": "Icon Picker Custom Color",
+      "description": "A simple icon picker component with custom color.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker-custom-color.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": [
+        "input",
+        "scroll-area",
+        "button",
+        "radio-group",
+        "popover"
+      ],
+      "dependencies": ["lucide-react"]
+    },
+    {
+      "name": "icon-picker-virtua",
+      "type": "registry:block",
+      "title": "Icon Picker Virtualized",
+      "description": "A simple icon picker component with virtualization.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker-virtua.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["input"],
+      "dependencies": ["lucide-react", "virtua"]
+    },
+    {
+      "name": "icon-picker-tanstack",
+      "type": "registry:block",
+      "title": "Icon Picker Virtualized",
+      "description": "A simple icon picker component with virtualization.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker-tanstack.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["input"],
+      "dependencies": ["lucide-react", "@tanstack/react-virtual"]
+    },
+    {
+      "name": "icon-picker-virtualized",
+      "type": "registry:block",
+      "title": "Icon Picker Virtualized",
+      "description": "A simple icon picker component with virtualization.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker-virtualized.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["input"],
+      "dependencies": ["lucide-react", "react-virtualized"],
+      "devDependencies": ["@types/react-virtualized"]
+    },
+    {
+      "name": "icon-picker-popover",
+      "type": "registry:block",
+      "title": "Icon Picker Popover",
+      "description": "A simple icon picker component with a popover.",
+      "files": [
+        {
+          "path": "registry/icon-picker/icon-picker-popover.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "input",
+        "popover",
+        "https://ui.raulcarini.dev/r/icon-picker-virtualized.json"
+      ],
+      "dependencies": ["lucide-react"]
+    },
+    {
+      "name": "github-contributions",
+      "type": "registry:block",
+      "title": "GitHub Contributions",
+      "description": "A basic GitHub contributions component.",
+      "files": [
+        {
+          "path": "registry/github-contributions/github-contributions.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "theme": { "--color-github-0": "var(--muted)" },
+        "light": {
+          "github-1": "oklch(0.87 0.1182 148.74)",
+          "github-2": "oklch(0.73 0.1781 148.54)",
+          "github-3": "oklch(0.63 0.157 148.35)",
+          "github-4": "oklch(0.48 0.1122 150.02)"
+        },
+        "dark": {
+          "github-1": "oklch(0.34 0.073 156.73)",
+          "github-2": "oklch(0.47 0.126255 150.8624)",
+          "github-3": "oklch(0.64 0.1777 146.24)",
+          "github-4": "oklch(0.76 0.2121 145.62)"
+        }
+      }
+    },
+    {
+      "name": "github-contributions-advanced",
+      "type": "registry:block",
+      "title": "GitHub Contributions Advanced",
+      "description": "A advanced GitHub contributions component.",
+      "files": [
+        {
+          "path": "registry/github-contributions/github-contributions-advanced.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "https://ui.raulcarini.dev/r/github-contributions.json"
+      ]
+    },
+    {
+      "name": "github-contributions-fetcher",
+      "type": "registry:block",
+      "title": "GitHub Contributions Fetcher",
+      "description": "A Github contributions table with client-side fetcher.",
+      "files": [
+        {
+          "path": "registry/github-contributions/github-contributions-fetcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "https://ui.raulcarini.dev/r/github-contributions.json"
+      ]
+    },
+    {
+      "name": "github-contributions-advanced-fetcher",
+      "type": "registry:block",
+      "title": "GitHub Contributions Advanced Fetcher",
+      "description": "An advanced Github contributions table with client-side fetcher.",
+      "files": [
+        {
+          "path": "registry/github-contributions/github-contributions-advanced-fetcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "https://ui.raulcarini.dev/r/github-contributions-advanced.json"
+      ]
+    },
+    {
+      "name": "music-player",
+      "type": "registry:block",
+      "title": "Music Player",
+      "description": "A music player component featuring essential playback controls and a progress slider.",
+      "files": [
+        {
+          "path": "registry/music-player/music-player.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-music-player.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["slider", "button"]
+    },
+    {
+      "name": "music-player-spotify",
+      "type": "registry:block",
+      "title": "Spotify Music Player",
+      "description": "A music player component with a design inspired by Spotify.",
+      "files": [
+        {
+          "path": "registry/music-player/music-player-spotify.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-music-player.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "cssVars": {
+        "light": { "spotify": "oklch(0.77 0.2124 148.67)" }
+      },
+      "registryDependencies": ["slider", "button"]
+    },
+    {
+      "name": "music-player-apple",
+      "type": "registry:block",
+      "title": "Apple Music Player",
+      "description": "A music player component with a design inspired by Apple.",
+      "files": [
+        {
+          "path": "registry/music-player/music-player-apple.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-music-player.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "cssVars": {
+        "light": { "apple": "oklch(0.68 0.1968 17.66)" }
+      },
+      "registryDependencies": ["slider", "button"]
+    },
+    {
+      "name": "search-bar",
+      "type": "registry:block",
+      "title": "Search Bar",
+      "description": "Search Bar managing URL queries client-side (Nuqs).",
+      "files": [
+        {
+          "path": "registry/search-bar/search-bar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["input", "button"],
+      "dependencies": ["nuqs"]
+    },
+    {
+      "name": "search-bar-suggestions",
+      "type": "registry:block",
+      "title": "Search Bar Suggestions",
+      "description": "Search bar featuring autosuggestions (Nuqs).",
+      "files": [
+        {
+          "path": "registry/search-bar/search-bar-suggestions.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "registryDependencies": ["command", "button"],
+      "dependencies": ["nuqs"]
+    },
+    {
+      "name": "rating-group",
+      "type": "registry:block",
+      "title": "Rating Group",
+      "description": "A star rating component for user feedback.",
+      "files": [
+        {
+          "path": "registry/rating-group/rating-group.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["toggle-group"]
+    },
+    {
+      "name": "rating-group-advanced",
+      "type": "registry:block",
+      "title": "Rating Group Advanced",
+      "description": "Advanced rating group components with half-star, heart, read-only, and custom icon variants.",
+      "files": [
+        {
+          "path": "registry/rating-group/rating-group-advanced.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["toggle-group"]
+    }
+  ]
+}
