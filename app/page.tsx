@@ -70,7 +70,7 @@ export default function Page() {
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 min-h-[calc(100vh-164px)]">
+    <div className="max-w-6xl mx-auto px-4 py-8 space-y-16 min-h-[calc(100vh-164px)]">
       <div className="max-w-3xl space-y-4 max-sm:text-center">
         <h1 className="text-foreground text-4xl/tight font-bold tracking-tight md:text-5xl/tight">
           Open-Source UI Components built with Tailwind CSS, and React.
@@ -80,8 +80,7 @@ export default function Page() {
           development workflow.
         </p>
       </div>
-
-      <main className="grid gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 my-16">
+      <main className="grid gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         {sortedComponents.map((component) => (
           <div className="space-y-3 text-center" key={component.name}>
             <Link
