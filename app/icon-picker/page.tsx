@@ -40,6 +40,7 @@ const components = [
     name: "Icon Picker",
     description: "A simple icon picker component with search functionality.",
     registry: "https://ui.raulcarini.dev/r/icon-picker.json",
+    r: "@ui/icon-picker",
     component: IconPickerExample,
   },
   {
@@ -47,18 +48,21 @@ const components = [
     description:
       "Allows selection of multiple icons for building icon collections.",
     registry: "https://ui.raulcarini.dev/r/icon-picker-multiple.json",
+    r: "@ui/icon-picker-multiple",
     component: IconPickerExampleMultiple,
   },
   {
     name: "Icon Picker Custom Color",
     description: "Enables icon selection with color customization.",
     registry: "https://ui.raulcarini.dev/r/icon-picker-custom-color.json",
+    r: "@ui/icon-picker-custom-color",
     component: IconPickerExampleCustomColor,
   },
   {
     name: "Icon Picker Virtua",
     description: "A virtualization implementation using the `virtua` library.",
     registry: "https://ui.raulcarini.dev/r/icon-picker-virtua.json",
+    r: "@ui/icon-picker-virtua",
     component: IconPickerExampleVirtua,
   },
   {
@@ -66,12 +70,14 @@ const components = [
     description:
       "A virtualization implementation using '@tanstack/react-virtual'.",
     registry: "https://ui.raulcarini.dev/r/icon-picker-tanstack.json",
+    r: "@ui/icon-picker-tanstack",
     component: IconPickerExampleTanstack,
   },
   {
     name: "Icon Picker Virtualized",
     description: "A virtualization implementation using 'react-virtualized'.",
     registry: "https://ui.raulcarini.dev/r/icon-picker-virtualized.json",
+    r: "@ui/icon-picker-virtualized",
     component: IconPickerExampleVirtualized,
   },
   {
@@ -79,6 +85,7 @@ const components = [
     description:
       "An implementation integrated within a popover for compact UI.",
     registry: "https://ui.raulcarini.dev/r/icon-picker-popover.json",
+    r: "@ui/icon-picker-popover",
     component: IconPickerExamplePopover,
   },
 ];
@@ -106,9 +113,7 @@ export default function Page() {
               </span>
             </div>
             <div className="flex gap-2">
-              <CopyShadcn
-                text={`npx shadcn@latest add ${component.registry}`}
-              />
+              <CopyShadcn text={`npx shadcn@latest add ${component.r}`} />
               <CopyURL url={component.registry} />
               <OpenV0 registry={component.registry} />
             </div>

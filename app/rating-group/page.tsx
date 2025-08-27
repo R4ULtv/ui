@@ -38,6 +38,7 @@ const components = [
     name: "Rating Group",
     description: "A star rating component for user feedback.",
     registry: "https://ui.raulcarini.dev/r/rating-group.json",
+    r: "@ui/rating-group",
     component: BasicRatingExample,
   },
   {
@@ -45,6 +46,7 @@ const components = [
     description:
       "Advanced example: Rating component that supports half-star ratings.",
     registry: "https://ui.raulcarini.dev/r/rating-group-advanced.json",
+    r: "@ui/rating-group-advanced",
     component: HalfStarRatingExample,
   },
   {
@@ -52,6 +54,7 @@ const components = [
     description:
       "Advanced example: Heart-themed rating component with custom colors.",
     registry: "https://ui.raulcarini.dev/r/rating-group-advanced.json",
+    r: "@ui/rating-group-advanced",
     component: HeartRatingExample,
   },
   {
@@ -59,6 +62,7 @@ const components = [
     description:
       "Advanced example: Display-only rating component for showing scores.",
     registry: "https://ui.raulcarini.dev/r/rating-group-advanced.json",
+    r: "@ui/rating-group-advanced",
     component: ReadOnlyRatingExample,
   },
   {
@@ -66,6 +70,7 @@ const components = [
     description:
       "Advanced example: Rating with completely custom icons and styling.",
     registry: "https://ui.raulcarini.dev/r/rating-group-advanced.json",
+    r: "@ui/rating-group-advanced",
     component: CustomIconRatingExample,
   },
 ];
@@ -93,9 +98,7 @@ export default function Page() {
               </span>
             </div>
             <div className="flex gap-2">
-              <CopyShadcn
-                text={`npx shadcn@latest add ${component.registry}`}
-              />
+              <CopyShadcn text={`npx shadcn@latest add ${component.r}`} />
               <CopyURL url={component.registry} />
               <OpenV0 registry={component.registry} />
             </div>

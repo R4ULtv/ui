@@ -37,12 +37,14 @@ const components = [
     description:
       "A music player component featuring essential playback controls and a progress slider.",
     registry: "https://ui.raulcarini.dev/r/music-player.json",
+    r: "@ui/music-player",
     component: MusicPlayerExample,
   },
   {
     name: "Spotify Music Player",
     description: "A music player component with a design inspired by Spotify.",
     registry: "https://ui.raulcarini.dev/r/music-player-spotify.json",
+    r: "@ui/music-player-spotify",
     component: MusicPlayerSpotifyExample,
   },
   {
@@ -50,6 +52,7 @@ const components = [
     description:
       "A music player component with a design inspired by Apple Music.",
     registry: "https://ui.raulcarini.dev/r/music-player-apple.json",
+    r: "@ui/music-player-apple",
     component: MusicPlayerAppleExample,
   },
 ];
@@ -77,9 +80,7 @@ export default function Page() {
               </span>
             </div>
             <div className="flex gap-2">
-              <CopyShadcn
-                text={`npx shadcn@latest add ${component.registry}`}
-              />
+              <CopyShadcn text={`npx shadcn@latest add ${component.r}`} />
               <CopyURL url={component.registry} />
               <OpenV0 registry={component.registry} />
             </div>

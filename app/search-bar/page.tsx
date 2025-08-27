@@ -38,12 +38,14 @@ const components = [
     name: "Search Bar",
     description: "Search bar managing URL queries client-side (Nuqs).",
     registry: "https://ui.raulcarini.dev/r/search-bar.json",
+    r: "@ui/search-bar",
     component: SearchBarExample,
   },
   {
     name: "Search Bar Suggestions",
     description: "Search bar featuring autosuggestions (Nuqs).",
     registry: "https://ui.raulcarini.dev/r/search-bar-suggestions.json",
+    r: "@ui/search-bar-suggestions",
     component: SearchBarSuggestionsExample,
   },
 ];
@@ -72,9 +74,7 @@ export default function Page() {
                 </span>
               </div>
               <div className="flex gap-2">
-                <CopyShadcn
-                  text={`npx shadcn@latest add ${component.registry}`}
-                />
+                <CopyShadcn text={`npx shadcn@latest add ${component.r}`} />
                 <CopyURL url={component.registry} />
                 <OpenV0 registry={component.registry} />
               </div>

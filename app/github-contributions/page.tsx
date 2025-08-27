@@ -37,18 +37,21 @@ const components = [
     name: "Github Contributions",
     description: "A simple Github contributions table.",
     registry: "https://ui.raulcarini.dev/r/github-contributions.json",
+    r: "@ui/github-contributions",
     component: GithubContributionsExample,
   },
   {
     name: "Github Contributions Advanced",
     description: "An advanced Github contributions table.",
     registry: "https://ui.raulcarini.dev/r/github-contributions-advanced.json",
+    r: "@ui/github-contributions-advanced",
     component: GithubContributionsAdvancedExample,
   },
   {
     name: "Github Contributions Fetcher",
     description: "A Github contributions table with client-side fetcher.",
     registry: "https://ui.raulcarini.dev/r/github-contributions-fetcher.json",
+    r: "@ui/github-contributions-fetcher",
     component: GithubContributionsFetcherExample,
   },
   {
@@ -57,6 +60,7 @@ const components = [
       "An advanced Github contributions table with client-side fetcher.",
     registry:
       "https://ui.raulcarini.dev/r/github-contributions-advanced-fetcher.json",
+    r: "@ui/github-contributions-advanced-fetcher",
     component: GithubContributionsAdvancedFetcherExample,
   },
 ];
@@ -71,7 +75,7 @@ export default function Page() {
           className="flex flex-col gap-4"
         >
           <div className="flex gap-2 items-center justify-between">
-          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <span className="text-sm line-clamp-1 font-medium">
                 {component.name}
               </span>
@@ -84,9 +88,7 @@ export default function Page() {
               </span>
             </div>
             <div className="flex gap-2">
-              <CopyShadcn
-                text={`npx shadcn@latest add ${component.registry}`}
-              />
+              <CopyShadcn text={`npx shadcn@latest add ${component.r}`} />
               <CopyURL url={component.registry} />
               <OpenV0 registry={component.registry} />
             </div>
