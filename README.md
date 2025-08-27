@@ -63,9 +63,31 @@ cd ui
 pnpm install
 ```
 
+### Registry Configuration
+
+Before adding components to your project, configure the registry in your `components.json`:
+
+```json
+{
+  "registries": {
+    "@ui": "https://ui.raulcarini.dev/r/{name}.json"
+  }
+}
+```
+
 ### Adding Components via Registry
 
-You can add any variant using shadcn/cli. For example:
+Once the registry is configured, you can add any variant using shadcn/cli with the namespace format:
+
+```bash
+pnpx shadcn@latest add @ui/icon-picker
+pnpx shadcn@latest add @ui/github-contributions
+pnpx shadcn@latest add @ui/music-player
+pnpx shadcn@latest add @ui/search-bar
+pnpx shadcn@latest add @ui/rating-group
+```
+
+Or you can still use the direct URL format:
 
 ```bash
 pnpx shadcn@latest add https://ui.raulcarini.dev/r/icon-picker.json
