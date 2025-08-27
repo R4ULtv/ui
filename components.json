@@ -10,6 +10,9 @@
     "cssVariables": true,
     "prefix": ""
   },
+  "registries": {
+    "@ui": "https://ui.raulcarini.dev/r/{name}.json"
+  },
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",
