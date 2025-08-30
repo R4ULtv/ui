@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-switch-toggle",
+  "type": "registry:block",
+  "title": "Theme Switch Toggle",
+  "description": "A theme switch component using a toggle switch.",
+  "dependencies": [
+    "lucide-react",
+    "next-themes"
+  ],
+  "registryDependencies": [
+    "switch"
+  ],
+  "files": [
+    {
+      "path": "registry/theme-switch/theme-switch-toggle.tsx",
+      "content": "\"use client\";\n\nimport { MoonIcon, SunIcon } from \"lucide-react\";\nimport { Switch } from \"@/components/ui/switch\";\nimport { useTheme } from \"next-themes\";\nimport { useCallback, useEffect, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nconst ThemeSwitch = ({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) => {\n  const { theme, setTheme } = useTheme();\n  const [checked, setChecked] = useState(false);\n\n  // Update checked state when theme changes\n  useEffect(() => {\n    setChecked(theme === \"dark\");\n  }, [theme]);\n\n  const handleCheckedChange = useCallback(\n    (isChecked: boolean) => {\n      setChecked(isChecked);\n      const newTheme = isChecked ? \"dark\" : \"light\";\n      setTheme(newTheme);\n    },\n    [setTheme],\n  );\n\n  return (\n    <div\n      className={cn(\"relative flex items-center h-9 group\", className)}\n      {...props}\n    >\n      <Switch\n        checked={checked}\n        onCheckedChange={handleCheckedChange}\n        className=\"peer data-[state=checked]:bg-input/50 data-[state=unchecked]:bg-input/50 absolute inset-0 h-[inherit] w-auto [&_span]:h-full [&_span]:w-[34px]\"\n      />\n      <span className=\"peer-data-[state=checked]:text-muted-foreground/70 pointer-events-none relative ms-0.5 flex min-w-8 items-center justify-center text-center\">\n        <SunIcon\n          size={16}\n          aria-hidden=\"true\"\n          className={cn(\n            !checked &&\n              \"fill-transparent group-hover:fill-foreground group-hover:rotate-12 group-hover:scale-110 transition-all duration-200 ease-out\",\n          )}\n        />\n      </span>\n      <span className=\"peer-data-[state=unchecked]:text-muted-foreground/70 pointer-events-none relative me-0.5 flex min-w-8 items-center justify-center text-center\">\n        <MoonIcon\n          size={16}\n          aria-hidden=\"true\"\n          className={cn(\n            checked &&\n              \"fill-transparent group-hover:fill-foreground group-hover:rotate-12 group-hover:scale-110 transition-all duration-200 ease-out\",\n          )}\n        />\n      </span>\n    </div>\n  );\n};\n\nexport default ThemeSwitch;\n",
+      "type": "registry:component"
+    }
+  ]
+}
