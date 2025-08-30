@@ -41,5 +41,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: url("/theme-switch"),
+      lastModified: new Date("2025-08-30"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
   ];
 }
