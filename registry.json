@@ -327,6 +327,34 @@
         }
       ],
       "registryDependencies": ["toggle-group"]
+    },
+    {
+      "name": "theme-switch",
+      "type": "registry:block",
+      "title": "Theme Switch",
+      "description": "A theme switch component to toggle between light and dark mode.",
+      "files": [
+        {
+          "path": "registry/theme-switch/theme-switch-button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["button"],
+      "dependencies": ["lucide-react", "next-themes"]
+    },
+    {
+      "name": "theme-switch-toggle",
+      "type": "registry:block",
+      "title": "Theme Switch Toggle",
+      "description": "A theme switch component using a toggle switch.",
+      "files": [
+        {
+          "path": "registry/theme-switch/theme-switch-toggle.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["switch"],
+      "dependencies": ["lucide-react", "next-themes"]
     }
   ]
 }
