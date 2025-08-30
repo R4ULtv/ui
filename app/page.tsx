@@ -59,6 +59,16 @@ const components: Component[] = [
       dark: "/rating-group-dark.png",
     },
   },
+  {
+    name: "Theme Switch",
+    count: 2,
+    path: "/theme-switch",
+    new: true,
+    images: {
+      light: "/theme-switch-light.png",
+      dark: "/theme-switch-dark.png",
+    },
+  },
 ];
 
 export default function Page() {
