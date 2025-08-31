@@ -69,6 +69,16 @@ const components: Component[] = [
       dark: "/theme-switch-dark.png",
     },
   },
+  {
+    name: "Github Stats",
+    count: 4,
+    path: "/github-stats",
+    soon: true,
+    images: {
+      light: "/github-stats-light.png",
+      dark: "/github-stats-dark.png",
+    },
+  },
 ];
 
 export default function Page() {
