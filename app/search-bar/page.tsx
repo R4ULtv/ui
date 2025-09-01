@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
-import OpenV0 from "@/components/open-v0";
 import { Separator } from "@/components/ui/separator";
+import type { Metadata } from "next";
 
 import CopyShadcn from "@/components/copy-shadcn";
 import CopyURL from "@/components/copy-url";
+import OpenCode from "@/components/open-code";
+import OpenV0 from "@/components/open-v0";
 
 import {
   SearchBarExample,
@@ -37,15 +38,13 @@ const components = [
   {
     name: "Search Bar",
     description: "Search bar managing URL queries client-side (Nuqs).",
-    registry: "https://ui.raulcarini.dev/r/search-bar.json",
-    r: "@ui/search-bar",
+    registry: "search-bar/search-bar.json",
     component: SearchBarExample,
   },
   {
     name: "Search Bar Suggestions",
     description: "Search bar featuring autosuggestions (Nuqs).",
-    registry: "https://ui.raulcarini.dev/r/search-bar-suggestions.json",
-    r: "@ui/search-bar-suggestions",
+    registry: "search-bar/search-bar-suggestions.json",
     component: SearchBarSuggestionsExample,
   },
 ];
@@ -74,9 +73,18 @@ export default function Page() {
                 </span>
               </div>
               <div className="flex gap-2">
-                <CopyShadcn text={`npx shadcn@latest add ${component.r}`} />
-                <CopyURL url={component.registry} />
-                <OpenV0 registry={component.registry} />
+                <CopyShadcn
+                  text={`npx shadcn@latest add @ui/${component.registry.split("/")[1].split(".")[0]}`}
+                />
+                <CopyURL
+                  url={`https://ui.raulcarini.dev/r/${component.registry.split("/")[1]}`}
+                />
+                <OpenCode
+                  url={`https://github.com/R4ULtv/ui/blob/master/registry/${component.registry.split(".")[0]}.tsx`}
+                />
+                <OpenV0
+                  url={`https://ui.raulcarini.dev/r/${component.registry.split("/")[1]}`}
+                />
               </div>
             </div>
             <div className="flex items-center border rounded-lg justify-center min-h-[400px] p-4 md:p-10 relative bg-muted/30">

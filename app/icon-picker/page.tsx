@@ -1,18 +1,19 @@
-import type { Metadata } from "next";
-import OpenV0 from "@/components/open-v0";
 import { Separator } from "@/components/ui/separator";
+import type { Metadata } from "next";
 
 import CopyShadcn from "@/components/copy-shadcn";
 import CopyURL from "@/components/copy-url";
+import OpenCode from "@/components/open-code";
+import OpenV0 from "@/components/open-v0";
 
 import {
   IconPickerExample,
-  IconPickerExampleMultiple,
   IconPickerExampleCustomColor,
-  IconPickerExampleVirtua,
-  IconPickerExampleTanstack,
-  IconPickerExampleVirtualized,
+  IconPickerExampleMultiple,
   IconPickerExamplePopover,
+  IconPickerExampleTanstack,
+  IconPickerExampleVirtua,
+  IconPickerExampleVirtualized,
 } from "@/components/examples/icon-picker";
 
 export const metadata: Metadata = {
@@ -39,53 +40,46 @@ const components = [
   {
     name: "Icon Picker",
     description: "A simple icon picker component with search functionality.",
-    registry: "https://ui.raulcarini.dev/r/icon-picker.json",
-    r: "@ui/icon-picker",
+    registry: "icon-picker/icon-picker.json",
     component: IconPickerExample,
   },
   {
     name: "Icon Picker Multiple",
     description:
       "Allows selection of multiple icons for building icon collections.",
-    registry: "https://ui.raulcarini.dev/r/icon-picker-multiple.json",
-    r: "@ui/icon-picker-multiple",
+    registry: "icon-picker/icon-picker-multiple.json",
     component: IconPickerExampleMultiple,
   },
   {
     name: "Icon Picker Custom Color",
     description: "Enables icon selection with color customization.",
-    registry: "https://ui.raulcarini.dev/r/icon-picker-custom-color.json",
-    r: "@ui/icon-picker-custom-color",
+    registry: "icon-picker/icon-picker-custom-color.json",
     component: IconPickerExampleCustomColor,
   },
   {
     name: "Icon Picker Virtua",
     description: "A virtualization implementation using the `virtua` library.",
-    registry: "https://ui.raulcarini.dev/r/icon-picker-virtua.json",
-    r: "@ui/icon-picker-virtua",
+    registry: "icon-picker/icon-picker-virtua.json",
     component: IconPickerExampleVirtua,
   },
   {
     name: "Icon Picker Tanstack",
     description:
       "A virtualization implementation using '@tanstack/react-virtual'.",
-    registry: "https://ui.raulcarini.dev/r/icon-picker-tanstack.json",
-    r: "@ui/icon-picker-tanstack",
+    registry: "icon-picker/icon-picker-tanstack.json",
     component: IconPickerExampleTanstack,
   },
   {
     name: "Icon Picker Virtualized",
     description: "A virtualization implementation using 'react-virtualized'.",
-    registry: "https://ui.raulcarini.dev/r/icon-picker-virtualized.json",
-    r: "@ui/icon-picker-virtualized",
+    registry: "icon-picker/icon-picker-virtualized.json",
     component: IconPickerExampleVirtualized,
   },
   {
     name: "Icon Picker Popover",
     description:
       "An implementation integrated within a popover for compact UI.",
-    registry: "https://ui.raulcarini.dev/r/icon-picker-popover.json",
-    r: "@ui/icon-picker-popover",
+    registry: "icon-picker/icon-picker-popover.json",
     component: IconPickerExamplePopover,
   },
 ];
@@ -113,9 +107,18 @@ export default function Page() {
               </span>
             </div>
             <div className="flex gap-2">
-              <CopyShadcn text={`npx shadcn@latest add ${component.r}`} />
-              <CopyURL url={component.registry} />
-              <OpenV0 registry={component.registry} />
+              <CopyShadcn
+                text={`npx shadcn@latest add @ui/${component.registry.split("/")[1].split(".")[0]}`}
+              />
+              <CopyURL
+                url={`https://ui.raulcarini.dev/r/${component.registry.split("/")[1]}`}
+              />
+              <OpenCode
+                url={`https://github.com/R4ULtv/ui/blob/master/registry/${component.registry.split(".")[0]}.tsx`}
+              />
+              <OpenV0
+                url={`https://ui.raulcarini.dev/r/${component.registry.split("/")[1]}`}
+              />
             </div>
           </div>
           <div className="flex items-center border rounded-lg justify-center min-h-[400px] p-4 md:p-10 relative bg-muted/30">
