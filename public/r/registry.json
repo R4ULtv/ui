@@ -331,11 +331,11 @@
     {
       "name": "theme-switch",
       "type": "registry:block",
-      "title": "Theme Switch",
+      "title": "Theme Switch Button",
       "description": "A theme switch component to toggle between light and dark mode.",
       "files": [
         {
-          "path": "registry/theme-switch/theme-switch-button.tsx",
+          "path": "registry/theme-switch/theme-switch.tsx",
           "type": "registry:component"
         }
       ],
