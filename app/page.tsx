@@ -63,7 +63,6 @@ const components: Component[] = [
     name: "Theme Switch",
     count: 2,
     path: "/theme-switch",
-    new: true,
     images: {
       light: "/theme-switch-light.png",
       dark: "/theme-switch-dark.png",
@@ -73,7 +72,7 @@ const components: Component[] = [
     name: "Github Stats",
     count: 4,
     path: "/github-stats",
-    soon: true,
+    new: true,
     images: {
       light: "/github-stats-light.png",
       dark: "/github-stats-dark.png",
