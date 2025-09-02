@@ -355,6 +355,62 @@
       ],
       "registryDependencies": ["switch"],
       "dependencies": ["lucide-react", "next-themes"]
+    },
+    {
+      "name": "github-stars",
+      "type": "registry:block",
+      "title": "GitHub Stars",
+      "description": "Displays the star count of a repository.",
+      "files": [
+        {
+          "path": "registry/github-stats/github-stars.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["button", "skeleton"],
+      "dependencies": ["lucide-react"]
+    },
+    {
+      "name": "github-forks",
+      "type": "registry:block",
+      "title": "GitHub Forks",
+      "description": "Displays the fork count of a repository.",
+      "files": [
+        {
+          "path": "registry/github-stats/github-forks.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["button", "skeleton"],
+      "dependencies": ["lucide-react"]
+    },
+    {
+      "name": "github-issues",
+      "type": "registry:block",
+      "title": "GitHub Issues",
+      "description": "Displays the count of open issues.",
+      "files": [
+        {
+          "path": "registry/github-stats/github-issues.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["button", "skeleton"],
+      "dependencies": ["lucide-react"]
+    },
+    {
+      "name": "github-pr",
+      "type": "registry:block",
+      "title": "GitHub Pull Requests",
+      "description": "Displays the count of open pull requests.",
+      "files": [
+        {
+          "path": "registry/github-stats/github-pr.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["button", "skeleton"],
+      "dependencies": ["lucide-react"]
     }
   ]
 }

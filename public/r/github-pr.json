@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-pr",
+  "type": "registry:block",
+  "title": "GitHub Pull Requests",
+  "description": "Displays the count of open pull requests.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "skeleton"
+  ],
+  "files": [
+    {
+      "path": "registry/github-stats/github-pr.tsx",
+      "content": "import * as React from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Skeleton } from \"@/components/ui/skeleton\";\nimport { GitPullRequestArrowIcon } from \"lucide-react\";\n\nexport function GithubPR({ repo }: { repo: string }) {\n  return (\n    <Button asChild size=\"sm\" variant=\"ghost\" className=\"h-8 shadow-none group\">\n      <a href=\"https://github.com/r4ultv/ui\" target=\"_blank\" rel=\"noreferrer\">\n        <GitPullRequestArrowIcon className=\"group-hover:scale-110 transition-transform duration-200 ease-out\" />\n        <React.Suspense fallback={<Skeleton className=\"h-4 w-20\" />}>\n          <PRCount repo={repo} />\n        </React.Suspense>\n      </a>\n    </Button>\n  );\n}\n\nexport async function PRCount({ repo }: { repo: string }) {\n  const data = await fetch(\n    `https://api.github.com/search/issues?q=repo:${repo}+is:pr+is:open`,\n    {\n      next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)\n    },\n  );\n  const json: { total_count: number } = await data.json();\n\n  return (\n    <p className=\"text-xs text-muted-foreground/70 group-hover:text-muted-foreground transition-colors duration-200 ease-out\">\n      <span className=\"tabular-nums\">\n        {json.total_count >= 1000\n          ? `${(json.total_count / 1000).toFixed(1)}k`\n          : json.total_count.toLocaleString()}\n      </span>{\" \"}\n      pull requests\n    </p>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}
