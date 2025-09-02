@@ -1,59 +1,59 @@
 import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import CopyShadcn from "@/components/copy-shadcn";
 import CopyURL from "@/components/copy-url";
 import OpenCode from "@/components/open-code";
 import OpenV0 from "@/components/open-v0";
 
-import {
-  SearchBarExample,
-  SearchBarSuggestionsExample,
-} from "@/components/examples/search-bar";
+import { components } from "./components";
 
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Suspense } from "react";
 
-export const metadata: Metadata = {
-  title: "Search Bar Components",
-  description:
-    "A collection of Search Bar components. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli.",
-  openGraph: {
-    url: "/search-bar",
-    siteName: "Search Bar Components",
-    images: [
-      {
-        url: "/search-bar/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Search Bar Components",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
+type Props = {
+  params: Promise<{ slug: string }>;
 };
 
-const components = [
-  {
-    name: "Search Bar",
-    description: "Search bar managing URL queries client-side (Nuqs).",
-    registry: "search-bar/search-bar.json",
-    component: SearchBarExample,
-  },
-  {
-    name: "Search Bar Suggestions",
-    description: "Search bar featuring autosuggestions (Nuqs).",
-    registry: "search-bar/search-bar-suggestions.json",
-    component: SearchBarSuggestionsExample,
-  },
-];
+export async function generateStaticParams() {
+  return Object.keys(components).map((key) => ({ slug: key }));
+}
 
-export default function Page() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  if (!(slug in components)) return notFound();
+  const data = components[slug as keyof typeof components];
+
+  return {
+    title: `${data.title} Components`,
+    description: `A collection of ${data.title} components. Using React, TypeScript, and Tailwind CSS. Install the components using the shadcn/cli or open it in v0.`,
+    openGraph: {
+      url: `/${slug}`,
+      siteName: `${data.title} Components`,
+      images: [
+        {
+          url: `/${slug}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: `${data.title} Components`,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+  };
+}
+
+export default async function Page({ params }: Props) {
+  const { slug } = await params;
+  if (!(slug in components)) return notFound();
+  const data = components[slug as keyof typeof components].components;
+
   return (
     <NuqsAdapter>
       <main className="max-w-6xl mx-auto flex flex-col px-4 py-8 flex-1 gap-8 md:gap-12">
-        {components.map((component) => (
+        {data.map((component) => (
           <div
             key={component.name}
             id={component.name.toLowerCase().replace(/ /g, "-")}
