@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 
 // Constants
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
-const CONTRIBUTION_LEVELS = [0, 1, 2, 3, 4] as const;
 const CONTRIBUTION_LEVEL_CLASSES = [
   "bg-github-0",
   "bg-github-1",
@@ -15,7 +14,7 @@ const CONTRIBUTION_LEVEL_CLASSES = [
 ] as const;
 
 // Types
-type ContributionLevel = (typeof CONTRIBUTION_LEVELS)[number];
+type ContributionLevel = 0 | 1 | 2 | 3 | 4;
 
 export interface Contribution {
   date: string;
