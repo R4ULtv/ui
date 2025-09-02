@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/command";
 
 import { useQueryState, parseAsString } from "nuqs";
-import { Loader2Icon, SearchIcon, XIcon } from "lucide-react";
+import { Loader2Icon, XIcon } from "lucide-react";
 
 import { useDebounce } from "@/hooks/use-debounce";
 import { cn } from "@/lib/utils";
