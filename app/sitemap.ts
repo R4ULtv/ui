@@ -47,5 +47,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: url("/github-stats"),
+      lastModified: new Date("2025-09-04"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
   ];
 }
