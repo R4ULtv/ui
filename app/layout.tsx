@@ -90,7 +90,7 @@ export default function RootLayout({
             </div>
           </header>
           {children}
-          <footer className="max-w-6xl mx-auto flex items-center justify-between px-4 py-8">
+          <footer className="max-w-6xl mx-auto flex items-center justify-between px-4 py-6">
             <span className="text-sm text-muted-foreground text-pretty">
               Built with passion by{" "}
               <a
