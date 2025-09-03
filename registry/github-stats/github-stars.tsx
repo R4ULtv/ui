@@ -7,7 +7,7 @@ import { StarIcon } from "lucide-react";
 export function GithubStars({ repo }: { repo: string }) {
   return (
     <Button asChild size="sm" variant="ghost" className="h-8 shadow-none group">
-      <a href="https://github.com/r4ultv/ui" target="_blank" rel="noreferrer">
+      <a href={`https://github.com/${repo}`} target="_blank" rel="noreferrer">
         <StarIcon className="fill-transparent group-hover:fill-foreground group-hover:scale-110 transition-[fill,scale] duration-200 ease-out" />
         <React.Suspense fallback={<Skeleton className="h-4 w-9" />}>
           <StarsCount repo={repo} />

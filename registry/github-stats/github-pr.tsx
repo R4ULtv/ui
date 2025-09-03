@@ -7,7 +7,7 @@ import { GitPullRequestArrowIcon } from "lucide-react";
 export function GithubPR({ repo }: { repo: string }) {
   return (
     <Button asChild size="sm" variant="ghost" className="h-8 shadow-none group">
-      <a href="https://github.com/r4ultv/ui" target="_blank" rel="noreferrer">
+      <a href={`https://github.com/${repo}`} target="_blank" rel="noreferrer">
         <GitPullRequestArrowIcon className="group-hover:scale-110 transition-transform duration-200 ease-out" />
         <React.Suspense fallback={<Skeleton className="h-4 w-20" />}>
           <PRCount repo={repo} />
