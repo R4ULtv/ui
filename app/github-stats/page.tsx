@@ -1,16 +1,18 @@
-import type { Metadata } from "next";
-import OpenV0 from "@/components/open-v0";
 import { Separator } from "@/components/ui/separator";
+import type { Metadata } from "next";
 
 import CopyShadcn from "@/components/copy-shadcn";
 import CopyURL from "@/components/copy-url";
+import OpenCode from "@/components/open-code";
+import OpenV0 from "@/components/open-v0";
+
 import {
   GithubForksExample,
   GithubIssuesExample,
   GithubPRExample,
   GithubStarsExample,
+  GithubStarsProgressExample,
 } from "@/components/examples/github-stats";
-import OpenCode from "@/components/open-code";
 
 export const metadata: Metadata = {
   title: "Github Stats Components",
@@ -38,6 +40,12 @@ const components = [
     description: "Displays the star count of a repository.",
     registry: "github-stats/github-stars.json",
     component: GithubStarsExample,
+  },
+  {
+    name: "Github Stars Progress",
+    description: "Displays the progress of a repository's star count.",
+    registry: "github-stats/github-stars-progress.json",
+    component: GithubStarsProgressExample,
   },
   {
     name: "Github Forks",
