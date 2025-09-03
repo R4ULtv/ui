@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-stars-progress",
+  "type": "registry:block",
+  "title": "GitHub Stars Progress",
+  "description": "Displays the progress of a repository's star count.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "skeleton"
+  ],
+  "files": [
+    {
+      "path": "registry/github-stats/github-stars-progress.tsx",
+      "content": "import * as React from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Skeleton } from \"@/components/ui/skeleton\";\nimport { StarIcon } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport function GithubStarsProgress({ repo }: { repo: string }) {\n  return (\n    <React.Suspense fallback={<Skeleton className=\"h-6 w-18\" />}>\n      <StarsCount repo={repo} />\n    </React.Suspense>\n  );\n}\n\nexport async function StarsCount({ repo }: { repo: string }) {\n  const data = await fetch(`https://api.github.com/repos/${repo}`, {\n    next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)\n  });\n  const json: { stargazers_count: number } = await data.json();\n\n  // Calculate the progress based on the number of stars. 0-128-512-4096\n  const progress = Math.min(\n    4,\n    Math.floor(Math.log(json.stargazers_count / 8) / Math.log(8)) + 1,\n  );\n\n  return (\n    <Button\n      asChild\n      size=\"sm\"\n      variant=\"ghost\"\n      className={cn(\n        \"h-8 shadow-none group\",\n        progress === 2 && \"dark:hover:bg-[#cd7f32]/10 hover:bg-[#cd7f32]/20\",\n        progress === 3 && \"dark:hover:bg-[#c0c0c0]/10 hover:bg-[#c0c0c0]/20\",\n        progress === 4 && \"dark:hover:bg-[#d4af37]/10 hover:bg-[#d4af37]/20\",\n      )}\n    >\n      <a href={`https://github.com/${repo}`} target=\"_blank\" rel=\"noreferrer\">\n        <StarIcon\n          className={cn(\n            \"fill-transparent group-hover:fill-foreground group-hover:scale-110 transition-[fill,stroke,scale] duration-200 ease-out\",\n            progress === 2 &&\n              \"group-hover:fill-[#cd7f32] group-hover:stroke-[#cd7f32]\",\n            progress === 3 &&\n              \"group-hover:fill-[#c0c0c0] group-hover:stroke-[#c0c0c0]\",\n            progress === 4 &&\n              \"group-hover:fill-[#d4af37] group-hover:stroke-[#d4af37]\",\n          )}\n        />\n        <p className=\"text-xs text-muted-foreground/70 group-hover:text-muted-foreground transition-colors duration-200 ease-out\">\n          <span className=\"tabular-nums\">\n            {json.stargazers_count >= 1000\n              ? `${(json.stargazers_count / 1000).toFixed(1)}k`\n              : json.stargazers_count.toLocaleString()}\n          </span>{\" \"}\n          stars\n        </p>\n      </a>\n    </Button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -371,6 +371,20 @@
       "dependencies": ["lucide-react"]
     },
     {
+      "name": "github-stars-progress",
+      "type": "registry:block",
+      "title": "GitHub Stars Progress",
+      "description": "Displays the progress of a repository's star count.",
+      "files": [
+        {
+          "path": "registry/github-stats/github-stars-progress.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["button", "skeleton"],
+      "dependencies": ["lucide-react"]
+    },
+    {
       "name": "github-forks",
       "type": "registry:block",
       "title": "GitHub Forks",
