@@ -70,7 +70,7 @@ const components: Component[] = [
   },
   {
     name: "Github Stats",
-    count: 4,
+    count: 5,
     path: "/github-stats",
     new: true,
     images: {
