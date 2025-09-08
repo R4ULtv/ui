@@ -30,27 +30,27 @@
     "lucide-react": "^0.542.0",
     "next": "^15.5.2",
     "next-themes": "^0.4.6",
-    "nuqs": "^2.5.2",
+    "nuqs": "^2.6.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-virtualized": "^9.22.6",
     "sonner": "^2.0.7",
     "swr": "^2.3.6",
     "tailwind-merge": "^3.3.1",
-    "tw-animate-css": "^1.3.7",
-    "virtua": "^0.42.0"
+    "tw-animate-css": "^1.3.8",
+    "virtua": "^0.42.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@tailwindcss/postcss": "^4.1.12",
-    "@types/node": "^20.19.11",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^20.19.13",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
     "@types/react-virtualized": "^9.22.2",
     "babel-plugin-react-compiler": "19.1.0-rc.2",
-    "eslint": "^9.34.0",
+    "eslint": "^9.35.0",
     "eslint-config-next": "^15.5.2",
-    "tailwindcss": "^4.1.12",
+    "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2"
   }
 }
