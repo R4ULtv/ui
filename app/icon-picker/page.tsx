@@ -91,7 +91,7 @@ export default function Page() {
         <div
           key={component.name}
           id={component.name.toLowerCase().replace(/ /g, "-")}
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-4 scroll-m-4"
         >
           <div className="flex gap-2 items-center justify-between">
             <div className="flex items-center gap-2">
