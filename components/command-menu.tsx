@@ -43,7 +43,7 @@ import {
 import registry from "@/registry.json";
 import { toast } from "sonner";
 
-export function CommandMenu() {
+export default function CommandMenu() {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [selectedItem, setSelectedItem] = React.useState<string>("");
@@ -59,46 +59,6 @@ export function CommandMenu() {
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, [open]);
-
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (open) {
-        if (e.key === "Enter" && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
-          // enter
-          e.preventDefault();
-          handleSelect(selectedItem);
-          setOpen(false);
-        }
-        if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && !e.shiftKey) {
-          // ctrl + enter
-          e.preventDefault();
-          handleCopyShadcnCli(selectedItem);
-          setOpen(false);
-        }
-        if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && e.shiftKey) {
-          // ctrl + shift + enter
-          e.preventDefault();
-          handleCopyUrl(selectedItem);
-          setOpen(false);
-        }
-        if (e.key === "c" && e.metaKey && e.ctrlKey && e.shiftKey) {
-          // ctrl + shift + c
-          e.preventDefault();
-          handleOpenGithub(selectedItem);
-          setOpen(false);
-        }
-        if (e.key === "v" && e.metaKey && e.ctrlKey && e.shiftKey) {
-          // ctrl + shift + v
-          e.preventDefault();
-          handleOpenV0(selectedItem);
-          setOpen(false);
-        }
-      }
-    };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, [open, selectedItem]);
 
   const handleSelect = (item: string) => {
     const component = registry.items.find((c) => c.name === item);
@@ -144,6 +104,46 @@ export function CommandMenu() {
     const v0Url = `https://v0.dev/chat/api/open?url=${url}`;
     window.open(v0Url, "_blank");
   };
+
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (open) {
+        if (e.key === "Enter" && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
+          // enter
+          e.preventDefault();
+          handleSelect(selectedItem);
+          setOpen(false);
+        }
+        if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && !e.shiftKey) {
+          // ctrl + enter
+          e.preventDefault();
+          handleCopyShadcnCli(selectedItem);
+          setOpen(false);
+        }
+        if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && e.shiftKey) {
+          // ctrl + shift + enter
+          e.preventDefault();
+          handleCopyUrl(selectedItem);
+          setOpen(false);
+        }
+        if (e.key === "c" && e.metaKey && e.ctrlKey && e.shiftKey) {
+          // ctrl + shift + c
+          e.preventDefault();
+          handleOpenGithub(selectedItem);
+          setOpen(false);
+        }
+        if (e.key === "v" && e.metaKey && e.ctrlKey && e.shiftKey) {
+          // ctrl + shift + v
+          e.preventDefault();
+          handleOpenV0(selectedItem);
+          setOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, [open, selectedItem]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
