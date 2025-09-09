@@ -13,7 +13,10 @@ import { HeartIcon, MousePointerClickIcon } from "lucide-react";
 import XformerlyTwitter from "@/components/icons/twitter";
 import GitHub from "@/components/icons/github";
 import { Button } from "@/components/ui/button";
-import { CommandMenu } from "@/components/command-menu";
+
+const CommandMenu = dynamic(() => import("@/components/command-menu"));
+
+import dynamic from "next/dynamic";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
