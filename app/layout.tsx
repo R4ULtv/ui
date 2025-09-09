@@ -13,6 +13,7 @@ import { HeartIcon, MousePointerClickIcon } from "lucide-react";
 import XformerlyTwitter from "@/components/icons/twitter";
 import GitHub from "@/components/icons/github";
 import { Button } from "@/components/ui/button";
+import { CommandMenu } from "@/components/command-menu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,6 +73,7 @@ export default function RootLayout({
               </p>
             </div>
             <div className="ml-auto flex items-center gap-1 md:gap-2">
+              <CommandMenu />
               <Button asChild variant="ghost" size="sm" className="h-8 group">
                 <a
                   href="https://github.com/sponsors/R4ULtv?frequency=one-time"
