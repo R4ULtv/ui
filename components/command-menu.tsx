@@ -46,104 +46,147 @@ import { toast } from "sonner";
 export default function CommandMenu() {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
+  const [openPopover, setOpenPopover] = React.useState(false);
   const [selectedItem, setSelectedItem] = React.useState<string>("");
 
   React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
+    const handleKeydown = (e: KeyboardEvent) => {
+      // Open command menu with Cmd/Ctrl+K
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        setOpen(true);
+        if (open) setOpenPopover(true);
+        return;
       }
     };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+    document.addEventListener("keydown", handleKeydown);
+    return () => document.removeEventListener("keydown", handleKeydown);
   }, [open]);
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    // Open Github Code with Cmd/Ctrl+Shift+G
+    if (e.key.toLowerCase() === "g" && (e.metaKey || e.ctrlKey) && e.shiftKey) {
+      e.preventDefault();
+      setOpen(false);
+      handleOpenGithub(selectedItem);
+    }
+    // Open in V0 with Cmd/Ctrl+Shift+V
+    if (e.key.toLowerCase() === "v" && (e.metaKey || e.ctrlKey) && e.shiftKey) {
+      e.preventDefault();
+      setOpen(false);
+      handleOpenV0(selectedItem);
+    }
+    // Copy shadcn/cli with Cmd/Ctrl+C
+    if (e.key.toLowerCase() === "c" && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      setOpen(false);
+      handleCopyShadcnCli(selectedItem);
+    }
+    // Copy url with Cmd/Ctrl+U
+    if (e.key.toLowerCase() === "u" && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      setOpen(false);
+      handleCopyUrl(selectedItem);
+    }
+  };
 
   const handleSelect = (item: string) => {
     const component = registry.items.find((c) => c.name === item);
-    if (!component) return;
+    if (!component) {
+      toast.error("Component not found");
+      return;
+    }
 
-    const path = component.files[0].path
-      .replace("registry/", "")
-      .replace(".tsx", "")
-      .split("/");
-    router.push("/" + path[0] + "#" + path[1], { scroll: true });
+    if (!component.files || component.files.length === 0) {
+      toast.error("Component files not found");
+      return;
+    }
+
+    try {
+      const path = component.files[0].path
+        .replace("registry/", "")
+        .replace(".tsx", "")
+        .split("/");
+      router.push("/" + path[0] + "#" + path[1], { scroll: true });
+    } catch (error) {
+      console.error("Failed to navigate:", error);
+      toast.error("Failed to open component");
+    }
   };
 
   const handleCopyShadcnCli = async (item: string) => {
+    if (!item) {
+      toast.error("No component selected");
+      return;
+    }
+
     const cliCommand = `npx shadcn@latest add ${item}`;
     try {
       await navigator.clipboard.writeText(cliCommand);
       toast.success("npx command copied to clipboard");
     } catch (err) {
       console.error("Failed to copy shadcn/ui command:", err);
+      toast.error("Failed to copy command to clipboard");
     }
   };
 
   const handleCopyUrl = async (item: string) => {
+    if (!item) {
+      toast.error("No component selected");
+      return;
+    }
+
     const url = `https://ui.raulcarini.dev/r/${item}.json`;
     try {
       await navigator.clipboard.writeText(url);
-      toast.success("registry URL copied to clipboard");
+      toast.success("Registry URL copied to clipboard");
     } catch (err) {
       console.error("Failed to copy URL:", err);
+      toast.error("Failed to copy URL to clipboard");
     }
   };
 
   const handleOpenGithub = (item: string) => {
-    const component = registry.items.find((c) => c.name === item);
-    if (!component) return;
+    if (!item) {
+      toast.error("No component selected");
+      return;
+    }
 
-    const githubUrl = `https://github.com/r4ultv/ui/blob/master/${component.files[0].path}`;
-    window.open(githubUrl, "_blank");
+    const component = registry.items.find((c) => c.name === item);
+    if (!component) {
+      toast.error("Component not found");
+      return;
+    }
+
+    if (!component.files || component.files.length === 0) {
+      toast.error("Component files not found");
+      return;
+    }
+
+    try {
+      const githubUrl = `https://github.com/r4ultv/ui/blob/master/${component.files[0].path}`;
+      window.open(githubUrl, "_blank");
+    } catch (error) {
+      console.error("Failed to open GitHub:", error);
+      toast.error("Failed to open GitHub link");
+    }
   };
 
   const handleOpenV0 = (item: string) => {
-    const url = `https://ui.raulcarini.dev/r/${item}.json`;
-    const v0Url = `https://v0.dev/chat/api/open?url=${url}`;
-    window.open(v0Url, "_blank");
+    if (!item) {
+      toast.error("No component selected");
+      return;
+    }
+
+    try {
+      const url = `https://ui.raulcarini.dev/r/${item}.json`;
+      const v0Url = `https://v0.dev/chat/api/open?url=${url}`;
+      window.open(v0Url, "_blank");
+    } catch (error) {
+      console.error("Failed to open V0:", error);
+      toast.error("Failed to open V0 link");
+    }
   };
-
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (open) {
-        if (e.key === "Enter" && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
-          // enter
-          e.preventDefault();
-          handleSelect(selectedItem);
-          setOpen(false);
-        }
-        if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && !e.shiftKey) {
-          // ctrl + enter
-          e.preventDefault();
-          handleCopyShadcnCli(selectedItem);
-          setOpen(false);
-        }
-        if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && e.shiftKey) {
-          // ctrl + shift + enter
-          e.preventDefault();
-          handleCopyUrl(selectedItem);
-          setOpen(false);
-        }
-        if (e.key === "c" && e.metaKey && e.ctrlKey && e.shiftKey) {
-          // ctrl + shift + c
-          e.preventDefault();
-          handleOpenGithub(selectedItem);
-          setOpen(false);
-        }
-        if (e.key === "v" && e.metaKey && e.ctrlKey && e.shiftKey) {
-          // ctrl + shift + v
-          e.preventDefault();
-          handleOpenV0(selectedItem);
-          setOpen(false);
-        }
-      }
-    };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, [open, selectedItem]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -158,6 +201,7 @@ export default function CommandMenu() {
         <Command
           value={selectedItem}
           onValueChange={setSelectedItem}
+          onKeyDown={handleKeyPress}
           className="[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-[48px] [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[data-slot='command-input-wrapper']_svg]:size-4.5 [&_[cmdk-input]]:text-[15px] [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]_svg]:w-5"
         >
           <CommandInput placeholder="Search..." />
@@ -168,6 +212,7 @@ export default function CommandMenu() {
                 <CommandItem
                   key={item.name}
                   value={item.name}
+                  onSelect={handleSelect}
                   className="h-10 rounded-lg not-first:mt-1 px-2"
                 >
                   {item.name.startsWith("icon-picker") && (
@@ -233,7 +278,7 @@ export default function CommandMenu() {
               orientation="vertical"
               className="!h-3 hidden md:block"
             />
-            <Popover>
+            <Popover open={openPopover} onOpenChange={setOpenPopover}>
               <PopoverTrigger asChild>
                 <Button
                   className="text-xs pl-2 pr-1 text-foreground/70 h-7"
@@ -272,7 +317,7 @@ export default function CommandMenu() {
                             ⌘
                           </kbd>
                           <kbd className="text-xs bg-accent size-5 flex items-center justify-center rounded">
-                            ↵
+                            C
                           </kbd>
                         </CommandShortcut>
                       </CommandItem>
@@ -283,10 +328,7 @@ export default function CommandMenu() {
                             ⌘
                           </kbd>
                           <kbd className="text-xs bg-accent size-5 flex items-center justify-center rounded">
-                            ⇧
-                          </kbd>
-                          <kbd className="text-xs bg-accent size-5 flex items-center justify-center rounded">
-                            ↵
+                            U
                           </kbd>
                         </CommandShortcut>
                       </CommandItem>
@@ -300,7 +342,7 @@ export default function CommandMenu() {
                             ⇧
                           </kbd>
                           <kbd className="text-xs bg-accent size-5 flex items-center justify-center rounded">
-                            C
+                            G
                           </kbd>
                         </CommandShortcut>
                       </CommandItem>
