@@ -72,7 +72,6 @@ const components: Component[] = [
     name: "Github Stats",
     count: 5,
     path: "/github-stats",
-    new: true,
     images: {
       light: "/github-stats-light.png",
       dark: "/github-stats-dark.png",
