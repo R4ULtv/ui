@@ -14,6 +14,10 @@ import XformerlyTwitter from "@/components/icons/twitter";
 import GitHub from "@/components/icons/github";
 import { Button } from "@/components/ui/button";
 
+const CommandMenu = dynamic(() => import("@/components/command-menu"));
+
+import dynamic from "next/dynamic";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -72,6 +76,7 @@ export default function RootLayout({
               </p>
             </div>
             <div className="ml-auto flex items-center gap-1 md:gap-2">
+              <CommandMenu />
               <Button asChild variant="ghost" size="sm" className="h-8 group">
                 <a
                   href="https://github.com/sponsors/R4ULtv?frequency=one-time"
