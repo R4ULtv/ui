@@ -101,7 +101,7 @@ export default function CommandMenu() {
       toast.error("Component files not found");
       return;
     }
-
+    setOpen(false);
     try {
       const path = component.files[0].path
         .replace("registry/", "")
@@ -205,7 +205,10 @@ export default function CommandMenu() {
           className="[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-[48px] [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[data-slot='command-input-wrapper']_svg]:size-4.5 [&_[cmdk-input]]:text-[15px] [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]_svg]:w-5"
         >
           <CommandInput placeholder="Search..." />
-          <CommandList className="max-h-[378px] outline-none">
+          <CommandList
+            className="max-h-[378px] outline-none"
+            style={{ scrollbarWidth: "thin" }}
+          >
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Components">
               {registry.items.map((item) => (
