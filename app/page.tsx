@@ -99,7 +99,7 @@ export default function Page() {
         </p>
       </div>
       <main className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-        {sortedComponents.map((component) => (
+        {sortedComponents.map((component, index) => (
           <div className="space-y-3 text-center" key={component.name}>
             <Link
               className={cn(
@@ -113,7 +113,7 @@ export default function Page() {
                 width={640}
                 height={430}
                 alt={`${component.name} components light`}
-                loading="lazy"
+                loading={index < 3 ? "eager" : "lazy"}
                 className="w-full dark:hidden group-hover:scale-110 transition-transform ease-out duration-200"
               />
               <Image
@@ -121,7 +121,7 @@ export default function Page() {
                 width={640}
                 height={430}
                 alt={`${component.name} components dark`}
-                loading="lazy"
+                loading={index < 3 ? "eager" : "lazy"}
                 className="hidden w-full dark:block group-hover:scale-110 transition-transform ease-out duration-200"
               />
               {component.soon && (
