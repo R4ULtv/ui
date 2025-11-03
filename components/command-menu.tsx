@@ -238,39 +238,39 @@ export default function CommandMenu() {
                   className="h-10 rounded-lg not-first:mt-1 px-2"
                 >
                   {item.name.startsWith("icon-picker") && (
-                    <div className="p-[3px] rounded-sm bg-gradient-to-b from-[#f55354] to-[#eb4646]">
-                      <MousePointerClickIcon className="!size-[14px] text-white" />
+                    <div className="p-[3px] rounded-sm bg-linear-to-b from-[#f55354] to-[#eb4646]">
+                      <MousePointerClickIcon className="size-3.5! text-white" />
                     </div>
                   )}
                   {item.name.startsWith("github-contributions") && (
-                    <div className="p-[3px] rounded-sm bg-gradient-to-b from-[#6cb9a3] to-[#2c6459]">
-                      <CalendarRangeIcon className="!size-[14px] text-white" />
+                    <div className="p-[3px] rounded-sm bg-linear-to-b from-[#6cb9a3] to-[#2c6459]">
+                      <CalendarRangeIcon className="size-3.5! text-white" />
                     </div>
                   )}
                   {item.name.startsWith("music-player") && (
-                    <div className="p-[3px] rounded-sm bg-gradient-to-b from-[#8b5cf6] to-[#7c3aed]">
-                      <MusicIcon className="!size-[14px] text-white" />
+                    <div className="p-[3px] rounded-sm bg-linear-to-b from-[#8b5cf6] to-[#7c3aed]">
+                      <MusicIcon className="size-3.5! text-white" />
                     </div>
                   )}
                   {item.name.startsWith("search-bar") && (
-                    <div className="p-[3px] rounded-sm bg-gradient-to-b from-[#3b82f6] to-[#2563eb]">
-                      <SearchIcon className="!size-[14px] text-white" />
+                    <div className="p-[3px] rounded-sm bg-linear-to-b from-[#3b82f6] to-[#2563eb]">
+                      <SearchIcon className="size-3.5! text-white" />
                     </div>
                   )}
                   {item.name.startsWith("rating-group") && (
-                    <div className="p-[3px] rounded-sm bg-gradient-to-b from-[#f59e0b] to-[#d97706]">
-                      <StarIcon className="!size-[14px] text-white" />
+                    <div className="p-[3px] rounded-sm bg-linear-to-b from-[#f59e0b] to-[#d97706]">
+                      <StarIcon className="size-3.5! text-white" />
                     </div>
                   )}
                   {item.name.startsWith("theme-switch") && (
-                    <div className="p-[3px] rounded-sm bg-gradient-to-b from-[#6366f1] to-[#4f46e5]">
-                      <SunIcon className="!size-[14px] text-white" />
+                    <div className="p-[3px] rounded-sm bg-linear-to-b from-[#6366f1] to-[#4f46e5]">
+                      <SunIcon className="size-3.5! text-white" />
                     </div>
                   )}
                   {item.name.startsWith("github") &&
                     !item.name.startsWith("github-contributions") && (
-                      <div className="p-[3px] rounded-sm bg-gradient-to-b from-[#374151] to-[#1f2937]">
-                        <GitHub className="!size-[14px] text-white" />
+                      <div className="p-[3px] rounded-sm bg-linear-to-b from-[#374151] to-[#1f2937]">
+                        <GitHub className="size-3.5! text-white" />
                       </div>
                     )}
                   {item.title}
@@ -298,7 +298,7 @@ export default function CommandMenu() {
             </Button>
             <Separator
               orientation="vertical"
-              className="!h-3 hidden md:block"
+              className="h-3! hidden md:block"
             />
             <Popover open={openPopover} onOpenChange={setOpenPopover}>
               <PopoverTrigger asChild>
