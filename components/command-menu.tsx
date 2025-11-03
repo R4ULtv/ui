@@ -48,6 +48,7 @@ export default function CommandMenu() {
   const [open, setOpen] = React.useState(false);
   const [openPopover, setOpenPopover] = React.useState(false);
   const [selectedItem, setSelectedItem] = React.useState<string>("");
+  const commandRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
@@ -63,30 +64,47 @@ export default function CommandMenu() {
     return () => document.removeEventListener("keydown", handleKeydown);
   }, [open]);
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyPress = async (e: React.KeyboardEvent<HTMLDivElement>) => {
+    // Get the currently selected item from the DOM
+    const getSelectedItem = () => {
+      const selectedElement = commandRef.current?.querySelector(
+        '[cmdk-item][data-selected="true"]',
+      );
+      const itemValue = selectedElement?.getAttribute("data-value");
+      return itemValue || selectedItem;
+    };
+
     // Open Github Code with Cmd/Ctrl+Shift+G
     if (e.key.toLowerCase() === "g" && (e.metaKey || e.ctrlKey) && e.shiftKey) {
       e.preventDefault();
+      const item = getSelectedItem();
+      handleOpenGithub(item);
       setOpen(false);
-      handleOpenGithub(selectedItem);
+      return;
     }
     // Open in V0 with Cmd/Ctrl+Shift+V
     if (e.key.toLowerCase() === "v" && (e.metaKey || e.ctrlKey) && e.shiftKey) {
       e.preventDefault();
+      const item = getSelectedItem();
+      handleOpenV0(item);
       setOpen(false);
-      handleOpenV0(selectedItem);
+      return;
     }
     // Copy shadcn/cli with Cmd/Ctrl+C
     if (e.key.toLowerCase() === "c" && (e.metaKey || e.ctrlKey)) {
       e.preventDefault();
+      const item = getSelectedItem();
+      await handleCopyShadcnCli(item);
       setOpen(false);
-      handleCopyShadcnCli(selectedItem);
+      return;
     }
     // Copy url with Cmd/Ctrl+U
     if (e.key.toLowerCase() === "u" && (e.metaKey || e.ctrlKey)) {
       e.preventDefault();
+      const item = getSelectedItem();
+      await handleCopyUrl(item);
       setOpen(false);
-      handleCopyUrl(selectedItem);
+      return;
     }
   };
 
@@ -102,6 +120,7 @@ export default function CommandMenu() {
       return;
     }
     setOpen(false);
+    setSelectedItem(""); // Reset selection when closing
     try {
       const path = component.files[0].path
         .replace("registry/", "")
@@ -199,7 +218,7 @@ export default function CommandMenu() {
       </DialogHeader>
       <DialogContent className="overflow-hidden p-0 sm:max-w-[640px] max-h-[725px] transition-[max-height] duration-300">
         <Command
-          value={selectedItem}
+          ref={commandRef}
           onValueChange={setSelectedItem}
           onKeyDown={handleKeyPress}
           className="[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-[48px] [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[data-slot='command-input-wrapper']_svg]:size-4.5 [&_[cmdk-input]]:text-[15px] [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]_svg]:w-5"
