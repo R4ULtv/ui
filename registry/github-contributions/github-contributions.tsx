@@ -34,7 +34,7 @@ const ContributionCell = React.memo(function ContributionCell({
   contribution,
 }: ContributionCellProps) {
   const date = new Date(contribution.date);
-  const formattedDate = new Date(date).toLocaleString("en-US", {
+  const formattedDate = date.toLocaleString("en-US", {
     month: "short",
     day: "numeric",
   });
@@ -78,7 +78,7 @@ const MonthLabel = React.memo(function MonthLabel({
       colSpan={colSpan}
       className="text-xs font-semibold first-letter:uppercase"
     >
-      {new Date(date).toLocaleString("en-US", { month: "short" })}
+      {date.toLocaleString("en-US", { month: "short" })}
     </td>
   );
 });

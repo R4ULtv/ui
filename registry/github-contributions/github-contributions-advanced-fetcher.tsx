@@ -75,10 +75,9 @@ const GithubContributionsAdvancedFetcher: React.FC<{ username: string }> = ({
           await contributionsResponse.json();
         const reposResult: GithubRepo[] = await reposResponse.json();
 
+        const oneYearAgo = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000);
         const publicReposCount = reposResult.filter(
-          (repo) =>
-            new Date(repo.created_at) >
-            new Date(Date.now() - 365 * 24 * 60 * 60 * 1000), // One year ago
+          (repo) => new Date(repo.created_at) > oneYearAgo,
         ).length;
 
         setContributionsData(contributionsResult.contributions);
