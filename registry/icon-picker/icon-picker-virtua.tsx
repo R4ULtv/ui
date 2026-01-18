@@ -57,19 +57,16 @@ const IconPicker = React.memo(
     const [searchQuery, setSearchQuery] = React.useState("");
     const debouncedSearchQuery = useDebounce(searchQuery, 200);
 
-    const iconsMapRef = React.useRef<string[]>([]);
-    if (iconsMapRef.current.length === 0) {
-      iconsMapRef.current = Object.keys(icons);
-    }
+    const iconsMap = React.useMemo(() => Object.keys(icons), []);
 
     const filteredIcons = React.useMemo(() => {
       if (!debouncedSearchQuery.trim()) {
-        return iconsMapRef.current;
+        return iconsMap;
       }
-      return iconsMapRef.current.filter((iconName) =>
+      return iconsMap.filter((iconName) =>
         iconName.toLowerCase().includes(debouncedSearchQuery.toLowerCase()),
       );
-    }, [debouncedSearchQuery]);
+    }, [debouncedSearchQuery, iconsMap]);
 
     const handleSearchChange = React.useCallback(
       (e: React.ChangeEvent<HTMLInputElement>) => {

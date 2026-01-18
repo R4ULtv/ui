@@ -67,17 +67,23 @@ const IconPicker = React.memo(
       );
     }, [iconsMap, debouncedSearchQuery]);
 
+    const selectedIconsRef = React.useRef(selectedIcons);
+    React.useEffect(() => {
+      selectedIconsRef.current = selectedIcons;
+    }, [selectedIcons]);
+
     const toggleSelectedIcon = React.useCallback(
       (iconName: string) => {
         if (!setSelectedIcons) return;
+        const current = selectedIconsRef.current;
 
         setSelectedIcons(
-          selectedIcons.includes(iconName)
-            ? selectedIcons.filter((name) => name !== iconName)
-            : [...selectedIcons, iconName],
+          current.includes(iconName)
+            ? current.filter((name) => name !== iconName)
+            : [...current, iconName],
         );
       },
-      [selectedIcons, setSelectedIcons],
+      [setSelectedIcons],
     );
 
     const handleSearchChange = React.useCallback(
