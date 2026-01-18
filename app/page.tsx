@@ -22,6 +22,7 @@ const components: Component[] = [
       light: "/icon-picker-light.png",
       dark: "/icon-picker-dark.png",
     },
+    update: true,
   },
   {
     name: "Github Contributions",
@@ -31,6 +32,7 @@ const components: Component[] = [
       light: "/github-contributions-light.png",
       dark: "/github-contributions-dark.png",
     },
+    update: true,
   },
   {
     name: "Music Player",
@@ -40,6 +42,7 @@ const components: Component[] = [
       light: "/music-player-light.png",
       dark: "/music-player-dark.png",
     },
+    update: true,
   },
   {
     name: "Search Bar",
