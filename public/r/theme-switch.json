@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "theme-switch",
-  "type": "registry:block",
   "title": "Theme Switch Button",
   "description": "A theme switch component to toggle between light and dark mode.",
   "dependencies": [
@@ -17,5 +16,6 @@
       "content": "\"use client\";\n\nimport { MoonIcon, SunIcon } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport { useTheme } from \"next-themes\";\nimport { useCallback } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nconst ThemeSwitch = ({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLButtonElement>) => {\n  const { theme, setTheme } = useTheme();\n\n  const handleToggleTheme = useCallback(() => {\n    const newTheme = theme === \"light\" ? \"dark\" : \"light\";\n    setTheme(newTheme);\n  }, [theme, setTheme]);\n\n  return (\n    <Button\n      size=\"icon\"\n      variant=\"ghost\"\n      className={cn(\"size-8 group\", className)}\n      aria-label=\"Toggle theme between light and dark mode\"\n      onClick={handleToggleTheme}\n      {...props}\n    >\n      <MoonIcon\n        className=\"hidden dark:block fill-transparent group-hover:fill-foreground group-hover:rotate-12 group-hover:scale-110 transition-all duration-200 ease-out\"\n        aria-hidden=\"true\"\n      />\n      <SunIcon\n        className=\"dark:hidden fill-transparent group-hover:fill-foreground group-hover:rotate-12 group-hover:scale-110 transition-all duration-200 ease-out\"\n        aria-hidden=\"true\"\n      />\n    </Button>\n  );\n};\n\nexport default ThemeSwitch;\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "music-player-apple",
-  "type": "registry:block",
   "title": "Apple Music Player",
   "description": "A music player component with a design inspired by Apple.",
   "registryDependencies": [
@@ -24,5 +23,6 @@
     "light": {
       "apple": "oklch(0.68 0.1968 17.66)"
     }
-  }
+  },
+  "type": "registry:block"
 }

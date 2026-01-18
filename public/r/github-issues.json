@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "github-issues",
-  "type": "registry:block",
   "title": "GitHub Issues",
   "description": "Displays the count of open issues.",
   "dependencies": [
@@ -17,5 +16,6 @@
       "content": "import * as React from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Skeleton } from \"@/components/ui/skeleton\";\nimport { CircleDotIcon } from \"lucide-react\";\n\nexport function GithubIssues({ repo }: { repo: string }) {\n  return (\n    <Button asChild size=\"sm\" variant=\"ghost\" className=\"h-8 shadow-none group\">\n      <a href={`https://github.com/${repo}`} target=\"_blank\" rel=\"noreferrer\">\n        <CircleDotIcon className=\"group-hover:scale-110 transition-transform duration-200 ease-out\" />\n        <React.Suspense fallback={<Skeleton className=\"h-4 w-10\" />}>\n          <IssuesCount repo={repo} />\n        </React.Suspense>\n      </a>\n    </Button>\n  );\n}\n\nexport async function IssuesCount({ repo }: { repo: string }) {\n  const data = await fetch(\n    `https://api.github.com/search/issues?q=repo:${repo}+is:issue+is:open`,\n    {\n      next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)\n    },\n  );\n  const json: { total_count: number } = await data.json();\n\n  return (\n    <p className=\"text-xs text-muted-foreground/70 group-hover:text-muted-foreground transition-colors duration-200 ease-out\">\n      <span className=\"tabular-nums\">\n        {json.total_count >= 1000\n          ? `${(json.total_count / 1000).toFixed(1)}k`\n          : json.total_count.toLocaleString()}\n      </span>{\" \"}\n      issues\n    </p>\n  );\n}\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

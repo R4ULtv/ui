@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "music-player-spotify",
-  "type": "registry:block",
   "title": "Spotify Music Player",
   "description": "A music player component with a design inspired by Spotify.",
   "registryDependencies": [
@@ -24,5 +23,6 @@
     "light": {
       "spotify": "oklch(0.77 0.2124 148.67)"
     }
-  }
+  },
+  "type": "registry:block"
 }

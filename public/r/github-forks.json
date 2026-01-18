@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "github-forks",
-  "type": "registry:block",
   "title": "GitHub Forks",
   "description": "Displays the fork count of a repository.",
   "dependencies": [
@@ -17,5 +16,6 @@
       "content": "import * as React from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Skeleton } from \"@/components/ui/skeleton\";\nimport { GitForkIcon } from \"lucide-react\";\n\nexport function GithubForks({ repo }: { repo: string }) {\n  return (\n    <Button asChild size=\"sm\" variant=\"ghost\" className=\"h-8 shadow-none group\">\n      <a href={`https://github.com/${repo}`} target=\"_blank\" rel=\"noreferrer\">\n        <GitForkIcon className=\"group-hover:scale-110 transition-transform duration-200 ease-out\" />\n        <React.Suspense fallback={<Skeleton className=\"h-4 w-9\" />}>\n          <ForksCount repo={repo} />\n        </React.Suspense>\n      </a>\n    </Button>\n  );\n}\n\nexport async function ForksCount({ repo }: { repo: string }) {\n  const data = await fetch(`https://api.github.com/repos/${repo}`, {\n    next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)\n  });\n  const json: { forks_count: number } = await data.json();\n\n  return (\n    <p className=\"text-xs text-muted-foreground/70 group-hover:text-muted-foreground transition-colors duration-200 ease-out\">\n      <span className=\"tabular-nums\">\n        {json.forks_count >= 1000\n          ? `${(json.forks_count / 1000).toFixed(1)}k`\n          : json.forks_count.toLocaleString()}\n      </span>{\" \"}\n      forks\n    </p>\n  );\n}\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

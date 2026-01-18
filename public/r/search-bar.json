@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "search-bar",
-  "type": "registry:block",
   "title": "Search Bar",
   "description": "Search Bar managing URL queries client-side (Nuqs).",
   "dependencies": [
@@ -22,5 +21,6 @@
       "content": "import * as React from \"react\";\n\nexport function useDebounce<T>(value: T, delay?: number): T {\n  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);\n\n  React.useEffect(() => {\n    const timer = setTimeout(() => {\n      setDebouncedValue(value);\n    }, delay || 500);\n\n    return () => {\n      clearTimeout(timer);\n    };\n  }, [value, delay]);\n\n  return debouncedValue;\n}\n",
       "type": "registry:hook"
     }
-  ]
+  ],
+  "type": "registry:block"
 }
