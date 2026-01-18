@@ -97,6 +97,10 @@ export default function GitHubContributions({
     }, {});
   }, [data]);
 
+  const [lastWeekCutoff] = React.useState(
+    () => new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+  );
+
   const monthLabels = React.useMemo(
     () =>
       data.reduce<(React.JSX.Element | null)[]>((acc, contribution, i) => {
@@ -104,8 +108,7 @@ export default function GitHubContributions({
         const isStartOfWeek = i % 7 === 0;
         const isWithinFirstWeekOfMonth =
           date.getDate() >= 1 && date.getDate() <= 7;
-        const isBeforeLastWeek =
-          date < new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+        const isBeforeLastWeek = date < lastWeekCutoff;
 
         if (
           i === 0 ||
@@ -136,7 +139,7 @@ export default function GitHubContributions({
         }
         return acc;
       }, []),
-    [data],
+    [data, lastWeekCutoff],
   );
 
   const renderRow = React.useCallback(
