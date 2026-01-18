@@ -49,6 +49,11 @@ export default function CommandMenu() {
   const [openPopover, setOpenPopover] = React.useState(false);
   const [selectedItem, setSelectedItem] = React.useState<string>("");
   const commandRef = React.useRef<HTMLDivElement>(null);
+  const openRef = React.useRef(open);
+
+  React.useEffect(() => {
+    openRef.current = open;
+  }, [open]);
 
   React.useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
@@ -56,13 +61,13 @@ export default function CommandMenu() {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen(true);
-        if (open) setOpenPopover(true);
+        if (openRef.current) setOpenPopover(true);
         return;
       }
     };
     document.addEventListener("keydown", handleKeydown);
     return () => document.removeEventListener("keydown", handleKeydown);
-  }, [open]);
+  }, []);
 
   const handleKeyPress = async (e: React.KeyboardEvent<HTMLDivElement>) => {
     // Get the currently selected item from the DOM
