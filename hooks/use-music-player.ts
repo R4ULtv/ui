@@ -53,39 +53,29 @@ export function useMusicPlayer({
 
   // Effect to handle song playback timing
   React.useEffect(() => {
-    let interval: NodeJS.Timeout;
+    if (!isPlaying || songDuration === 0) return;
 
-    if (isPlaying && currentTime < songDuration) {
-      interval = setInterval(() => {
-        setCurrentTime((prevTime) => {
-          if (prevTime < songDuration - 1) {
-            return prevTime + 1;
-          }
-          if (repeatMode === "track") {
-            return 0; // Restart track
-          } else {
-            // For "off" and "context", we'd normally move to next song or stop.
-            // For now, just stop and set to duration.
-            // "context" repeat would be handled by a playlist manager.
-            setIsPlaying(false);
-            return songDuration;
-          }
-        });
-      }, 1000);
-    } else if (currentTime >= songDuration && songDuration > 0) {
-      if (repeatMode === "track" && isPlaying) {
-        // If it was playing and repeat track is on
-        setCurrentTime(0); // Restart
-        // setIsPlaying(true); // It's already true, interval will pick it up.
-      } else {
-        setIsPlaying(false);
-      }
-    }
+    const interval = setInterval(() => {
+      setCurrentTime((prevTime) => {
+        if (prevTime < songDuration - 1) {
+          return prevTime + 1;
+        }
+        if (repeatMode === "track") {
+          return 0; // Restart track
+        } else {
+          // For "off" and "context", we'd normally move to next song or stop.
+          // For now, just stop and set to duration.
+          // "context" repeat would be handled by a playlist manager.
+          setIsPlaying(false);
+          return songDuration;
+        }
+      });
+    }, 1000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [isPlaying, songDuration, currentTime, repeatMode]);
+  }, [isPlaying, songDuration, repeatMode]);
 
   React.useEffect(() => {
     if (song) {
