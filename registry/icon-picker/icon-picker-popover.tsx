@@ -16,10 +16,8 @@ export default function Page() {
 
   return (
     <Popover onOpenChange={setIsOpen} open={isOpen}>
-      <PopoverTrigger asChild>
-        <Button>
-          {selectedIcon ? `Selected Icon: ${selectedIcon}` : "Icon Picker"}
-        </Button>
+      <PopoverTrigger render={<Button />}>
+        {selectedIcon ? `Selected Icon: ${selectedIcon}` : "Icon Picker"}
       </PopoverTrigger>
       <PopoverContent className="w-fit p-0">
         <IconPicker
