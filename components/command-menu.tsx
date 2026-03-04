@@ -221,12 +221,12 @@ export default function CommandMenu() {
           project.
         </DialogDescription>
       </DialogHeader>
-      <DialogContent className="overflow-hidden p-0 sm:max-w-[640px] max-h-[725px] transition-[max-height] duration-300">
+      <DialogContent className="overflow-hidden p-0 sm:max-w-[640px] max-h-[725px] transition-[max-height] duration-300 [&_[data-slot=dialog-close]]:top-2 [&_[data-slot=dialog-close]]:right-2">
         <Command
           ref={commandRef}
           onValueChange={setSelectedItem}
           onKeyDown={handleKeyPress}
-          className="[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-[48px] [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[data-slot='command-input-wrapper']_svg]:size-4.5 [&_[cmdk-input]]:text-[15px] [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]_svg]:w-5"
+          className="p-0 [&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-[48px] **:data-[slot=command-input-wrapper]:border-b **:data-[slot=input-group]:!h-full **:data-[slot=input-group]:!border-0 **:data-[slot=input-group]:!shadow-none **:data-[slot=input-group]:!bg-transparent **:data-[slot=input-group]:!rounded-none [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[data-slot='command-input-wrapper']_svg]:size-4.5 [&_[cmdk-input]]:text-[15px] [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]_svg]:w-5"
         >
           <CommandInput placeholder="Search..." />
           <CommandList
@@ -303,23 +303,25 @@ export default function CommandMenu() {
             </Button>
             <Separator
               orientation="vertical"
-              className="h-3! hidden md:block"
+              className="h-3! hidden md:block data-vertical:self-center"
             />
             <Popover open={openPopover} onOpenChange={setOpenPopover}>
-              <PopoverTrigger asChild>
-                <Button
-                  className="text-xs pl-2 pr-1 text-foreground/70 h-7"
-                  size="sm"
-                  variant="ghost"
-                >
-                  Actions{" "}
-                  <kbd className="text-xs bg-accent size-5 flex items-center justify-center rounded">
-                    ⌘
-                  </kbd>{" "}
-                  <kbd className="text-xs bg-accent size-5 flex items-center justify-center rounded">
-                    K
-                  </kbd>
-                </Button>
+              <PopoverTrigger
+                render={
+                  <Button
+                    className="text-xs pl-2 pr-1 text-foreground/70 h-7"
+                    size="sm"
+                    variant="ghost"
+                  />
+                }
+              >
+                Actions{" "}
+                <kbd className="text-xs bg-accent size-5 flex items-center justify-center rounded">
+                  ⌘
+                </kbd>{" "}
+                <kbd className="text-xs bg-accent size-5 flex items-center justify-center rounded">
+                  K
+                </kbd>
               </PopoverTrigger>
               <PopoverContent
                 align="end"
@@ -327,7 +329,7 @@ export default function CommandMenu() {
                 sideOffset={8}
                 className="p-0 w-[318px]"
               >
-                <Command className="[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-[41px] [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[data-slot='command-input-wrapper']_svg]:hidden [&_[data-slot='command-input-wrapper']]:border-t [&_[data-slot='command-input-wrapper']]:border-b-0 [&_[cmdk-input]]:text-sm [&_[cmdk-input]]:h-10 [&_[cmdk-item]]:px-2 [&_[cmdk-item]_svg]:w-5">
+                <Command className="[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-[41px] **:data-[slot=input-group]:!h-full **:data-[slot=input-group]:!border-0 **:data-[slot=input-group]:!shadow-none **:data-[slot=input-group]:!bg-transparent **:data-[slot=input-group]:!rounded-none [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[data-slot='command-input-wrapper']_svg]:hidden [&_[data-slot='command-input-wrapper']]:border-t [&_[data-slot='command-input-wrapper']]:border-b-0 [&_[cmdk-input]]:text-sm [&_[cmdk-input]]:h-10 [&_[cmdk-item]]:px-2 [&_[cmdk-item]_svg]:w-5">
                   <CommandList className="max-h-[378px] outline-none">
                     <CommandEmpty>No results found.</CommandEmpty>
                     <CommandGroup heading="Quick Actions">
