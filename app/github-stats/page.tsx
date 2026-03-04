@@ -83,7 +83,7 @@ export default function Page() {
               </span>
               <Separator
                 orientation="vertical"
-                className="!h-4 hidden lg:flex"
+                className="h-4! hidden lg:flex data-vertical:self-center"
               />
               <span className="text-sm text-muted-foreground line-clamp-1 hidden lg:flex">
                 {component.description}
@@ -104,7 +104,7 @@ export default function Page() {
               />
             </div>
           </div>
-          <div className="flex items-center border rounded-lg justify-center min-h-[400px] p-4 md:p-10 relative bg-muted/30">
+          <div className="flex items-center border rounded-lg justify-center min-h-100 p-4 md:p-10 relative bg-muted/30">
             <component.component />
           </div>
         </div>

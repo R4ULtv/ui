@@ -73,7 +73,7 @@ export default function RootLayout({
                 </Link>
                 <Separator
                   orientation="vertical"
-                  className="h-4! hidden md:block"
+                  className="h-4! hidden lg:flex data-vertical:self-center"
                 />
                 <p className="text-muted-foreground hidden md:block line-clamp-1 text-sm">
                   A collection of UI components built with Shadcn UI.
@@ -99,7 +99,7 @@ export default function RootLayout({
                 />
                 <Separator
                   orientation="vertical"
-                  className="h-4! hidden md:block"
+                  className="h-4! hidden lg:flex data-vertical:self-center"
                 />
                 <ThemeSwitch />
               </div>
