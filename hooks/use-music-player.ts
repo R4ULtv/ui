@@ -34,7 +34,7 @@ export interface UseMusicPlayerReturn {
   isShuffling: boolean;
   repeatMode: RepeatMode;
   togglePlayPause: () => void;
-  handleSliderChange: (value: number[]) => void;
+  handleSliderChange: (value: number | readonly number[]) => void;
   toggleShuffle: () => void;
   toggleRepeat: () => void;
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
@@ -99,9 +99,10 @@ export function useMusicPlayer({
     }
   }, [currentTime, songDuration, isPlaying, song]);
 
-  const handleSliderChangeExternal = (value: number[]) => {
+  const handleSliderChangeExternal = (value: number | readonly number[]) => {
     if (!song) return;
-    const newTime = Math.floor((value[0] / 100) * songDuration);
+    const v = typeof value === "number" ? value : value[0];
+    const newTime = Math.floor((v / 100) * songDuration);
     setCurrentTime(newTime);
     if (!isPlaying && newTime < songDuration) {
       setIsPlaying(true);
