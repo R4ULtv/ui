@@ -47,9 +47,8 @@ function RatingGroup({
 
   return (
     <ToggleGroup
-      type="single"
-      value={value}
-      onValueChange={onValueChange}
+      value={[value]}
+      onValueChange={(groupValue) => onValueChange?.(groupValue[groupValue.length - 1] || "0")}
       size={size}
       className={cn("gap-0", className)}
       disabled={disabled}
@@ -65,7 +64,7 @@ function RatingGroup({
             value={starValue}
             aria-label={`${starIndex} star rating`}
             className={cn(
-              "relative border-0 bg-transparent p-0 hover:bg-transparent data-[state=on]:bg-transparent focus-visible:ring-0",
+              "relative border-0 bg-transparent p-0 hover:bg-transparent data-pressed:bg-transparent focus-visible:ring-0",
               "hover:scale-110 focus-visible:scale-110 transition-transform ease-out",
               disabled && "pointer-events-none opacity-50",
             )}
