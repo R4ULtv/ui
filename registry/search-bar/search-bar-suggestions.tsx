@@ -68,11 +68,11 @@ export default function SearchBarSuggestions() {
   return (
     <Command
       shouldFilter={false}
-      className="w-full max-w-[322px] bg-input/30 border"
+      className="w-full max-w-[322px] bg-input/30 border p-0 rounded-md!"
     >
       <div
         className={cn(
-          "relative [&_div[data-slot='command-input-wrapper']]:h-10",
+          "relative [&_div[data-slot='command-input-wrapper']]:h-10 [&_[data-slot=input-group]]:!border-0 [&_[data-slot=input-group]]:!shadow-none [&_[data-slot=input-group]]:!bg-transparent",
           suggestions.length > 0
             ? "[&_div[data-slot='command-input-wrapper']]:border-b"
             : "[&_div[data-slot='command-input-wrapper']]:border-0",
