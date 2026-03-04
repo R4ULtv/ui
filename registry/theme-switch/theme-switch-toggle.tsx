@@ -35,9 +35,9 @@ const ThemeSwitch = ({
       <Switch
         checked={checked}
         onCheckedChange={handleCheckedChange}
-        className="peer data-[state=checked]:bg-input/50 data-[state=unchecked]:bg-input/50 absolute inset-0 h-[inherit] w-auto [&_span]:h-full [&_span]:w-[34px]"
+        className="peer data-checked:bg-input/50 data-unchecked:bg-input/50 absolute inset-0 !h-[inherit] !w-auto [&_span]:!h-full [&_span]:!w-[34px]"
       />
-      <span className="peer-data-[state=checked]:text-muted-foreground/70 pointer-events-none relative ms-0.5 flex min-w-8 items-center justify-center text-center">
+      <span className="peer-data-checked:text-muted-foreground/70 pointer-events-none relative ms-0.5 flex min-w-8 items-center justify-center text-center">
         <SunIcon
           size={16}
           aria-hidden="true"
@@ -47,7 +47,7 @@ const ThemeSwitch = ({
           )}
         />
       </span>
-      <span className="peer-data-[state=unchecked]:text-muted-foreground/70 pointer-events-none relative me-0.5 flex min-w-8 items-center justify-center text-center">
+      <span className="peer-data-unchecked:text-muted-foreground/70 pointer-events-none relative me-0.5 flex min-w-8 items-center justify-center text-center">
         <MoonIcon
           size={16}
           aria-hidden="true"
