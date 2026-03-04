@@ -27,7 +27,7 @@ export async function StarsCount({ repo }: { repo: string }) {
 
   return (
     <Button
-      asChild
+      nativeButton={false}
       size="sm"
       variant="ghost"
       className={cn(
@@ -36,28 +36,33 @@ export async function StarsCount({ repo }: { repo: string }) {
         progress === 3 && "dark:hover:bg-[#c0c0c0]/10 hover:bg-[#c0c0c0]/20",
         progress === 4 && "dark:hover:bg-[#d4af37]/10 hover:bg-[#d4af37]/20",
       )}
-    >
-      <a href={`https://github.com/${repo}`} target="_blank" rel="noreferrer">
-        <StarIcon
-          className={cn(
-            "fill-transparent group-hover:fill-foreground group-hover:scale-110 transition-[fill,stroke,scale] duration-200 ease-out",
-            progress === 2 &&
-              "group-hover:fill-[#cd7f32] group-hover:stroke-[#cd7f32]",
-            progress === 3 &&
-              "group-hover:fill-[#c0c0c0] group-hover:stroke-[#c0c0c0]",
-            progress === 4 &&
-              "group-hover:fill-[#d4af37] group-hover:stroke-[#d4af37]",
-          )}
+      render={
+        <a
+          href={`https://github.com/${repo}`}
+          target="_blank"
+          rel="noreferrer"
         />
-        <p className="text-xs text-muted-foreground/70 group-hover:text-muted-foreground transition-colors duration-200 ease-out">
-          <span className="tabular-nums">
-            {json.stargazers_count >= 1000
-              ? `${(json.stargazers_count / 1000).toFixed(1)}k`
-              : json.stargazers_count.toLocaleString()}
-          </span>{" "}
-          stars
-        </p>
-      </a>
+      }
+    >
+      <StarIcon
+        className={cn(
+          "fill-transparent group-hover:fill-foreground group-hover:scale-110 transition-[fill,stroke,scale] duration-200 ease-out",
+          progress === 2 &&
+            "group-hover:fill-[#cd7f32] group-hover:stroke-[#cd7f32]",
+          progress === 3 &&
+            "group-hover:fill-[#c0c0c0] group-hover:stroke-[#c0c0c0]",
+          progress === 4 &&
+            "group-hover:fill-[#d4af37] group-hover:stroke-[#d4af37]",
+        )}
+      />
+      <p className="text-xs text-muted-foreground/70 group-hover:text-muted-foreground transition-colors duration-200 ease-out">
+        <span className="tabular-nums">
+          {json.stargazers_count >= 1000
+            ? `${(json.stargazers_count / 1000).toFixed(1)}k`
+            : json.stargazers_count.toLocaleString()}
+        </span>{" "}
+        stars
+      </p>
     </Button>
   );
 }
