@@ -13,6 +13,7 @@ import { HeartIcon, MousePointerClickIcon } from "lucide-react";
 import XformerlyTwitter from "@/components/icons/twitter";
 import GitHub from "@/components/icons/github";
 import { Button } from "@/components/ui/button";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const CommandMenu = dynamic(() => import("@/components/command-menu"));
 
@@ -61,66 +62,76 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider attribute="class" disableTransitionOnChange>
-          <header className="max-w-6xl mx-auto flex items-center px-4 py-6">
-            <div className="flex items-center gap-4">
-              <Link href="/" className="flex items-center gap-2">
-                <MousePointerClickIcon className="size-5" />
-                <h1 className="font-semibold tracking-tight">UI Components</h1>
-              </Link>
-              <Separator
-                orientation="vertical"
-                className="!h-4 hidden md:block"
-              />
-              <p className="text-muted-foreground hidden md:block line-clamp-1 text-sm">
-                A collection of UI components built with Shadcn UI.
-              </p>
-            </div>
-            <div className="ml-auto flex items-center gap-1 md:gap-2">
-              <CommandMenu />
-              <Button asChild variant="ghost" size="sm" className="h-8 group">
+          <TooltipProvider>
+            <header className="max-w-6xl mx-auto flex items-center px-4 py-6">
+              <div className="flex items-center gap-4">
+                <Link href="/" className="flex items-center gap-2">
+                  <MousePointerClickIcon className="size-5" />
+                  <h1 className="font-semibold tracking-tight">
+                    UI Components
+                  </h1>
+                </Link>
+                <Separator
+                  orientation="vertical"
+                  className="h-4! hidden md:block"
+                />
+                <p className="text-muted-foreground hidden md:block line-clamp-1 text-sm">
+                  A collection of UI components built with Shadcn UI.
+                </p>
+              </div>
+              <div className="ml-auto flex items-center gap-1 md:gap-2">
+                <CommandMenu />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 group"
+                  nativeButton={false}
+                  render={
+                    <a
+                      href="https://github.com/sponsors/R4ULtv?frequency=one-time"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span className="hidden md:block">Sponsorship</span>
+                      <HeartIcon className="group-hover:stroke-red-400 group-hover:fill-red-400 group-hover:scale-110 transition-all duration-200 ease-out" />
+                    </a>
+                  }
+                />
+                <Separator
+                  orientation="vertical"
+                  className="h-4! hidden md:block"
+                />
+                <ThemeSwitch />
+              </div>
+            </header>
+            {children}
+            <footer className="max-w-6xl mx-auto flex items-center justify-between px-4 py-6">
+              <span className="text-sm text-muted-foreground text-pretty">
+                Built with passion by{" "}
                 <a
-                  href="https://github.com/sponsors/R4ULtv?frequency=one-time"
+                  href="https://x.com/lil_poop__"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
+                  className="font-medium text-foreground/90 hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground/50 transition-colors inline-flex items-center gap-1 group"
                 >
-                  <span className="hidden md:block">Sponsorship</span>
-                  <HeartIcon className="group-hover:stroke-red-400 group-hover:fill-red-400 group-hover:scale-110 transition-all duration-200 ease-out" />
+                  Raul Carini
+                  <XformerlyTwitter className="size-3.5 inline-block opacity-70 group-hover:opacity-100 transition-opacity" />
                 </a>
-              </Button>
-              <Separator
-                orientation="vertical"
-                className="!h-4 hidden md:block"
-              />
-              <ThemeSwitch />
-            </div>
-          </header>
-          {children}
-          <footer className="max-w-6xl mx-auto flex items-center justify-between px-4 py-6">
-            <span className="text-sm text-muted-foreground text-pretty">
-              Built with passion by{" "}
-              <a
-                href="https://x.com/lil_poop__"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-foreground/90 hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground/50 transition-colors inline-flex items-center gap-1 group"
-              >
-                Raul Carini
-                <XformerlyTwitter className="size-3.5 inline-block opacity-70 group-hover:opacity-100 transition-opacity" />
-              </a>
-              . Explore the source code on{" "}
-              <a
-                href="https://github.com/r4ultv/ui"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-foreground/90 hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground/50 transition-colors inline-flex items-center gap-1 group"
-              >
-                Github
-                <GitHub className="size-3.5 inline-block opacity-70 group-hover:opacity-100 transition-opacity" />
-              </a>
-              .
-            </span>
-          </footer>
-          <Toaster position="top-center" />
+                . Explore the source code on{" "}
+                <a
+                  href="https://github.com/r4ultv/ui"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-foreground/90 hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground/50 transition-colors inline-flex items-center gap-1 group"
+                >
+                  Github
+                  <GitHub className="size-3.5 inline-block opacity-70 group-hover:opacity-100 transition-opacity" />
+                </a>
+                .
+              </span>
+            </footer>
+            <Toaster position="top-center" />
+          </TooltipProvider>
         </ThemeProvider>
         <Analytics />
       </body>
