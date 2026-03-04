@@ -10,7 +10,7 @@ interface Component {
   images: { light: string; dark: string };
   soon?: boolean;
   new?: boolean;
-  update?: boolean;
+  update?: boolean | string;
 }
 
 const components: Component[] = [
@@ -22,6 +22,7 @@ const components: Component[] = [
       light: "/icon-picker-light.png",
       dark: "/icon-picker-dark.png",
     },
+    update: "Migrated to Base UI",
   },
   {
     name: "Github Contributions",
@@ -31,6 +32,7 @@ const components: Component[] = [
       light: "/github-contributions-light.png",
       dark: "/github-contributions-dark.png",
     },
+    update: "Migrated to Base UI",
   },
   {
     name: "Music Player",
@@ -40,6 +42,7 @@ const components: Component[] = [
       light: "/music-player-light.png",
       dark: "/music-player-dark.png",
     },
+    update: "Migrated to Base UI",
   },
   {
     name: "Search Bar",
@@ -49,6 +52,7 @@ const components: Component[] = [
       light: "/search-bar-light.png",
       dark: "/search-bar-dark.png",
     },
+    update: "Migrated to Base UI",
   },
   {
     name: "Rating Group",
@@ -58,6 +62,7 @@ const components: Component[] = [
       light: "/rating-group-light.png",
       dark: "/rating-group-dark.png",
     },
+    update: "Migrated to Base UI",
   },
   {
     name: "Theme Switch",
@@ -67,6 +72,7 @@ const components: Component[] = [
       light: "/theme-switch-light.png",
       dark: "/theme-switch-dark.png",
     },
+    update: "Migrated to Base UI",
   },
   {
     name: "Github Stats",
@@ -76,6 +82,7 @@ const components: Component[] = [
       light: "/github-stats-light.png",
       dark: "/github-stats-dark.png",
     },
+    update: "Migrated to Base UI",
   },
 ];
 
@@ -131,7 +138,7 @@ export default function Page() {
               )}
               {component.update && (
                 <span className="absolute bottom-3 right-4 text-xs text-muted-foreground font-mono">
-                  Update
+                  {typeof component.update === "string" ? component.update : "Update"}
                 </span>
               )}
               {component.new && (

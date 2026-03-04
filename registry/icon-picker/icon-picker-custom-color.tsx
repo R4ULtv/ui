@@ -109,7 +109,16 @@ const IconPicker = React.memo(
           />
           {selectedIcon && (
             <Popover>
-              <PopoverTrigger render={<Button variant="outline" size="icon" className="border-none focus-visible:ring-2 relative" style={{ backgroundColor: selectedColor }} />}>
+              <PopoverTrigger
+                render={
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="border-none focus-visible:ring-2 relative"
+                    style={{ backgroundColor: selectedColor }}
+                  />
+                }
+              >
                 <PaletteIcon size={16} />
               </PopoverTrigger>
               <PopoverContent className="w-min">

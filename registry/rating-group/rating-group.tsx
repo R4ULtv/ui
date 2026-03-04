@@ -48,7 +48,9 @@ function RatingGroup({
   return (
     <ToggleGroup
       value={[value]}
-      onValueChange={(groupValue) => onValueChange?.(groupValue[groupValue.length - 1] || "0")}
+      onValueChange={(groupValue) =>
+        onValueChange?.(groupValue[groupValue.length - 1] || "0")
+      }
       size={size}
       className={cn("gap-0", className)}
       disabled={disabled}
